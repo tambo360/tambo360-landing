@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import ClosingCta from '../components/sections/ClosingCta.astro';
+import Container from '../components/ui/Container.astro';
+import Section from '../components/ui/Section.astro';
+import { site } from '../config/site';
+import { team } from '../data/team';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: `Equipo de ${site.name}`,
+  inLanguage: site.lang,
+  about: {
+    '@type': 'Organization',
+    name: site.name,
+    url: site.url,
+    member: team.map((member) => ({ '@type': 'Person', name: member.name })),
+  },
+};
+---
+
+<BaseLayout
+  title="Conocé al equipo"
+  description={`Las personas que hacen ${site.name}: un equipo de desarrollo dedicado al campo que recorrió tambos y escuchó a quienes los trabajan antes de escribir una línea.`}
+  jsonLd={jsonLd}
+>
+  <section class="bg-verde-025 py-14 sm:py-20" aria-labelledby="equipo-titulo">
+    <Container size="md">
+      <h1 id="equipo-titulo" class="text-4xl font-extrabold tracking-tight sm:text-display-xl">
+        Conocé al equipo que conforma {site.name}
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg">
+        No venimos del tambo. Por eso fuimos a buscarlo. Somos un equipo de desarrollo dedicado al campo: antes de escribir una
+        línea, recorrimos tambos y escuchamos a quienes los trabajan, para llevar algo simple a problemas reales.
+      </p>
+    </Container>
+  </section>
+
+  <Section aria-label="Integrantes del equipo">
+    <ul class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+      {
+        team.map((member) => (
+          <li class="text-center">
+            <Image
+              src={member.photo}
+              alt={`Foto de ${member.name}`}
+              width={200}
+              height={200}
+              densities={[1, 2]}
+              class="mx-auto aspect-square w-full max-w-44 rounded-full object-cover ring-4 ring-verde-050"
+            />
+            <p class="mt-3 text-lg leading-tight font-semibold text-tinta">{member.name}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <ClosingCta />
+</BaseLayout>

@@ -1,0 +1,105 @@
+---
+import { site } from '../config/site';
+import LegalLayout from '../layouts/LegalLayout.astro';
+---
+
+<LegalLayout
+  title="Términos y condiciones"
+  description="Las reglas para anotarte al piloto y usar Tambo360: qué incluye el piloto gratuito, qué podés esperar de los avisos, cómo se usan los datos y qué pasa con una cuenta sin pago."
+  updated="2026-10-05"
+  draft
+>
+  <p>
+    Estos términos explican las reglas para anotarte al piloto y usar Tambo360. Al anotarte o al usar la aplicación los
+    aceptás. Si algo no te queda claro, escribinos a <a href={`mailto:${site.email}`}>{site.email}</a> antes de usarla.
+  </p>
+
+  <h2>1. Qué es Tambo360</h2>
+  <p>
+    Tambo360 es una aplicación web para registrar la producción, las mermas, los gastos y el rodeo de un tambo, y recibir
+    avisos cuando algo se sale de lo normal. Se usa desde el navegador en la computadora y se puede instalar en el celular o
+    la tablet. No es una aplicación de Play Store.
+  </p>
+
+  <h2>2. Piloto y lista de espera</h2>
+  <ul>
+    <li>El piloto dura <strong>3 meses</strong> y es 100% gratuito: durante ese tiempo no se cobra nada ni se pide tarjeta.</li>
+    <li>Incluye acompañamiento 1 a 1 por WhatsApp para configurar tu tambo y aprovechar la aplicación.</li>
+    <li>
+      El piloto arranca con un número limitado de tambos fundadores. Anotarte no garantiza un lugar en el piloto: si los
+      lugares ya están ocupados, quedás en la lista de espera y te contactamos por WhatsApp.
+    </li>
+  </ul>
+
+  <h2>3. Tu cuenta y lo que cargás</h2>
+  <ul>
+    <li>Sos responsable de que la información que cargás sea correcta y de cuidar el acceso a tu cuenta.</li>
+    <li>Tambo360 trabaja con lo que se anota: si no se cargan datos, no hay análisis ni avisos.</li>
+    <li>Te comprometés a usar la aplicación para la gestión de tu tambo y no para fines ilegales o que perjudiquen el servicio.</li>
+  </ul>
+
+  <h2>4. Los avisos y la inteligencia artificial</h2>
+  <p>
+    Tambo360 revisa tus números con inteligencia artificial y te avisa cuando detecta algo fuera de lo habitual. Es una
+    herramienta de apoyo: no hace predicciones mágicas ni reemplaza el criterio del productor, del encargado ni del
+    veterinario. Las decisiones sobre el tambo y el rodeo siguen siendo tuyas.
+  </p>
+
+  <h2>5. Uso de los datos</h2>
+  <p>
+    La información de tu tambo es tuya. Para prestarte el servicio necesitamos guardarla y procesarla, y además
+    <strong>la usamos para entrenar y mejorar los agentes de inteligencia artificial de Tambo360</strong>, para que entiendan
+    mejor el trabajo del tambo y den mejores respuestas. Todo el detalle está en la {" "}
+    <a href="/privacidad">política de privacidad</a>.
+  </p>
+
+  <h2>6. Cuentas sin pago y eliminación de datos</h2>
+  <ul>
+    <li>
+      Si una cuenta no tiene un plan pago, el tambo y la información del usuario se eliminan después del plazo que fije la
+      plataforma, que nunca es menor a <strong>3 meses</strong>.
+    </li>
+    <li>
+      Después de la eliminación, la información productiva puede seguir usándose para entrenar y mejorar la inteligencia
+      artificial de Tambo360 solo de forma disociada: sin datos que permitan identificar a la persona ni al establecimiento.
+    </li>
+  </ul>
+
+  <h2>7. Precio</h2>
+  <p>
+    Tambo360 no va a ser gratuito para siempre. Después del piloto se va a cobrar en pesos argentinos según la cantidad de
+    usuarios registrados, con una prueba gratuita de 30 días que no pide tarjeta. Los precios se van a publicar antes de que
+    se cobre cualquier importe. Cuando haya pagos en línea, vas a tener disponible el botón de arrepentimiento.
+  </p>
+
+  <h2>8. Disponibilidad del servicio</h2>
+  <p>
+    Trabajamos para que Tambo360 esté siempre disponible. En la fosa podés anotar sin señal y los datos se sincronizan cuando
+    vuelve la conexión. Aun así, puede haber interrupciones por mantenimiento, fallas de terceros o causas ajenas a nosotros.
+  </p>
+
+  <h2>9. Responsabilidad</h2>
+  <p>
+    Tambo360 se ofrece como herramienta de registro y apoyo a la gestión. En la medida en que lo permita la ley, no somos
+    responsables por decisiones tomadas sobre la base de datos cargados de forma incompleta o incorrecta, ni por daños
+    indirectos derivados del uso de la aplicación. Nada en estos términos limita los derechos que te reconoce la Ley 24.240
+    de Defensa del Consumidor.
+  </p>
+
+  <h2>10. Propiedad intelectual</h2>
+  <p>
+    La marca Tambo360, el diseño y el software de la aplicación son de Tambo360. Usar la aplicación no te da derechos sobre
+    ellos.
+  </p>
+
+  <h2>11. Cambios a estos términos</h2>
+  <p>
+    Podemos actualizar estos términos. La versión vigente es la publicada en esta página, con su fecha de actualización.
+  </p>
+
+  <h2>12. Ley aplicable y contacto</h2>
+  <p>
+    Estos términos se rigen por las leyes de la República Argentina. Para cualquier consulta o reclamo escribinos a {" "}
+    <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+</LegalLayout>

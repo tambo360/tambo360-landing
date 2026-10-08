@@ -1,0 +1,19 @@
+---
+import Button from '../components/ui/Button.astro';
+import Container from '../components/ui/Container.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Página no encontrada" description="La página que buscás no existe o cambió de lugar." noindex>
+  <section class="py-20 sm:py-28">
+    <Container size="md" class="text-center">
+      <p class="text-7xl font-extrabold text-verde-enlace sm:text-8xl">404</p>
+      <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-display-lg">Esta tranquera está cerrada</h1>
+      <p class="mx-auto mt-4 max-w-lg text-lg">La página que buscás no existe o cambió de lugar.</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <Button href="/">Volver al inicio</Button>
+        <Button href="/preguntas-frecuentes" variant="secondary">Ver preguntas frecuentes</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

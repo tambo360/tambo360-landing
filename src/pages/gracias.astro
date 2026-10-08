@@ -1,0 +1,39 @@
+---
+import Button from '../components/ui/Button.astro';
+import Container from '../components/ui/Container.astro';
+import Icon from '../components/ui/Icon.astro';
+import { whatsappUrl } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { SubmitStatus } from '../lib/waitlist';
+
+// Rendered per request: it is where the form lands when the browser runs without JavaScript.
+export const prerender = false;
+
+const messages: Record<SubmitStatus, { title: string; body: string; ok: boolean }> = {
+  ok: { title: '¡Listo, ya estás anotado!', body: 'Te vamos a escribir por WhatsApp antes del lanzamiento para contarte cómo seguimos.', ok: true },
+  repetido: { title: 'Ya estabas en la lista', body: 'Ese número ya está anotado. No tenés que hacer nada más: te vamos a escribir por WhatsApp.', ok: true },
+  invalido: { title: 'Faltan datos', body: 'Revisá tu nombre, tu número de WhatsApp y que hayas aceptado la política de privacidad.', ok: false },
+  error: { title: 'No pudimos guardar tus datos', body: 'Fue un problema nuestro, no tuyo. Probá de nuevo en un rato.', ok: false },
+};
+
+const requested = Astro.url.searchParams.get('estado') as SubmitStatus | null;
+const status: SubmitStatus = requested && requested in messages ? requested : 'ok';
+const message = messages[status];
+const whatsapp = message.ok ? null : whatsappUrl('Hola, quise anotarme al piloto de Tambo360 desde la web y no pude.');
+---
+
+<BaseLayout title={message.title} noindex>
+  <section class="py-20 sm:py-28">
+    <Container size="md" class="text-center">
+      <span class:list={['mx-auto flex size-16 items-center justify-center rounded-full', message.ok ? 'bg-verde-050 text-verde-enlace' : 'bg-red-50 text-error']}>
+        <Icon name={message.ok ? 'check-circle' : 'alert-circle'} size={34} />
+      </span>
+      <h1 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-display-lg">{message.title}</h1>
+      <p class="mx-auto mt-4 max-w-lg text-lg">{message.body}</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        {message.ok ? <Button href="/">Volver al inicio</Button> : <Button href="/#sumate">Volver al formulario</Button>}
+        {whatsapp && <Button href={whatsapp} variant="secondary" external>Escribir por WhatsApp</Button>}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

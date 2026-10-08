@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import Footer from '../components/layout/Footer.astro';
+import Header from '../components/layout/Header.astro';
+import SEO, { type SEOProps } from '../components/layout/SEO.astro';
+import WhatsAppButton from '../components/layout/WhatsAppButton.astro';
+import { site } from '../config/site';
+
+type Props = SEOProps;
+const seo = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1c2a1c" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <!-- Also copied to /favicon.ico: browsers and crawlers request it at the root without reading the HTML. -->
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="180x180" />
+    <meta name="apple-mobile-web-app-title" content={site.name} />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <SEO {...seo} />
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#contenido"
+      class="sr-only z-60 rounded-md bg-verde-900 px-4 py-3 font-semibold text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+    >
+      Saltar al contenido
+    </a>
+    <Header />
+    <main id="contenido" class="flex-1" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton />
+  </body>
+</html>

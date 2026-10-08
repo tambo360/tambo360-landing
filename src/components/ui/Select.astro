@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Icon from './Icon.astro';
+
+type Option = { value: string; label: string };
+type Props = HTMLAttributes<'select'> & { id: string; options: readonly Option[]; placeholder?: string };
+const { id, options, placeholder = 'Elegí una opción', class: className, ...rest } = Astro.props;
+---
+
+<div class="relative">
+  <select
+    id={id}
+    name={id}
+    aria-describedby={`${id}-error`}
+    class:list={[
+      'min-h-12 w-full appearance-none rounded-md border border-borde-neutro bg-white py-2 pr-10 pl-4 text-base text-tinta',
+      'focus:border-verde-enlace focus:ring-2 focus:ring-verde-enlace/30 focus:outline-none',
+      className,
+    ]}
+    {...rest}
+  >
+    <option value="">{placeholder}</option>
+    {options.map((option) => <option value={option.value}>{option.label}</option>)}
+  </select>
+  <Icon name="chevron-down" size={20} class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-texto" />
+</div>

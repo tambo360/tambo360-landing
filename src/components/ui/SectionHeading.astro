@@ -1,0 +1,31 @@
+---
+type Props = {
+  id?: string;
+  title: string;
+  lead?: string;
+  align?: 'left' | 'center';
+  tone?: 'light' | 'dark';
+  level?: 'h2' | 'h3';
+  class?: string;
+};
+
+const { id, title, lead, align = 'left', tone = 'light', level: Heading = 'h2', class: className } = Astro.props;
+---
+
+<header class:list={['max-w-2xl', align === 'center' && 'mx-auto text-center', className]}>
+  <Heading
+    id={id}
+    class:list={[
+      'text-3xl leading-tight font-extrabold tracking-tight sm:text-display-lg',
+      tone === 'dark' && 'text-white',
+    ]}
+  >
+    {title}
+  </Heading>
+  {
+    lead && (
+      <p class:list={['mt-5 text-bajada leading-bajada', tone === 'dark' ? 'text-white/85' : 'text-texto']}>{lead}</p>
+    )
+  }
+  <slot />
+</header>

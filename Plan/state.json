@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "updated": "2026-10-08T15:00:00Z",
+  "goal": "Favicons ordenados en el layout, OG con logo y página /equipo separada de la home",
+  "phase": "build",
+  "approved": true,
+  "units": [
+    {
+      "id": 1,
+      "do": "Spec de la landing: mensajes, secciones, reglas del form y preguntas abiertas (Docs/specs/landing.md)",
+      "status": "done",
+      "detail": "Plan/specs/F-001-landing/spec.md + analysis.md; historias indexadas, no escritas (fuera del plan)"
+    },
+    {
+      "id": 2,
+      "do": "Stack doc del componente landing: Astro 7.3.5, Tailwind 4.3.3, Cloudflare D1 para el form, imágenes, hosting",
+      "status": "done",
+      "detail": "Docs/frontend-stack-landing.md + Docs/architecture-decisions.md (QT-01..12); QT-11 dominio TO-DEFINE, QT-12 tests propuesto"
+    },
+    {
+      "id": 3,
+      "do": "Dirección visual y mapa de páginas: tokens accesibles, tipografía, secciones y uso de fotos",
+      "status": "done",
+      "detail": "Docs/design-system.md + Plan/specs/F-001-landing/design/pages.md; fotos de carne descartadas; fuente Figtree (agente)"
+    },
+    {
+      "id": 4,
+      "do": "Scaffold: proyecto Astro+Tailwind, tokens, layout base, componentes UI, SEO base, pipeline de imágenes",
+      "status": "done",
+      "detail": "build y astro check verdes; UI en src/components/ui, layout+SEO+robots+sitemap+OG; Docs/ui-components.md"
+    },
+    {
+      "id": 5,
+      "do": "Home: hero, problemas, cómo funciona, módulos, offline, piloto, equipo, CTA final",
+      "status": "done",
+      "detail": "home sin sección del piloto (va en u6); revisada en 1366 y 390 px con Playwright+Edge, sin overflow; reveal por scroll quitado"
+    },
+    {
+      "id": 6,
+      "do": "Formulario de lista de espera/piloto con endpoint a Cloudflare D1 + botón flotante de WhatsApp",
+      "status": "done",
+      "detail": "form+endpoint+/gracias probados contra D1 local (ok, repetido, inválido, sin JS, bot, falla DB) y en Edge 390px; README con pasos de D1"
+    },
+    {
+      "id": 7,
+      "do": "Página de preguntas frecuentes con datos estructurados FAQPage",
+      "status": "done",
+      "detail": "/preguntas-frecuentes: 13 preguntas, JSON-LD FAQPage, índice y apertura por #hash; aria-current en nav"
+    },
+    {
+      "id": 8,
+      "do": "Páginas legales: política de privacidad y términos (borradores marcados para revisión legal) + 404",
+      "status": "done",
+      "detail": "/privacidad y /terminos (borrador visible, Ley 25.326 verificada en argentina.gob.ar) + /404; faltan razón social/CUIT y revisión legal"
+    },
+    {
+      "id": 9,
+      "do": "Verificación: build, Lighthouse, contraste, HTML semántico, meta/OG, robots y sitemap con evidencia",
+      "status": "done",
+      "detail": "Plan/specs/F-001-landing/testing/landing.md: 19 passed, 1 blocked (WhatsApp sin número); Lighthouse móvil 99-100"
+    },
+    {
+      "id": 10,
+      "do": "Legales y spec: datos de IA tras la eliminación quedan disociados (Q-37)",
+      "status": "done",
+      "detail": "privacidad §4 y §6, términos §6 y spec (RN-ia-tras-eliminacion, RN-campos-inscripcion); build verde"
+    },
+    {
+      "id": 11,
+      "do": "Marca en nav y footer: isotipo + 'Tambo' texto + '360' en verde-cta (Q-40)",
+      "status": "done",
+      "detail": "Brand.astro en header/footer; sin overflow a 320/360/390; corregido corte de \"Hasta 40 litros\" en móvil chico"
+    },
+    {
+      "id": 12,
+      "do": "database_id fuera del repo: plantilla wrangler + script que genera wrangler.jsonc desde D1_DATABASE_ID (QT-13)",
+      "status": "dropped",
+      "detail": "el usuario decidió dejar el database_id en wrangler.jsonc (QT-13)"
+    },
+    {
+      "id": 13,
+      "do": "Tests unitarios con Vitest: validación, normalización de teléfono y repositorio (QT-12)",
+      "status": "done",
+      "detail": "17 tests en src/lib/*.test.ts, pnpm test verde; probado que fallan con el código roto; stack doc y README al día"
+    },
+    {
+      "id": 14,
+      "do": "Dominio definitivo en site-url.mjs y rebuild (QT-14)",
+      "status": "todo",
+      "detail": "bloqueado: tambo360.vercel.app es de la app"
+    },
+    {
+      "id": 15,
+      "do": "Re-verificación: build, tests, Lighthouse y capturas",
+      "status": "done",
+      "detail": "testing/landing.md ejecución 2026-10-06: 7 passed, 1 blocked (WhatsApp); Lighthouse 98-100"
+    },
+    {
+      "id": 16,
+      "do": "Indicador de sección activa en nav (desktop y menú móvil): scroll-spy en la home + estilo para página actual",
+      "status": "done",
+      "detail": "Header.astro: scroll-spy (aria-current=true) solo en secciones del nav, nada entre ellas (decisión del usuario); testing filas 28-34, 21 PASS"
+    },
+    {
+      "id": 17,
+      "do": "H1 de la home alineado al contenido (aviso SEO: sus palabras casi no aparecen) + <title> coherente",
+      "status": "done",
+      "detail": "Hero.astro (H1 + bajada) y SEO.astro (title); Q-41 en analysis.md; testing filas 35-38"
+    },
+    {
+      "id": 18,
+      "do": "Icon.astro lee SVG de Tabler desde src/icons/ por nombre (astro-icon o import.meta.glob) en vez del objeto inline",
+      "status": "done",
+      "detail": "astro-icon 1.2.0 + 28 SVG Tabler en src/icons; build/check/17 tests verdes; capturas ok; arreglado swap menú→X (data-* se perdían)"
+    },
+    {
+      "id": 19,
+      "do": "Favicons: unificar public/favicon como fuente única, links en BaseLayout, manifest al día, borrar duplicados",
+      "status": "done",
+      "detail": "public/favicon fuente única (+/favicon.ico raíz por crawlers); BaseLayout svg/96/ico/apple/manifest; manifest purpose any; logo JSON-LD; build ok"
+    },
+    {
+      "id": 20,
+      "do": "OG/Twitter: imagen social con el logo de Tambo360 bien visible + metas completas en SEO.astro",
+      "status": "done",
+      "detail": "public/og-image.jpg nueva 1200x630 (vaca blanca+wordmark centrados, fondo verde-900, Edge+Figtree); alt en SEO.astro; build+check ok"
+    },
+    {
+      "id": 21,
+      "do": "Página /equipo \"Conocé al equipo\": sin Entre Ríos/Corrientes/Patagonia, sacada de la home, nav apunta ahí",
+      "status": "done",
+      "detail": "src/pages/equipo.astro (AboutPage JSON-LD), Team.astro y map-pin.svg borrados, nav /equipo; pages.md y Q-42/Q-43; preview 390/1366 sin overflow"
+    },
+    {
+      "id": 23,
+      "do": "Header y footer con el logo oficial (assets/logos/tambo-logo-360.png), negro y blanco (Q-44)",
+      "status": "done",
+      "detail": "Brand.astro usa logo-tambo360(.png|-blanco.png); isotipos y wordmark SVG borrados; Docs al día; build ok; 320/1366 sin overflow"
+    },
+    {
+      "id": 22,
+      "do": "Verificación: build, check, tests, HTML de head/OG y capturas de /equipo y home",
+      "status": "todo",
+      "detail": "propuesto"
+    }
+  ],
+  "waiting_on": "u22 siguiente (acompañado); aceptación de u16-u21 y u23; dominio QT-14 (u14) también bloquea la vista previa en redes; WhatsApp; legales y CUIT",
+  "notes": [
+    "Decisiones del usuario 2026-10-05: colores de marca no cambian (solo contraste); form -> Cloudflare D1; legales con IA y retención 3 meses. 2026-10-06: el usuario corrigió typos en /terminos a mano",
+    "Antes de publicar: database_id real en wrangler.jsonc, dominio en src/config/site-url.mjs, número en src/config/site.ts, revisión legal de /privacidad y /terminos",
+    "Fotos vacas.webp, vacas_3, vacas_4 descartadas (ganado de carne); dominio provisorio tambo360.com.ar; matar el proceso de astro preview antes de build (bloquea dist en Windows)"
+  ]
+}

@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'input'> & { id: string };
+const { id, class: className, ...rest } = Astro.props;
+---
+
+<div class:list={['flex flex-col gap-1.5', className]} data-field={id}>
+  <label for={id} class="flex cursor-pointer items-start gap-3 text-[15px] leading-6 text-tinta">
+    <input
+      type="checkbox"
+      id={id}
+      name={id}
+      value="1"
+      aria-describedby={`${id}-error`}
+      class="mt-0.5 size-5 shrink-0 cursor-pointer rounded border-borde-neutro accent-verde-enlace"
+      {...rest}
+    />
+    <span><slot /></span>
+  </label>
+  <p id={`${id}-error`} class="hidden text-sm font-medium text-error" data-error-for={id} aria-live="polite"></p>
+</div>

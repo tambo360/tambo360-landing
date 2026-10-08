@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'input'> & { id: string; hint?: boolean };
+const { id, hint = false, class: className, ...rest } = Astro.props;
+const describedBy = [hint && `${id}-hint`, `${id}-error`].filter(Boolean).join(' ');
+---
+
+<input
+  id={id}
+  name={id}
+  aria-describedby={describedBy}
+  class:list={[
+    'min-h-12 w-full rounded-md border border-borde-neutro bg-white px-4 text-base text-tinta placeholder:text-texto/80',
+    'focus:border-verde-enlace focus:ring-2 focus:ring-verde-enlace/30 focus:outline-none',
+    'aria-invalid:border-error aria-invalid:ring-2 aria-invalid:ring-error/20',
+    className,
+  ]}
+  {...rest}
+/>

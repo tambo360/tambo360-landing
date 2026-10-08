@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'secondary' | 'ghost-dark';
+type Size = 'md' | 'lg';
+
+type Props = (HTMLAttributes<'a'> | HTMLAttributes<'button'>) & {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  external?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+};
+
+const { href, variant = 'primary', size = 'md', external = false, class: className, ...rest } = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-md font-semibold whitespace-nowrap transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60';
+
+const variants: Record<Variant, string> = {
+  primary: 'bg-verde-cta text-verde-900 hover:bg-verde-check active:bg-verde-cta',
+  secondary: 'bg-verde-050 text-verde-enlace hover:bg-verde-100',
+  'ghost-dark': 'border border-white/40 text-white hover:bg-white/10',
+};
+
+const sizes: Record<Size, string> = {
+  md: 'min-h-11 px-5 text-[15px]',
+  lg: 'min-h-13 px-6 text-base',
+};
+
+const classes = [base, variants[variant], sizes[size], className];
+const externalAttrs = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+---
+
+{
+  href ? (
+    <a href={href} class:list={classes} {...externalAttrs} {...(rest as HTMLAttributes<'a'>)}>
+      <slot />
+      {external && <span class="sr-only">(se abre en otra pestaña)</span>}
+    </a>
+  ) : (
+    <button class:list={classes} {...(rest as HTMLAttributes<'button'>)}>
+      <slot />
+    </button>
+  )
+}

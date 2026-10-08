@@ -1,0 +1,27 @@
+---
+import { modules } from "../../../data/home";
+import Icon from "../../ui/Icon.astro";
+import Section from "../../ui/Section.astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
+---
+
+<Section id="que-podes-hacer" aria-labelledby="modulos-titulo">
+    <SectionHeading
+        id="modulos-titulo"
+        title="Lo que podés hacer desde el primer día"
+        lead="Lo que hoy está repartido entre el cuaderno, la planilla y la cabeza del encargado, junto."
+    />
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+            modules.map((module) => (
+                <li class="group rounded-lg border border-borde-neutro bg-gris-025 p-6 transition-colors hover:border-verde-check hover:bg-verde-025">
+                    <span class="flex size-12 items-center justify-center rounded-md bg-verde-050 text-verde-enlace transition-colors group-hover:bg-verde-cta group-hover:text-verde-900">
+                        <Icon name={module.icon} />
+                    </span>
+                    <h3 class="mt-5 text-lg font-bold">{module.title}</h3>
+                    {/* <p class="mt-2 leading-relaxed">{module.body}</p> */}
+                </li>
+            ))
+        }
+    </ul>
+</Section>

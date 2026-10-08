@@ -1,0 +1,14 @@
+---
+type Props = { tone?: 'light' | 'dark'; class?: string };
+const { tone = 'light', class: className } = Astro.props;
+---
+
+<span
+  class:list={[
+    'inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-semibold',
+    tone === 'light' ? 'bg-verde-050 text-verde-enlace' : 'bg-white/10 text-verde-050 ring-1 ring-white/25',
+    className,
+  ]}
+>
+  <slot />
+</span>

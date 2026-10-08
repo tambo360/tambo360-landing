@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Container from './Container.astro';
+
+type Tone = 'white' | 'soft' | 'softer' | 'dark';
+type Props = HTMLAttributes<'section'> & { tone?: Tone; containerSize?: 'md' | 'lg' };
+
+const { tone = 'white', containerSize = 'lg', class: className, ...rest } = Astro.props;
+
+const tones: Record<Tone, string> = {
+  white: 'bg-white',
+  soft: 'bg-verde-025',
+  softer: 'bg-verde-010',
+  dark: 'sobre-oscuro bg-verde-900 text-white/85',
+};
+---
+
+<section class:list={['py-16 sm:py-20 lg:py-24', tones[tone], className]} {...rest}>
+  <Container size={containerSize}>
+    <slot />
+  </Container>
+</section>

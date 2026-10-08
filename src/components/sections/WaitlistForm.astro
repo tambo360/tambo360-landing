@@ -1,0 +1,301 @@
+---
+import { whatsappUrl } from "../../config/site";
+import { HERD_SIZES, PROVINCES, ROLES } from "../../lib/waitlist";
+import Button from "../ui/Button.astro";
+import Checkbox from "../ui/Checkbox.astro";
+import FormField from "../ui/FormField.astro";
+import Icon from "../ui/Icon.astro";
+import Input from "../ui/Input.astro";
+import Select from "../ui/Select.astro";
+
+const whatsapp = whatsappUrl(
+    "Hola, quise anotarme al piloto de Tambo360 desde la web y no pude.",
+);
+---
+
+<div
+    class="rounded-xl border border-borde-verde bg-white p-6 sm:p-8"
+    data-waitlist
+>
+    <form
+        action="/api/inscripcion"
+        method="post"
+        novalidate
+        class="space-y-5"
+        data-waitlist-form
+        aria-describedby="form-nota"
+    >
+        <h3 class="text-2xl font-extrabold">Anotate al piloto</h3>
+        <p id="form-nota" class="-mt-3 text-[15px]">
+            Te escribimos por WhatsApp. No hace falta tarjeta.
+        </p>
+
+        <div
+            class="hidden rounded-md border border-error/40 bg-red-50 p-4 text-[15px] text-error"
+            role="alert"
+            tabindex="-1"
+            data-form-summary
+        >
+        </div>
+
+        <FormField id="nombre" label="Nombre y apellido" required>
+            <Input
+                id="nombre"
+                type="text"
+                autocomplete="name"
+                required
+                maxlength={80}
+                placeholder="Ej.: Manuel Pereyra"
+            />
+        </FormField>
+
+        <FormField
+            id="telefono"
+            label="WhatsApp"
+            required
+            hint="Con código de área, sin el 0 ni el 15. Ej.: 343 4567890"
+        >
+            <Input
+                id="telefono"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel"
+                required
+                hint
+                placeholder="343 4567890"
+            />
+        </FormField>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+            <FormField id="rol" label="¿Qué hacés en el tambo?">
+                <Select id="rol" options={ROLES} />
+            </FormField>
+            <FormField id="provincia" label="Provincia">
+                <Select
+                    id="provincia"
+                    options={PROVINCES}
+                    autocomplete="address-level1"
+                />
+            </FormField>
+        </div>
+
+        <FormField id="vacas" label="Vacas en ordeñe">
+            <Select id="vacas" options={HERD_SIZES} />
+        </FormField>
+
+        <Checkbox id="acepto" required>
+            Leí y acepto la <a
+                href="/privacidad"
+                target="_blank"
+                rel="noopener"
+                class="font-semibold text-verde-enlace underline underline-offset-2"
+                >política de privacidad</a
+            >.
+        </Checkbox>
+
+        <div class="absolute left-[-9999px]" aria-hidden="true">
+            <label for="website">No completes este campo</label>
+            <input
+                id="website"
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+            />
+        </div>
+        <input type="hidden" name="origen" data-origen />
+
+        <Button type="submit" size="lg" class="w-full" data-submit>
+            <span data-submit-label>Quiero sumarme al piloto</span>
+        </Button>
+    </form>
+
+    <div
+        class="hidden text-center"
+        role="status"
+        tabindex="-1"
+        data-result="ok"
+    >
+        <span
+            class="mx-auto flex size-14 items-center justify-center rounded-full bg-verde-050 text-verde-enlace"
+            ><Icon name="circle-check" size={30} /></span
+        >
+        <h3 class="mt-5 text-2xl font-extrabold">¡Listo, ya estás anotado!</h3>
+        <p class="mt-3">
+            Te vamos a escribir por WhatsApp antes del lanzamiento para contarte
+            cómo seguimos.
+        </p>
+    </div>
+
+    <div
+        class="hidden text-center"
+        role="status"
+        tabindex="-1"
+        data-result="repetido"
+    >
+        <span
+            class="mx-auto flex size-14 items-center justify-center rounded-full bg-verde-050 text-verde-enlace"
+            ><Icon name="circle-check" size={30} /></span
+        >
+        <h3 class="mt-5 text-2xl font-extrabold">Ya estabas en la lista</h3>
+        <p class="mt-3">
+            Ese número ya está anotado. No tenés que hacer nada más: te vamos a
+            escribir por WhatsApp.
+        </p>
+    </div>
+
+    <div
+        class="hidden text-center"
+        role="alert"
+        tabindex="-1"
+        data-result="error"
+    >
+        <span
+            class="mx-auto flex size-14 items-center justify-center rounded-full bg-red-50 text-error"
+            ><Icon name="alert-circle" size={30} /></span
+        >
+        <h3 class="mt-5 text-2xl font-extrabold">
+            No pudimos guardar tus datos
+        </h3>
+        <p class="mt-3">
+            Fue un problema nuestro, no tuyo. Probá de nuevo en un rato{
+                whatsapp ? " o escribinos por WhatsApp" : ""
+            }.
+        </p>
+        <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button type="button" variant="secondary" data-retry
+                >Probar de nuevo</Button
+            >
+            {
+                whatsapp && (
+                    <Button href={whatsapp} variant="secondary" external>
+                        Escribir por WhatsApp
+                    </Button>
+                )
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    import { type FieldName, validateWaitlist } from "../../lib/waitlist";
+
+    const root = document.querySelector<HTMLElement>("[data-waitlist]");
+    const form = root?.querySelector<HTMLFormElement>("[data-waitlist-form]");
+
+    if (root && form) {
+        const summary = form.querySelector<HTMLElement>("[data-form-summary]")!;
+        const submit = form.querySelector<HTMLButtonElement>("[data-submit]")!;
+        const submitLabel = form.querySelector<HTMLElement>(
+            "[data-submit-label]",
+        )!;
+        const origen = form.querySelector<HTMLInputElement>("[data-origen]");
+        const params = new URLSearchParams(location.search);
+        if (origen)
+            origen.value = params.get("utm_source") ?? params.get("ref") ?? "";
+
+        const fieldControl = (name: string) =>
+            form.querySelector<HTMLElement>(`[name="${name}"]`);
+
+        const showErrors = (errors: Partial<Record<FieldName, string>>) => {
+            form.querySelectorAll<HTMLElement>("[data-error-for]").forEach(
+                (node) => {
+                    const name = node.dataset.errorFor as FieldName;
+                    const message = errors[name];
+                    node.textContent = message ?? "";
+                    node.classList.toggle("hidden", !message);
+                    node.classList.toggle("flex", Boolean(message));
+                    const control = fieldControl(name);
+                    if (message) control?.setAttribute("aria-invalid", "true");
+                    else control?.removeAttribute("aria-invalid");
+                },
+            );
+
+            const messages = Object.values(errors);
+            if (messages.length === 0) {
+                summary.classList.add("hidden");
+                return;
+            }
+            summary.textContent =
+                messages.length === 1
+                    ? "Falta corregir 1 dato antes de enviar."
+                    : `Faltan corregir ${messages.length} datos antes de enviar.`;
+            summary.classList.remove("hidden");
+            const firstInvalid = Object.keys(errors)[0];
+            fieldControl(firstInvalid)?.focus();
+        };
+
+        const showResult = (status: "ok" | "repetido" | "error") => {
+            form.classList.add("hidden");
+            root.querySelectorAll<HTMLElement>("[data-result]").forEach(
+                (node) =>
+                    node.classList.toggle(
+                        "hidden",
+                        node.dataset.result !== status,
+                    ),
+            );
+            const result = root.querySelector<HTMLElement>(
+                `[data-result="${status}"]`,
+            );
+            // The card shrinks when the form hides, so bring the message back into view before focusing it.
+            result?.scrollIntoView({
+                block: "center",
+                behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+                    ? "auto"
+                    : "smooth",
+            });
+            result?.focus({ preventScroll: true });
+        };
+
+        const setSending = (sending: boolean) => {
+            submit.disabled = sending;
+            submit.setAttribute("aria-busy", String(sending));
+            submitLabel.textContent = sending
+                ? "Enviando…"
+                : "Quiero sumarme al piloto";
+        };
+
+        root.querySelector("[data-retry]")?.addEventListener("click", () => {
+            root.querySelectorAll<HTMLElement>("[data-result]").forEach(
+                (node) => node.classList.add("hidden"),
+            );
+            form.classList.remove("hidden");
+            submit.focus();
+        });
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            if (submit.disabled) return;
+
+            const data = new FormData(form);
+            const check = validateWaitlist(data);
+            if (!check.ok && !check.isBot) {
+                showErrors(check.errors);
+                return;
+            }
+            showErrors({});
+            setSending(true);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: data,
+                    headers: { Accept: "application/json" },
+                });
+                const body = (await response.json().catch(() => ({}))) as {
+                    status?: string;
+                    errors?: Partial<Record<FieldName, string>>;
+                };
+                if (body.status === "invalido" && body.errors)
+                    showErrors(body.errors);
+                else if (body.status === "ok" || body.status === "repetido")
+                    showResult(body.status);
+                else showResult("error");
+            } catch {
+                showResult("error");
+            } finally {
+                setSending(false);
+            }
+        });
+    }
+</script>

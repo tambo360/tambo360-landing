@@ -1,0 +1,56 @@
+---
+import vaca from "../../../assets/images/vacas-2.webp";
+import Picture from "../../ui/Picture.astro";
+import Section from "../../ui/Section.astro";
+---
+
+<Section
+    tone="dark"
+    aria-labelledby="historia-titulo"
+    class="relative overflow-hidden"
+>
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+            <p
+                class="text-sm font-bold tracking-[0.08em] text-verde-cta uppercase"
+            >
+                Así nació Tambo360
+            </p>
+            <h2
+                id="historia-titulo"
+                class="mt-4 text-3xl leading-tight font-extrabold tracking-tight text-white sm:text-display-lg"
+            >
+                La vaca con mastitis se ordeña última. La leche se tira. Y nadie
+                lo anota.
+            </h2>
+            <p class="mt-6 text-lg leading-relaxed text-white/85">
+                El dueño se entera de palabra, días después. Esa leche nunca
+                entra en ninguna cuenta: no se registra y su costo no se calcula
+                jamás.
+            </p>
+            <figure class="mt-10 border-l-4 border-verde-cta pl-6">
+                <p
+                    class="text-[2.5rem] leading-none font-extrabold text-verde-cta min-[400px]:text-5xl sm:text-6xl xl:text-7xl"
+                >
+                    <span class="min-[400px]:whitespace-nowrap"
+                        >Hasta 40 litros</span
+                    ><span
+                        class="block text-2xl font-bold text-white sm:text-3xl"
+                        >por día, que no figuran en ningún lado</span
+                    >
+                </p>
+                <figcaption class="mt-5 max-w-lg leading-relaxed text-white/85">
+                    Lo escuchamos de Ramón, encargado de un tambo quesero en
+                    Corrientes, y de Manuel, con 300 vacas en Entre Ríos.
+                    Tambo360 nació para que esa leche se cuente.
+                </figcaption>
+            </figure>
+        </div>
+        <Picture
+            src={vaca}
+            alt="Una vaca Holando sola en el campo"
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            class="aspect-[4/3] w-full rounded-xl object-cover object-[20%_center] lg:aspect-[4/5]"
+        />
+    </div>
+</Section>

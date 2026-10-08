@@ -1,0 +1,46 @@
+---
+import ClosingCta from "../components/sections/ClosingCta.astro";
+import FaqPreview from "../components/sections/home/FaqPreview.astro";
+import Hero from "../components/sections/home/Hero.astro";
+import Honesty from "../components/sections/home/Honesty.astro";
+import HowItWorks from "../components/sections/home/HowItWorks.astro";
+import Modules from "../components/sections/home/Modules.astro";
+import Offline from "../components/sections/home/Offline.astro";
+import Pilot from "../components/sections/home/Pilot.astro";
+import Problems from "../components/sections/home/Problems.astro";
+import Story from "../components/sections/home/Story.astro";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const jsonLd = [
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: site.name,
+        url: site.url,
+        logo: new URL("/favicon/web-app-manifest-512x512.png", site.url).href,
+        email: site.email,
+        sameAs: Object.values(site.social),
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: site.name,
+        url: site.url,
+        inLanguage: site.lang,
+    },
+];
+---
+
+<BaseLayout title={site.name} jsonLd={jsonLd}>
+    <Hero />
+    <Problems />
+    <Story />
+    <HowItWorks />
+    <Modules />
+    <Offline />
+    <Honesty />
+    <Pilot />
+    <FaqPreview />
+    <ClosingCta />
+</BaseLayout>

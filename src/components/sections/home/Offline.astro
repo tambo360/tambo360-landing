@@ -1,0 +1,40 @@
+---
+import campo from "../../../assets/images/vacas-1.webp";
+import Icon, { type IconName } from "../../ui/Icon.astro";
+import Picture from "../../ui/Picture.astro";
+import Section from "../../ui/Section.astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
+
+const devices: { icon: IconName; title: string; body: string }[] = [
+    {
+        icon: "device-mobile",
+        title: "Podés usarlo desde cualquier dispositivo",
+        body: "La instalás y la llevás donde se trabaja.",
+    },
+    {
+        icon: "wifi-off",
+        title: "No necesitás conexión a internet",
+        body: "Se guarda en el equipo y se sincroniza sola cuando vuelve la conexión.",
+    },
+    {
+        icon: "clipboard-list",
+        title: "Organiza tus papeles",
+        body: "Ves lo mismo que se anotó en el tambo, sin esperar la planilla.",
+    },
+];
+---
+
+<div class="bg-verde-900 ">
+        <ul class="mt-8 max-w-6xl mx-auto p-10 flex flex-wrap justify-between gap-10">
+        {
+            devices.map((device) => (
+                <li class="flex gap-4 text-white/85">
+                    <Icon name={device.icon} />
+                    <div>
+                        <h3 class="font-bold text-white/85 ">{device.title}</h3>
+                    </div>
+                </li>
+            ))
+        }
+    </ul>
+</div>

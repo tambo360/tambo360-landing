@@ -1,0 +1,37 @@
+{
+  "name": "tambo360-landing",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "wrangler types && astro dev",
+    "build": "wrangler types && astro check && astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "astro": "astro",
+    "cf-typegen": "wrangler types",
+    "db:migrate:local": "wrangler d1 migrations apply tambo360-waitlist --local",
+    "db:migrate:remote": "wrangler d1 migrations apply tambo360-waitlist --remote",
+    "deploy": "astro build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "14.3.3",
+    "@astrojs/sitemap": "3.7.4",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "^26.6.4",
+    "astro": "7.3.5",
+    "astro-icon": "1.2.0",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "sharp": "0.35.5",
+    "typescript": "^6.0.3",
+    "vitest": "5.0.3",
+    "wrangler": "4.147.0"
+  }
+}

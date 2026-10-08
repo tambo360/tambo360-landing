@@ -1,0 +1,22 @@
+---
+// Tabler outline icons downloaded into src/icons/ and inlined at build time by astro-icon, so no icon library ships to the client.
+// The name is the SVG file name. It is a plain string because astro-icon only writes its typed union during dev/build,
+// after `astro check` runs; an unknown name still fails the build.
+import { Icon as AstroIcon } from 'astro-icon/components';
+
+export type IconName = string;
+
+type Props = { name: IconName; size?: number; class?: string; label?: string; [data: `data-${string}`]: string | boolean | undefined };
+const { name, size = 24, class: className, label, ...attrs } = Astro.props;
+---
+
+<AstroIcon
+  {...attrs}
+  name={name}
+  size={size}
+  class:list={['shrink-0', className]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  focusable="false"
+/>

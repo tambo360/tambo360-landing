@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/logo-tambo360.png';
+import logoBlanco from '../../assets/logo-tambo360-blanco.png';
+import { site } from '../../config/site';
+
+type Props = { tone?: 'light' | 'dark'; class?: string };
+const { tone = 'light', class: className } = Astro.props;
+---
+
+<Image
+  src={tone === 'light' ? logo : logoBlanco}
+  alt={site.name}
+  height={36}
+  densities={[1, 2]}
+  loading="eager"
+  class:list={['h-8 w-auto sm:h-9', className]}
+/>

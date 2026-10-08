@@ -1,0 +1,28 @@
+---
+import Container from '../components/ui/Container.astro';
+import BaseLayout from './BaseLayout.astro';
+
+type Props = { title: string; description: string; updated: string; draft?: boolean };
+const { title, description, updated, draft = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} type="article">
+  <article class="py-14 sm:py-20">
+    <Container size="md">
+      <header class="border-b border-borde-verde pb-8">
+        <h1 class="text-3xl font-extrabold tracking-tight sm:text-display-lg">{title}</h1>
+        <p class="mt-3 text-sm text-texto">Última actualización: <time datetime={updated}>{new Date(`${updated}T12:00:00`).toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' })}</time></p>
+        {
+          draft && (
+            <p class="mt-5 rounded-lg border border-verde-check bg-verde-025 p-4 text-[15px] text-tinta">
+              <strong>Versión preliminar.</strong> Este texto puede cambiar antes del lanzamiento. Si tenés dudas, escribinos.
+            </p>
+          )
+        }
+      </header>
+      <div class="prosa mt-8">
+        <slot />
+      </div>
+    </Container>
+  </article>
+</BaseLayout>

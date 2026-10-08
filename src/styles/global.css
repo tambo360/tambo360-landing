@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url('/fonts/figtree-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Values sampled from assets/tambo360-design-system.json. Which pairs may be combined is in Docs/design-system.md. */
+@theme {
+  --font-sans: 'Figtree', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --color-verde-cta: #80b718;
+  --color-verde-nav: #669213;
+  --color-verde-enlace: #4d7a10;
+  --color-verde-check: #99c545;
+  --color-verde-100: #cfedba;
+  --color-verde-050: #e9faca;
+  --color-verde-025: #f7ffe6;
+  --color-verde-010: #f3ffe2;
+  --color-verde-900: #1c2a1c;
+  --color-verde-950: #121c12;
+  --color-gris-025: #fafbfb;
+  --color-gris-050: #f1f5f9;
+  --color-gris-100: #e8eaed;
+  --color-borde-neutro: #dee0e3;
+  --color-borde-verde: #e0e8dc;
+  --color-tinta: #101828;
+  --color-tinta-fuerte: #0a0a0a;
+  --color-texto: #475569;
+  --color-error: #b42318;
+  --color-whatsapp: #25d366;
+
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --text-display-xl: 2.75rem;
+  --text-display-xl--line-height: 1.12;
+  --text-display-lg: 2.5rem;
+  --text-display-lg--line-height: 1.15;
+  --text-bajada: 1.125rem;
+  --text-bajada--line-height: 1.6;
+
+  --animate-aparecer: aparecer 0.6s ease-out both;
+
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-white font-sans text-texto antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-tinta;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-verde-enlace);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .sobre-oscuro :focus-visible {
+    outline-color: var(--color-verde-cta);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .prosa {
+    @apply max-w-3xl text-base leading-7 text-texto;
+  }
+
+  .prosa h2 {
+    @apply mt-12 mb-4 text-2xl font-bold;
+  }
+
+  .prosa h3 {
+    @apply mt-8 mb-3 text-lg font-semibold;
+  }
+
+  .prosa p,
+  .prosa ul,
+  .prosa ol {
+    @apply mb-4;
+  }
+
+  .prosa ul {
+    @apply list-disc pl-6;
+  }
+
+  .prosa ol {
+    @apply list-decimal pl-6;
+  }
+
+  .prosa li {
+    @apply mb-1.5;
+  }
+
+  .prosa a {
+    @apply font-medium text-verde-enlace underline underline-offset-2;
+  }
+
+  .prosa strong {
+    @apply text-tinta;
+  }
+}

@@ -1,0 +1,10 @@
+$ vitest run
+
+ RUN  v5.0.3 C:/Users/Joaquin/Desktop/projects/tambo360/tambo360-landing
+
+
+ Test Files  2 passed (2)
+      Tests  17 passed (17)
+   Start at  20:40:57
+   Duration  207ms (transform 38%, import 35%, tests 20%, worker 7%)
+

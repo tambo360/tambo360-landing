@@ -1,0 +1,38 @@
+---
+type Props = {
+    id: string;
+    label: string;
+    required?: boolean;
+    hint?: string;
+    class?: string;
+};
+const { id, label, required = false, hint, class: className } = Astro.props;
+---
+
+<div class:list={["flex flex-col gap-1.5", className]} data-field={id}>
+    <label for={id} class="text-[15px] flex flex-col font-semibold text-tinta">
+        {label}
+        {
+            required ? (
+                <span class="font-normal text-texto"> (obligatorio)</span>
+            ) : (
+                <span class="font-normal text-texto"> (opcional)</span>
+            )
+        }
+    </label>
+    {
+        hint && (
+            <p id={`${id}-hint`} class="text-sm text-texto">
+                {hint}
+            </p>
+        )
+    }
+    <slot />
+    <p
+        id={`${id}-error`}
+        class="hidden items-center gap-1.5 text-sm font-medium text-error"
+        data-error-for={id}
+        aria-live="polite"
+    >
+    </p>
+</div>

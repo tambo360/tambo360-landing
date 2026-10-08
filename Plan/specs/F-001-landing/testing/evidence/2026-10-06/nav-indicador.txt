@@ -1,0 +1,21 @@
+PASS top de la home: nada marcado []
+PASS clic en "Cómo funciona" marca solo ese ["Cómo funciona=true"]
+PASS clic en "Qué podés hacer" marca solo ese ["Qué podés hacer=true"]
+PASS clic en "Quiénes somos" marca solo ese ["Quiénes somos=true"]
+PASS en #sumate (fuera del nav): nada marcado []
+PASS en #hero-titulo (fuera del nav): nada marcado []
+PASS en #sin-senal-titulo (fuera del nav): nada marcado []
+PASS en #dudas-titulo (fuera del nav): nada marcado []
+PASS scrolleando dentro de Quiénes somos sigue marcado 
+PASS entrada directa /#como-funciona ["Cómo funciona=true"]
+PASS FAQ: solo Preguntas=page ["Preguntas=page"]
+PASS FAQ: barra visible block rgb(77, 122, 16)
+PASS móvil: antes de abrir el menú marca Qué podés hacer ["Qué podés hacer=true"]
+PASS móvil: menú marca Qué podés hacer ["Qué podés hacer=true"]
+PASS móvil: barra lateral rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(77, 122, 16) 3px 0px 0px 0px inset
+PASS móvil: sin overflow horizontal 
+PASS móvil: menú cerrado tras clic 
+PASS móvil: clic en menú cierra y marca Quiénes somos 
+PASS móvil FAQ: Preguntas=page 
+PASS sin JS home: nada marcado 
+PASS sin JS FAQ: Preguntas=page 

@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4322/",
+  "fetchTime": "2026-10-05T21:26:53.242Z",
+  "lighthouse": "13.5.0",
+  "formFactor": "mobile",
+  "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "agentic-browsing": 100
+  },
+  "LCP": "2.1 s",
+  "CLS": "0",
+  "TBT": "0 ms",
+  "peso": "Total size was 265 KiB"
+}

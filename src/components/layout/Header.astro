@@ -1,0 +1,151 @@
+---
+import { nav, site } from '../../config/site';
+import Button from '../ui/Button.astro';
+import Brand from './Brand.astro';
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+
+const currentPath = Astro.url.pathname.replace(/\.html$/, '');
+const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
+---
+
+<header class="sticky top-0 z-40 border-b border-borde-verde/70 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+  <Container class="flex h-18 items-center justify-between gap-2 sm:gap-4">
+    <a href="/" class="flex shrink-0 items-center rounded-md" title="Ir al inicio">
+      <Brand />
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                data-nav-link
+                class="relative rounded-md px-3 py-2 text-[15px] font-medium text-tinta transition-colors after:absolute after:inset-x-3 after:bottom-0.5 after:hidden after:h-0.5 after:rounded-full after:bg-verde-enlace hover:bg-verde-025 hover:text-verde-enlace [&[aria-current]]:text-verde-enlace [&[aria-current]]:after:block"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <div class="hidden sm:block">
+        <Button href={site.demoUrl} variant="secondary" external>Ver demo</Button>
+      </div>
+      <Button href="/#sumate" class="max-[359px]:px-3 max-[359px]:text-sm">Anotarme</Button>
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center rounded-md text-tinta hover:bg-verde-025 lg:hidden"
+        aria-controls="menu-movil"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span class="sr-only" data-menu-label>Abrir menú</span>
+        <Icon name="menu" data-icon-open />
+        <Icon name="x" class="hidden" data-icon-close />
+      </button>
+    </div>
+  </Container>
+
+  <nav id="menu-movil" aria-label="Menú" class="hidden border-t border-borde-verde bg-white lg:hidden" data-menu>
+    <Container>
+      <ul class="flex flex-col py-3">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                data-nav-link
+                class="flex min-h-12 items-center rounded-md px-3 text-base font-medium text-tinta hover:bg-verde-025 [&[aria-current]]:bg-verde-025 [&[aria-current]]:text-verde-enlace [&[aria-current]]:shadow-[inset_3px_0_0_var(--color-verde-enlace)]"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="mt-2 border-t border-borde-verde pt-3 sm:hidden">
+          <Button href={site.demoUrl} variant="secondary" external class="w-full">Ver demo</Button>
+        </li>
+      </ul>
+    </Container>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  if (toggle && menu) {
+    const label = toggle.querySelector('[data-menu-label]');
+    const iconOpen = toggle.querySelector('[data-icon-open]');
+    const iconClose = toggle.querySelector('[data-icon-close]');
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('hidden', !open);
+      iconOpen?.classList.toggle('hidden', open);
+      iconClose?.classList.toggle('hidden', !open);
+      if (label) label.textContent = open ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+
+  // Only the home has the sections the hash links point to; elsewhere nothing is tracked.
+  const sectionLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')]
+    .map((link) => ({ link, section: link.hash ? document.getElementById(link.hash.slice(1)) : null }))
+    .filter((entry): entry is { link: HTMLAnchorElement; section: HTMLElement } => entry.section !== null);
+
+  if (sectionLinks.length > 0) {
+    // Just below the html scroll-padding-top, so a section reached through its link counts as current.
+    const readingLine = () => parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) + 8;
+
+    // The open menu grows the sticky header and pushes the page down; keep the mark where the visitor was.
+    const isMenuOpen = () => toggle?.getAttribute('aria-expanded') === 'true';
+
+    const markCurrentSection = () => {
+      if (isMenuOpen()) return;
+      const line = readingLine();
+      const current = sectionLinks.find(({ section }) => {
+        const { top, bottom } = section.getBoundingClientRect();
+        return top <= line && bottom > line;
+      })?.section;
+
+      for (const { link, section } of sectionLinks) {
+        if (section === current) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      }
+    };
+
+    let frame = 0;
+    const scheduleMark = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        markCurrentSection();
+      });
+    };
+
+    window.addEventListener('scroll', scheduleMark, { passive: true });
+    window.addEventListener('resize', scheduleMark);
+    window.addEventListener('hashchange', scheduleMark);
+    toggle?.addEventListener('click', scheduleMark);
+    markCurrentSection();
+  }
+</script>
