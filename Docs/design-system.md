@@ -3,6 +3,10 @@ update-when: cambia un color de marca, la tipografía, un rol o una convención 
 ---
 # Sistema de diseño — landing Tambo360
 
+> Desde el 09/10/2026 la referencia visual principal es `DESIGN.md` (raíz): valores, roles de color, tipografía,
+> formas, componentes y reglas. Este documento se queda con los pares de contraste calculados y la
+> accesibilidad; si algo de acá choca con `DESIGN.md`, se corrige acá.
+
 Los valores viven en `src/styles/global.css` (`@theme`), tomados de
 `assets/tambo360-design-system.json`. Este documento dice **para qué** se usa cada cosa y
 **hasta dónde**. No se copian valores acá, salvo los pares de contraste que justifican una

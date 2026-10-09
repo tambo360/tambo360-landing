@@ -106,3 +106,11 @@ No ejecutado: Lighthouse, Safari/Firefox, lectores de pantalla reales. `/privaci
 | # | Escenario | Objetivo | Esperado | Resultado | Estado |
 |---|---|---|---|---|---|
 | 45 | Viñetas antes y después del lanzamiento | Hero, 320/390/1366 px | Solo "Sin tarjeta" y "Te ayudamos por WhatsApp", con sus íconos; sin desborde | Esas dos en las 6 combinaciones, sin desborde (`hero-vinetas-*.png`); check 0 errores, build ok | passed |
+
+## Ejecución 2026-10-09 (3) — Sección "sin señal" (Q-48)
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 46 | Sección "sin señal" rediseñada | Home `#sin-senal`, 320/390/1366 px, Edge | h2 propio, 3 ítems con texto, foto sin la montaña en desktop, alineada al contenedor, sin desborde | h2 a 139/16/16 px igual que "Qué podés hacer"; overflow 0 en los tres anchos; foto 416/195/160 px de alto (`sin-senal-*.png`); detector 0 hallazgos; check 0 errores, build ok | passed |
+
+Observación: en celular (2:1) asoma la base de la montaña de la foto (no es paisaje de cuenca lechera argentina); en desktop queda recortada.

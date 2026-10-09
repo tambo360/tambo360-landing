@@ -25,7 +25,7 @@ Tarea: el productor llega desde redes o un mensaje, entiende que Tambo360 resuel
 | 3 | La historia | verde-900 | Ramón y Manuel; mastitis; "hasta 40 litros por día" que no se anotan | Q-13 |
 | 4 | Cómo funciona | verde-025 | 3 pasos: anotás en la fosa → se junta todo → te avisa a tiempo | Q-08, Q-09, Q-22 |
 | 5 | Qué podés hacer | blanco | 6 funciones del lanzamiento, solo ícono y título (sin descripción): título de sección a la izquierda y renglones con línea divisoria a la derecha, a 2 columnas; en móvil todo a una columna | Q-06 |
-| 6 | En la fosa, sin señal | foto + verde-010 | Celular, tablet o PC; sin señal y sincroniza | Q-08, RN-sin-senal |
+| 6 | En la fosa, sin señal (`#sin-senal`) | foto del potrero a todo el ancho (corte) + verde-010, borde inferior | H2 "En la fosa no hay señal. Igual queda anotado" + bajada; 3 ítems con ícono, título y texto (cualquier dispositivo, sin conexión, papeles), a 3 columnas desde 1024 px | Q-08, RN-sin-senal, Q-48 |
 | 7 | Sin vueltas | blanco | Lo que no hace (Q-23) y la carga inicial de 1 a 30 minutos (Q-24) | Q-21, Q-23, Q-24 |
 | 8 | Sumate al piloto | verde-025 | Beneficios (Q-03), 3 tambos fundadores (Q-18), formulario; no se muestra desde el lanzamiento | Q-03, Q-18, Q-32, Q-46 |
 | 9 | Dudas frecuentes | verde-010 | 4 preguntas + enlace a `/preguntas-frecuentes` | Q-25 |

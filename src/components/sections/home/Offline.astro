@@ -1,8 +1,8 @@
 ---
 import campo from "../../../assets/images/vacas-1.webp";
+import Container from "../../ui/Container.astro";
 import Icon, { type IconName } from "../../ui/Icon.astro";
 import Picture from "../../ui/Picture.astro";
-import Section from "../../ui/Section.astro";
 import SectionHeading from "../../ui/SectionHeading.astro";
 
 const devices: { icon: IconName; title: string; body: string }[] = [
@@ -18,23 +18,37 @@ const devices: { icon: IconName; title: string; body: string }[] = [
     },
     {
         icon: "clipboard-list",
-        title: "Organiza tus papeles",
+        title: "Organizá tus papeles",
         body: "Ves lo mismo que se anotó en el tambo, sin esperar la planilla.",
     },
 ];
 ---
 
-<div class="bg-verde-900 ">
-        <ul class="mt-8 max-w-6xl mx-auto p-10 flex flex-wrap justify-between gap-10">
-        {
-            devices.map((device) => (
-                <li class="flex gap-4 text-white/85">
-                    <Icon name={device.icon} />
-                    <div>
-                        <h3 class="font-bold text-white/85 ">{device.title}</h3>
-                    </div>
-                </li>
-            ))
-        }
-    </ul>
-</div>
+<!-- The photo is the cut from the white section above; the bottom border separates it from the pilot (verde-025). -->
+<section id="sin-senal" aria-labelledby="sin-senal-titulo" class="border-b border-borde-verde bg-verde-010">
+    <Picture
+        src={campo}
+        alt="Vacas Holando pastando en un potrero abierto, lejos del galpón"
+        sizes="100vw"
+        widths={[480, 768, 1080, 1440, 1976]}
+        class="aspect-[2/1] w-full object-cover object-bottom sm:aspect-[3/1] lg:aspect-auto lg:h-[26rem]"
+    />
+    <Container class="pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pb-24">
+        <SectionHeading
+            id="sin-senal-titulo"
+            title="En la fosa no hay señal. Igual queda anotado"
+            lead="Tambo360 guarda todo en el celular y lo manda solo cuando vuelve la conexión."
+        />
+        <ul class="mt-12 grid gap-8 lg:grid-cols-3 lg:gap-10">
+            {
+                devices.map((device) => (
+                    <li class="border-t border-borde-verde pt-6">
+                        <Icon name={device.icon} size={28} class="text-verde-enlace" />
+                        <h3 class="mt-4 text-lg font-bold">{device.title}</h3>
+                        <p class="mt-2 leading-relaxed">{device.body}</p>
+                    </li>
+                ))
+            }
+        </ul>
+    </Container>
+</section>

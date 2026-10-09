@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-09T13:55:47+00:00",
+  "title": "Design System: Tambo360 · landing",
+  "extensions": {
+    "colorMeta": {
+      "verde-cta": {
+        "role": "primary",
+        "displayName": "Verde Pasto Nuevo",
+        "tonalRamp": [
+          "#121c12",
+          "#1c2a1c",
+          "#4d7a10",
+          "#669213",
+          "#80b718",
+          "#99c545",
+          "#cfedba",
+          "#f7ffe6"
+        ]
+      },
+      "verde-check": {
+        "role": "primary",
+        "displayName": "Verde Brote"
+      },
+      "verde-enlace": {
+        "role": "primary",
+        "displayName": "Verde Lote"
+      },
+      "verde-nav": {
+        "role": "primary",
+        "displayName": "Verde Potrero"
+      },
+      "verde-900": {
+        "role": "secondary",
+        "displayName": "Verde Galpón"
+      },
+      "verde-950": {
+        "role": "secondary",
+        "displayName": "Verde Noche"
+      },
+      "verde-025": {
+        "role": "neutral",
+        "displayName": "Rocío"
+      },
+      "verde-010": {
+        "role": "neutral",
+        "displayName": "Rocío Tenue"
+      },
+      "verde-050": {
+        "role": "neutral",
+        "displayName": "Brote Pálido"
+      },
+      "verde-100": {
+        "role": "neutral",
+        "displayName": "Brote Claro"
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta de Libreta"
+      },
+      "texto": {
+        "role": "neutral",
+        "displayName": "Pizarra"
+      },
+      "borde-verde": {
+        "role": "neutral",
+        "displayName": "Alambrado Verde"
+      },
+      "borde-neutro": {
+        "role": "neutral",
+        "displayName": "Alambrado Neutro"
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "Rojo Alerta"
+      },
+      "whatsapp": {
+        "role": "neutral",
+        "displayName": "Verde WhatsApp"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Solo el H1 del hero; 2.25rem en celular, 3.5rem en desktop."
+      },
+      "headline": {
+        "displayName": "Titular",
+        "purpose": "Titulares de sección; 1.875rem en celular, 2.5rem desde 640px."
+      },
+      "title": {
+        "displayName": "Título",
+        "purpose": "Tarjetas, pasos y preguntas."
+      },
+      "bajada": {
+        "displayName": "Bajada",
+        "purpose": "Una idea debajo de cada titular."
+      },
+      "body": {
+        "displayName": "Cuerpo",
+        "purpose": "Párrafos."
+      },
+      "label": {
+        "displayName": "Etiqueta",
+        "purpose": "Formularios, botones y nav."
+      }
+    },
+    "shadows": [
+      {
+        "name": "flotante",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "Solo el botón flotante de WhatsApp."
+      }
+    ],
+    "motion": [
+      {
+        "name": "aparecer",
+        "value": "aparecer 0.6s ease-out both (opacity 0 a 1, translateY 12px a 0)",
+        "purpose": "Entrada del texto del hero; se apaga con prefers-reduced-motion."
+      },
+      {
+        "name": "estado",
+        "value": "200ms ease (transition-colors)",
+        "purpose": "Hover y foco de botones."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary-lg",
+      "description": "La acción principal de la página.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Registrarme gratis <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l14 0\"/><path d=\"M13 18l6 -6\"/><path d=\"M13 6l6 6\"/></svg></a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border-radius:8px;background:var(--color-verde-cta,#80b718);color:var(--color-verde-900,#1c2a1c);font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-primary:hover{background:var(--color-verde-check,#99c545)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-verde-enlace,#4d7a10);outline-offset:2px}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ver demo y acciones de apoyo.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver demo</a>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:8px;background:var(--color-verde-050,#e9faca);color:var(--color-verde-enlace,#4d7a10);font:600 15px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-secondary:hover{background:var(--color-verde-100,#cfedba)}.ds-btn-secondary:focus-visible{outline:2px solid var(--color-verde-enlace,#4d7a10);outline-offset:2px}"
+    },
+    {
+      "name": "Botón sobre oscuro",
+      "kind": "button",
+      "refersTo": "button-ghost-dark",
+      "description": "Acción secundaria sobre verde-900.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-ghost\" href=\"#\">Ver demo</a></div>",
+      "css": ".ds-dark{background:#1c2a1c;padding:24px}.ds-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:8px;border:1px solid rgb(255 255 255 / .4);color:#fff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-ghost:hover{background:rgb(255 255 255 / .1)}.ds-btn-ghost:focus-visible{outline:2px solid #80b718;outline-offset:2px}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulario con etiqueta arriba.",
+      "html": "<label class=\"ds-label\" for=\"ds-n\">Nombre <span aria-hidden=\"true\">*</span></label><input class=\"ds-input\" id=\"ds-n\" placeholder=\"Ej.: Manuel\">",
+      "css": ".ds-label{display:block;margin-bottom:6px;font:600 15px/1.4 Figtree,system-ui,sans-serif;color:#101828}.ds-label span{color:#b42318}.ds-input{width:100%;min-height:48px;padding:0 16px;border:1px solid #dee0e3;border-radius:8px;background:#fff;color:#101828;font:400 16px Figtree,system-ui,sans-serif}.ds-input:focus{outline:none;border-color:#4d7a10;box-shadow:0 0 0 2px rgb(77 122 16 / .3)}"
+    },
+    {
+      "name": "Tarjeta suave",
+      "kind": "card",
+      "refersTo": "card-suave",
+      "description": "Problema o beneficio con ícono en caja.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l5 5l10 -10\"/></svg></span><div><h3>El cuaderno no alcanza</h3><p>Los litros se anotan tarde o se pierden.</p></div></div>",
+      "css": ".ds-card{display:flex;gap:16px;padding:20px;border:1px solid #e0e8dc;border-radius:16px;background:#f7ffe6;font-family:Figtree,system-ui,sans-serif;color:#475569}.ds-card h3{margin:0;font-size:18px;font-weight:700;color:#101828}.ds-card p{margin:4px 0 0;line-height:1.625}.ds-icon{display:flex;flex:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:#1c2a1c;color:#80b718}"
+    },
+    {
+      "name": "Insignia",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Etiqueta corta sobre claro.",
+      "html": "<span class=\"ds-badge\">Funciona sin señal</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;background:#e9faca;color:#4d7a10;font:600 14px/1.4 Figtree,system-ui,sans-serif}"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "description": "Enlaces del header con la sección actual marcada.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Cómo funciona</a><a href=\"#\" aria-current=\"page\">Preguntas</a></nav>",
+      "css": ".ds-nav{display:flex;gap:4px;font:500 15px Figtree,system-ui,sans-serif}.ds-nav a{position:relative;padding:8px 12px;border-radius:8px;color:#101828;text-decoration:none}.ds-nav a:hover{background:#f7ffe6;color:#4d7a10}.ds-nav a[aria-current]{color:#4d7a10}.ds-nav a[aria-current]::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:9999px;background:#4d7a10}.ds-nav a:focus-visible{outline:2px solid #4d7a10;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Del cuaderno al bolsillo",
+    "overview": "La landing muestra un cambio concreto: lo que hoy se anota en un cuaderno mojado pasa al celular, ordenado. El\ndiseño se pone al servicio de esa claridad práctica. El campo real va de fondo (fotos de tambo a sangre, verdes\nde pasto, el verde casi negro del galpón) y adelante va lo que el productor hace y obtiene, dicho en grande y sin\nvueltas.\n\nLa densidad es baja y el ritmo, de corte: secciones anchas que alternan blanco, verde muy claro y verde oscuro,\ncon mucho aire entre bloques. La audacia se gasta en un solo lugar por página (en la home, la franja oscura de\nla historia con la cifra de los 40 litros); el resto es sobrio y respira. Todo tiene que leerse en un celular de\ngama media al sol de la fosa.\n\nRechazos confirmados: nada de fondos de \"startup\" (degradados violetas, glassmorphism, ilustraciones 3D), nada\nde etiquetas en mayúsculas encima de cada titular, nada que se esconda esperando el scroll.",
+    "keyCharacteristics": [
+      "Fotos reales de tambo, nunca ilustraciones ni ganado de carne.",
+      "Cortes de color entre secciones en lugar de sombras o adornos.",
+      "Un solo verde de acción (verde-cta) con texto verde-900 encima.",
+      "Tipografía redondeada y gruesa en los titulares, cómoda en el cuerpo.",
+      "Objetivos táctiles grandes: se usa con guantes o con las manos mojadas."
+    ],
+    "rules": [
+      {
+        "name": "La Regla del Verde Único",
+        "body": "verde-cta es la acción principal: aparece en un solo botón por bloque visual y, sobre oscuro, en una sola cifra o palabra por bloque. Si dos cosas son verde-cta, una sobra.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Blanco Prohibido",
+        "body": "Nunca texto blanco sobre verde-cta (2.41:1) ni sobre verde-nav (3.69:1). Sobre verde-cta va verde-900.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Corte",
+        "body": "Dos secciones seguidas nunca comparten fondo; se alterna blanco, verde claro y verde-900. Diferencia abierta (09/10/2026): `Docs/design-system.md` pide verde-900 en una o dos secciones por página y la home hoy tiene cuatro (hero, historia, sin señal, cierre). Se resuelve en la crítica (u36).",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla de la Cifra",
+        "body": "Los números van en cifra (\"40 litros\", \"3 pasos\") y, cuando son el punto, en display sobre oscuro en verde-cta. Sin emoji.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla de la Pantalla Completa",
+        "body": "Nada se oculta esperando el scroll: una captura de la página entera tiene que mostrar todo. El único movimiento es la entrada del texto del hero y los hover, y se apaga con `prefers-reduced-motion`.",
+        "section": "layout"
+      },
+      {
+        "name": "La Regla del Alambrado",
+        "body": "Para separar, un borde de 1 px o un cambio de fondo; una sombra nunca.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar verde-cta solo para la acción principal y para una cifra por bloque sobre verde-900.",
+      "Do alternar el fondo de cada sección (blanco, verde-025 o verde-010, verde-900).",
+      "Do mantener objetivos táctiles de 44 px o más.",
+      "Do declarar ancho y alto de cada foto, con `alt` que describa lo que se ve.",
+      "Do calcular el contraste de todo par de colores nuevo antes de usarlo (registro en `Docs/design-system.md`)."
+    ],
+    "donts": [
+      "Don't poner texto blanco sobre verde-cta ni sobre verde-nav.",
+      "Don't usar sombras para separar tarjetas o secciones.",
+      "Don't usar degradados violetas, glassmorphism ni ilustraciones 3D.",
+      "Don't poner etiquetas en mayúsculas encima de los titulares (solo hero y franja oscura).",
+      "Don't usar fotos de ganado de carne.",
+      "Don't usar texto sobre la foto del hero sin el velo oscuro."
+    ]
+  }
+}
