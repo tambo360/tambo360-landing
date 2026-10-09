@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-10-08T15:00:00Z",
-  "goal": "Favicons ordenados en el layout, OG con logo y página /equipo separada de la home",
+  "updated": "2026-10-09T15:00:00Z",
+  "goal": "Desde el 26/10 (hora AR) la landing deja el piloto y lleva a registrarse en https://tambo360.vercel.app/registrarse",
   "phase": "build",
   "approved": true,
   "units": [
@@ -142,12 +142,73 @@
       "do": "Verificación: build, check, tests, HTML de head/OG y capturas de /equipo y home",
       "status": "todo",
       "detail": "propuesto"
+    },
+    {
+      "id": 24,
+      "do": "\"Qué podés hacer\": layout sin descripciones (A actual, B lista compacta, C título al costado, D mosaico); textos NO cambian",
+      "status": "done",
+      "detail": "variante C en Modules.astro; pages.md fila 5; build+check ok; 1366/390/320 sin overflow, capturas en testing/evidence/2026-10-08"
+    },
+    {
+      "id": 25,
+      "do": "Form: rol \"Tambero\" + test; obligatorios solo con * rojo, opcionales sin texto (decisión del usuario); ui-components.md",
+      "status": "done",
+      "detail": "Tambero primero en ROLES; FormField: * rojo aria-hidden, sin (opcional); build ok; capturas evidence/2026-10-08"
+    },
+    {
+      "id": 26,
+      "do": "Form: \"Vacas en ordeñe\" -> \"¿Cuántas vacas tenés en tu campo?\" + opción, privacidad, spec y Q-45",
+      "status": "done",
+      "detail": "label+opción \"Menos de 100 vacas\", privacidad §datos, spec RN-campos-inscripcion, Q-45; 18 tests+build ok; capturas evidence/2026-10-08"
+    },
+    {
+      "id": 27,
+      "do": "Migración 0002: vacas_ordene -> vacas_campo; código vacasOrdene -> vacasCampo; README; probar en D1 local",
+      "status": "done",
+      "detail": "migrations/0002 aplicada y probada en D1 local (POST 303, fila con vacas_campo, borrada); 18 tests+build ok; FALTA pnpm db:migrate:remote"
+    },
+    {
+      "id": 28,
+      "do": "site.ts: una sola fecha de lanzamiento con hora AR (-03:00) en vez de productionDate+launchDate; registerUrl /registrarse",
+      "status": "done",
+      "detail": "site.ts: launchDate '2026-10-26T00:00:00-03:00', registerUrl, isLaunched(); productionDate borrada; ClosingCta usa isLaunched; check 0 errores, 18 tests"
+    },
+    {
+      "id": 29,
+      "do": "Mecanismo de lanzamiento (script en head + CSS + LaunchSwitch) y header Anotarme->Registrarme + ClosingCta a registerUrl",
+      "status": "done",
+      "detail": "LaunchSwitch.astro + script inline en BaseLayout + CSS data-launched; Header y ClosingCta (props launchedTitle/launchedLead); Edge: antes/después/sin JS ok, 320-1366 sin overflow; evidence/2026-10-09"
+    },
+    {
+      "id": 31,
+      "do": "Home post-lanzamiento: hero (botón y viñetas), sección piloto + formulario ocultos, footer, lead de FaqPreview",
+      "status": "done",
+      "detail": "Hero (botón + viñeta '30 días gratis'), Pilot envuelto en LaunchSwitch en index, footer, SectionHeading.launchedLead (FaqPreview); check 0 errores; navegador en u30"
+    },
+    {
+      "id": 32,
+      "do": "Preguntas frecuentes post-lanzamiento: intro, respuestas carga-rodeo y precio, ClosingCta de la página; meta description y alt OG",
+      "status": "done",
+      "detail": "faq.ts launchedAnswer (carga-inicial, precio) + Accordion; intro y ClosingCta de /preguntas-frecuentes; JSON-LD, meta description y alt OG por fecha de build"
+    },
+    {
+      "id": 30,
+      "do": "Verificación (build, check, tests, fecha simulada antes/después, capturas 390/1366) + spec, pages.md y README (rebuild el 26/10)",
+      "status": "done",
+      "detail": "testing/landing.md filas 39-44 todas passed; spec RN-desde-lanzamiento + Q-46; pages.md, README §Lanzamiento, ui-components.md al día"
+    },
+    {
+      "id": 33,
+      "do": "Hero: sacar viñeta '3 meses sin pagar'/'30 días gratis' siempre; íconos credit-card-off y brand-whatsapp en las viñetas",
+      "status": "done",
+      "detail": "Hero.astro sin viñeta de meses/días; icons/credit-card-off.svg (Tabler 3.34.1); Q-47, pages.md fila 1, testing fila 45 passed"
     }
   ],
-  "waiting_on": "u22 siguiente (acompañado); aceptación de u16-u21 y u23; dominio QT-14 (u14) también bloquea la vista previa en redes; WhatsApp; legales y CUIT",
+  "waiting_on": "aceptación de u28-u33; build+deploy el 26/10 o después (metas/JSON-LD); pnpm db:migrate:remote (u27); privacidad/términos aún mencionan el piloto (fuera de Q-46)",
   "notes": [
-    "Decisiones del usuario 2026-10-05: colores de marca no cambian (solo contraste); form -> Cloudflare D1; legales con IA y retención 3 meses. 2026-10-06: el usuario corrigió typos en /terminos a mano",
-    "Antes de publicar: database_id real en wrangler.jsonc, dominio en src/config/site-url.mjs, número en src/config/site.ts, revisión legal de /privacidad y /terminos",
+    "Decisiones del usuario 2026-10-09 (Q-46): desde el 26/10 00:00 AR se saca TODO lo del piloto y se reemplaza por registro a /registrarse; antes queda igual; sin JS = versión piloto",
+    "Antes de publicar: pnpm db:migrate:remote (0002), database_id real en wrangler.jsonc, dominio en site-url.mjs, número en site.ts, revisión legal",
     "Fotos vacas.webp, vacas_3, vacas_4 descartadas (ganado de carne); dominio provisorio tambo360.com.ar; matar el proceso de astro preview antes de build (bloquea dist en Windows)"
-  ]
+  ],
+  "autonomy": {}
 }

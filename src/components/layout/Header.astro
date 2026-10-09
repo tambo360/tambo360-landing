@@ -4,6 +4,7 @@ import Button from '../ui/Button.astro';
 import Brand from './Brand.astro';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
+import LaunchSwitch from '../ui/LaunchSwitch.astro';
 
 const currentPath = Astro.url.pathname.replace(/\.html$/, '');
 const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
@@ -38,7 +39,12 @@ const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
       <div class="hidden sm:block">
         <Button href={site.demoUrl} variant="secondary" external>Ver demo</Button>
       </div>
-      <Button href="/#sumate" class="max-[359px]:px-3 max-[359px]:text-sm">Anotarme</Button>
+      <LaunchSwitch>
+        <Button slot="before" href="/#sumate" class="max-[359px]:px-3 max-[359px]:text-sm">Anotarme</Button>
+        <Button slot="after" href={site.registerUrl} external class="max-[359px]:px-3 max-[359px]:text-sm">
+          Registrarme
+        </Button>
+      </LaunchSwitch>
       <button
         type="button"
         class="inline-flex size-11 items-center justify-center rounded-md text-tinta hover:bg-verde-025 lg:hidden"

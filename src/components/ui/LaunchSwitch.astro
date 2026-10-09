@@ -1,0 +1,25 @@
+---
+import { isLaunched } from '../../config/site';
+
+// The site is static: a build before the launch carries both versions and the script in
+// BaseLayout picks one in the visitor's browser. Without JS the pre-launch version shows.
+type Props = { as?: 'div' | 'span' | 'li' };
+
+const { as: Tag = 'div' } = Astro.props;
+const launched = isLaunched();
+---
+
+{
+  launched ? (
+    <slot name="after" />
+  ) : (
+    <>
+      <Tag class="contents" data-prelaunch>
+        <slot name="before" />
+      </Tag>
+      <Tag class="contents" data-postlaunch>
+        <slot name="after" />
+      </Tag>
+    </>
+  )
+}

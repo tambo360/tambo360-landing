@@ -2,6 +2,7 @@
 import { nav, site, whatsappUrl } from '../../config/site';
 import Container from '../ui/Container.astro';
 import Icon, { type IconName } from '../ui/Icon.astro';
+import LaunchSwitch from '../ui/LaunchSwitch.astro';
 import Brand from './Brand.astro';
 
 const socials: { href: string; label: string; icon: IconName }[] = [
@@ -47,7 +48,14 @@ const linkClass = 'inline-flex min-h-11 items-center text-white/85 transition-co
       <h2 class="text-sm font-bold tracking-wide text-white">Tambo360</h2>
       <ul class="mt-3">
         {nav.map((item) => <li><a href={item.href} class={linkClass}>{item.label}</a></li>)}
-        <li><a href="/#sumate" class={linkClass}>Sumarme al piloto</a></li>
+        <li>
+          <LaunchSwitch as="span">
+            <a slot="before" href="/#sumate" class={linkClass}>Sumarme al piloto</a>
+            <a slot="after" href={site.registerUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+              Registrarme<span class="sr-only"> (se abre en otra pestaña)</span>
+            </a>
+          </LaunchSwitch>
+        </li>
       </ul>
     </nav>
 

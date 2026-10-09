@@ -1,6 +1,7 @@
 // Shared by the form script (browser) and the endpoint (server): the server never trusts the browser's check.
 
 export const ROLES = [
+  { value: 'tambero', label: 'Tambero' },
   { value: 'duenio', label: 'Dueño o dueña del tambo' },
   { value: 'hijo', label: 'Hijo o hija del dueño' },
   { value: 'administrador', label: 'Administrador' },
@@ -9,7 +10,7 @@ export const ROLES = [
 ] as const;
 
 export const HERD_SIZES = [
-  { value: 'menos-100', label: 'Menos de 100 vacas en ordeñe' },
+  { value: 'menos-100', label: 'Menos de 100 vacas' },
   { value: '100-300', label: 'Entre 100 y 300' },
   { value: '300-600', label: 'Entre 300 y 600' },
   { value: 'mas-600', label: 'Más de 600' },
@@ -46,7 +47,7 @@ export type WaitlistEntry = {
   telefono: string;
   rol: string | null;
   provincia: string | null;
-  vacasOrdene: string | null;
+  vacasCampo: string | null;
   origen: string | null;
 };
 
@@ -103,7 +104,7 @@ export function validateWaitlist(form: FormData): ValidationResult {
       telefono,
       rol: optionalIn(rolRaw, ROLES),
       provincia: optionalIn(provinciaRaw, PROVINCES),
-      vacasOrdene: optionalIn(vacasRaw, HERD_SIZES),
+      vacasCampo: optionalIn(vacasRaw, HERD_SIZES),
       origen: text(form, 'origen').slice(0, 60) || null,
     },
   };

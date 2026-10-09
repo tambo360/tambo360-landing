@@ -71,25 +71,6 @@ export const modules: Item[] = [
   },
 ];
 
-export const honesty: { title: string; body: string }[] = [
-  {
-    title: 'No adivina',
-    body: 'Si no se anota, no hay análisis. Por eso anotar en Tambo360 lleva pocos pasos, en el mismo momento del ordeñe.',
-  },
-  {
-    title: 'La primera carga lleva un rato',
-    body: 'Cargar el rodeo lleva de 1 a 30 minutos, según lo hagas vaca por vaca o por rodeo. Se hace una sola vez, y en el piloto te acompañamos por WhatsApp.',
-  },
-  {
-    title: 'No es una app de Play Store',
-    body: 'Se abre desde el navegador en la PC de la oficina, y la instalás en el celular o la tablet para llevarla a la fosa.',
-  },
-  {
-    title: 'No va a ser gratis para siempre',
-    body: 'El piloto sí: 3 meses sin pagar nada y sin tarjeta. Después se va a cobrar, y los precios todavía no están definidos.',
-  },
-];
-
 export const pilotBenefits: Item[] = [
   {
     icon: 'gift',

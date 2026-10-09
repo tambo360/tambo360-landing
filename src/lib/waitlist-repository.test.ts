@@ -7,7 +7,7 @@ const entry: WaitlistEntry = {
   telefono: '3434567890',
   rol: 'duenio',
   provincia: 'Entre Ríos',
-  vacasOrdene: '100-300',
+  vacasCampo: '100-300',
   origen: null,
 };
 

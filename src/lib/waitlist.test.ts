@@ -27,13 +27,18 @@ describe('validateWaitlist', () => {
     expect(result).toEqual({
       ok: true,
       isBot: false,
-      entry: { nombre: 'Manuel Pereyra', telefono: '3434567890', rol: null, provincia: null, vacasOrdene: null, origen: null },
+      entry: { nombre: 'Manuel Pereyra', telefono: '3434567890', rol: null, provincia: null, vacasCampo: null, origen: null },
     });
   });
 
   it('keeps the optional answers when they come from the lists', () => {
     const result = validateWaitlist(form({ ...valid, rol: 'encargado', provincia: 'Entre Ríos', vacas: '100-300', origen: 'instagram' }));
-    expect(result.ok && result.entry).toMatchObject({ rol: 'encargado', provincia: 'Entre Ríos', vacasOrdene: '100-300', origen: 'instagram' });
+    expect(result.ok && result.entry).toMatchObject({ rol: 'encargado', provincia: 'Entre Ríos', vacasCampo: '100-300', origen: 'instagram' });
+  });
+
+  it('accepts Tambero as a role', () => {
+    const result = validateWaitlist(form({ ...valid, rol: 'tambero' }));
+    expect(result.ok && result.entry.rol).toBe('tambero');
   });
 
   it('trims the name and collapses inner spaces', () => {

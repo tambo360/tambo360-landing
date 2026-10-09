@@ -20,16 +20,18 @@ Tarea: el productor llega desde redes o un mensaje, entiende que Tambo360 resuel
 ## Home, en orden
 | # | Sección | Fondo | Contenido | Origen |
 |---|---|---|---|---|
-| 1 | Hero | foto `hero.webp` + velo | Titular de Q-41 (ordeñe, rodeo y costos), bajada sobre fosa/sin señal, "Anotarme al piloto" + "Ver demo", nota "Lanzamiento 26/10 · piloto 3 meses gratis" | Q-01, Q-03, Q-27 |
+| 1 | Hero | foto `hero.webp` + velo | Titular de Q-41 (ordeñe, rodeo y costos), bajada sobre fosa/sin señal, "Anotarme al piloto" + "Ver demo", nota "Lanzamiento 26/10 · piloto 3 meses gratis"; desde el lanzamiento "Registrarme gratis" (a la app). Viñetas: "Sin tarjeta" (ícono tarjeta tachada) y "Te ayudamos por WhatsApp" (ícono WhatsApp), sin viñeta de meses/días gratis | Q-01, Q-03, Q-27, Q-46, Q-47 |
 | 2 | ¿Te suena? | blanco | Los 3 problemas de Q-15, en palabras del tambero, con foto | Q-13, Q-14, Q-15 |
 | 3 | La historia | verde-900 | Ramón y Manuel; mastitis; "hasta 40 litros por día" que no se anotan | Q-13 |
 | 4 | Cómo funciona | verde-025 | 3 pasos: anotás en la fosa → se junta todo → te avisa a tiempo | Q-08, Q-09, Q-22 |
-| 5 | Qué podés hacer | blanco | Los 7 módulos del lanzamiento, una línea cada uno | Q-06 |
+| 5 | Qué podés hacer | blanco | 6 funciones del lanzamiento, solo ícono y título (sin descripción): título de sección a la izquierda y renglones con línea divisoria a la derecha, a 2 columnas; en móvil todo a una columna | Q-06 |
 | 6 | En la fosa, sin señal | foto + verde-010 | Celular, tablet o PC; sin señal y sincroniza | Q-08, RN-sin-senal |
 | 7 | Sin vueltas | blanco | Lo que no hace (Q-23) y la carga inicial de 1 a 30 minutos (Q-24) | Q-21, Q-23, Q-24 |
-| 8 | Sumate al piloto | verde-025 | Beneficios (Q-03), 3 tambos fundadores (Q-18), formulario | Q-03, Q-18, Q-32 |
+| 8 | Sumate al piloto | verde-025 | Beneficios (Q-03), 3 tambos fundadores (Q-18), formulario; no se muestra desde el lanzamiento | Q-03, Q-18, Q-32, Q-46 |
 | 9 | Dudas frecuentes | verde-010 | 4 preguntas + enlace a `/preguntas-frecuentes` | Q-25 |
-| 10 | Cierre | verde-900 | Titular centrado + "Anotarme al piloto" | RN-una-accion-principal |
+| 10 | Cierre | verde-900 | Titular centrado + "Sumarme al piloto gratis"; desde el lanzamiento bajada "Registrate gratis hoy…" + "Registrarme gratis" a la app (también en `/equipo` y `/preguntas-frecuentes`) | RN-una-accion-principal, RN-desde-lanzamiento |
+
+Desde el lanzamiento el header muestra "Registrarme" en lugar de "Anotarme" y el footer "Registrarme" en lugar de "Sumarme al piloto". El cambio lo hace `LaunchSwitch.astro` (ver README, "Lanzamiento").
 
 ## Celular
 Todo a una columna; el hero muestra la foto arriba recortada y el texto debajo sobre verde-900 (sin texto sobre foto). Las tarjetas de problemas y módulos pasan a lista. El botón de WhatsApp no tapa el envío del formulario.

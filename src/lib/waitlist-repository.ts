@@ -10,10 +10,10 @@ export async function saveWaitlistEntry(db: D1Like, entry: WaitlistEntry): Promi
   try {
     await db
       .prepare(
-        `INSERT INTO waitlist (nombre, telefono, rol, provincia, vacas_ordene, acepto_privacidad, origen)
+        `INSERT INTO waitlist (nombre, telefono, rol, provincia, vacas_campo, acepto_privacidad, origen)
          VALUES (?, ?, ?, ?, ?, 1, ?)`,
       )
-      .bind(entry.nombre, entry.telefono, entry.rol, entry.provincia, entry.vacasOrdene, entry.origen)
+      .bind(entry.nombre, entry.telefono, entry.rol, entry.provincia, entry.vacasCampo, entry.origen)
       .run();
     return 'created';
   } catch (error) {

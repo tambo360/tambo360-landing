@@ -5,6 +5,7 @@ import Badge from "../../ui/Badge.astro";
 import Button from "../../ui/Button.astro";
 import Container from "../../ui/Container.astro";
 import Icon from "../../ui/Icon.astro";
+import LaunchSwitch from "../../ui/LaunchSwitch.astro";
 import Picture from "../../ui/Picture.astro";
 ---
 
@@ -51,10 +52,16 @@ import Picture from "../../ui/Picture.astro";
                 la oficina.
             </p>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href="#sumate" size="lg">
-                    Sumarme al piloto gratis
-                    <Icon name="arrow-right" size={20} />
-                </Button>
+                <LaunchSwitch>
+                    <Button slot="before" href="#sumate" size="lg">
+                        Sumarme al piloto gratis
+                        <Icon name="arrow-right" size={20} />
+                    </Button>
+                    <Button slot="after" href={site.registerUrl} size="lg" external>
+                        Registrarme gratis
+                        <Icon name="arrow-right" size={20} />
+                    </Button>
+                </LaunchSwitch>
                 <Button
                     href={site.demoUrl}
                     variant="ghost-dark"
@@ -66,15 +73,11 @@ import Picture from "../../ui/Picture.astro";
                 class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-white/85"
             >
                 <li class="flex items-center gap-2">
-                    <Icon name="check" size={18} class="text-verde-cta" />3
-                    meses sin pagar
-                </li>
-                <li class="flex items-center gap-2">
-                    <Icon name="check" size={18} class="text-verde-cta" />Sin
+                    <Icon name="credit-card-off" size={18} class="text-verde-cta" />Sin
                     tarjeta
                 </li>
                 <li class="flex items-center gap-2">
-                    <Icon name="check" size={18} class="text-verde-cta" />Te
+                    <Icon name="brand-whatsapp" size={18} class="text-verde-cta" />Te
                     ayudamos por WhatsApp
                 </li>
             </ul>

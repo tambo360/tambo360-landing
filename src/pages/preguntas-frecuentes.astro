@@ -3,11 +3,14 @@ import ClosingCta from '../components/sections/ClosingCta.astro';
 import Accordion from '../components/ui/Accordion.astro';
 import Container from '../components/ui/Container.astro';
 import Icon from '../components/ui/Icon.astro';
-import { site, whatsappUrl } from '../config/site';
+import LaunchSwitch from '../components/ui/LaunchSwitch.astro';
+import { isLaunched, site, whatsappUrl } from '../config/site';
 import { faqs } from '../data/faq';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const stripHtml = (html: string) => html.replace(/<[^>]+>/g, '');
+// JSON-LD is fixed at build time: a build from the launch date on carries the launched answers.
+const launched = isLaunched();
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -15,7 +18,7 @@ const jsonLd = {
   mainEntity: faqs.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: stripHtml(faq.answer) },
+    acceptedAnswer: { '@type': 'Answer', text: stripHtml((launched && faq.launchedAnswer) || faq.answer) },
   })),
 };
 
@@ -31,7 +34,11 @@ const whatsapp = whatsappUrl('Hola, tengo una pregunta sobre Tambo360.');
     <Container size="md">
       <h1 id="faq-titulo" class="text-4xl font-extrabold tracking-tight sm:text-display-xl">Preguntas frecuentes</h1>
       <p class="mt-5 max-w-2xl text-lg">
-        Lo que más nos preguntan los productores antes de anotarse al piloto. Si tu duda no está,{' '}
+        Lo que más nos preguntan los productores antes de{' '}
+        <LaunchSwitch as="span">
+          <Fragment slot="before">anotarse al piloto</Fragment>
+          <Fragment slot="after">empezar</Fragment>
+        </LaunchSwitch>. Si tu duda no está,{' '}
         {whatsapp ? <a href={whatsapp} target="_blank" rel="noopener noreferrer" class="font-semibold text-verde-enlace underline underline-offset-2">escribinos por WhatsApp</a> : <a href={`mailto:${site.email}`} class="font-semibold text-verde-enlace underline underline-offset-2">escribinos a {site.email}</a>}.
       </p>
     </Container>
@@ -54,11 +61,16 @@ const whatsapp = whatsappUrl('Hola, tengo una pregunta sobre Tambo360.');
           }
         </ul>
       </nav>
-      {faqs.map((faq) => <Accordion id={faq.id} question={faq.question} answer={faq.answer} headingLevel="h2" />)}
+      {faqs.map((faq) => <Accordion id={faq.id} question={faq.question} answer={faq.answer} launchedAnswer={faq.launchedAnswer} headingLevel="h2" />)}
     </Container>
   </section>
 
-  <ClosingCta title="¿Te quedó alguna duda? Probalo 3 meses gratis" lead="En el piloto te acompañamos 1 a 1 por WhatsApp para configurar tu tambo." />
+  <ClosingCta
+    title="¿Te quedó alguna duda? Probalo 3 meses gratis"
+    lead="En el piloto te acompañamos 1 a 1 por WhatsApp para configurar tu tambo."
+    launchedTitle="¿Te quedó alguna duda? Probalo 30 días gratis"
+    launchedLead="Registrate y, si te trabás, nos escribís por WhatsApp."
+  />
 </BaseLayout>
 
 <script>

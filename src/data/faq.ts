@@ -1,4 +1,5 @@
-export type Faq = { id: string; question: string; answer: string };
+// launchedAnswer replaces answer from the launch date (site.launchDate).
+export type Faq = { id: string; question: string; answer: string; launchedAnswer?: string };
 
 // Answers are HTML so they can link to other pages; they are rendered as-is and also flattened for FAQPage JSON-LD.
 export const faqs: Faq[] = [
@@ -55,6 +56,8 @@ export const faqs: Faq[] = [
     question: '¿Tengo que cargar todo el rodeo a mano?',
     answer:
       'Por ahora sí, todavía no se puede importar desde Excel. Podés cargar animal por animal (hasta 100) o hacer la carga rápida por rodeo. Lleva de 1 a 30 minutos, se hace una sola vez, y en el piloto te acompañamos por WhatsApp.',
+    launchedAnswer:
+      'Por ahora sí, todavía no se puede importar desde Excel. Podés cargar animal por animal (hasta 100) o hacer la carga rápida por rodeo. Lleva de 1 a 30 minutos, se hace una sola vez, y te acompañamos por WhatsApp.',
   },
   {
     id: 'capacitacion',
@@ -67,6 +70,8 @@ export const faqs: Faq[] = [
     question: '¿Cuánto cuesta?',
     answer:
       'El piloto es 100% gratis durante 3 meses y no pide tarjeta. Tambo360 no va a ser gratis para siempre: más adelante se va a cobrar en pesos, según la cantidad de usuarios, con una prueba gratis de 30 días. Los precios todavía no están definidos.',
+    launchedAnswer:
+      'Tambo360 no va a ser gratis para siempre: más adelante se va a cobrar en pesos, según la cantidad de usuarios, con una prueba gratis de 30 días. Los precios todavía no están definidos.',
   },
   {
     id: 'soporte',

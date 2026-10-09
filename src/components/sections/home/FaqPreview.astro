@@ -8,10 +8,10 @@ import SectionHeading from '../../ui/SectionHeading.astro';
 const selected = homeFaqIds.map((id) => faqs.find((faq) => faq.id === id)).filter((faq) => faq !== undefined);
 ---
 
-<Section tone="softer" aria-labelledby="dudas-titulo">
+<Section tone="white" aria-labelledby="dudas-titulo">
   <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
     <div>
-      <SectionHeading id="dudas-titulo" title="Las dudas más frecuentes" lead="Lo que más nos preguntan los productores antes de anotarse." />
+      <SectionHeading id="dudas-titulo" title="Las dudas más frecuentes" lead="Lo que más nos preguntan los productores antes de anotarse." launchedLead="Lo que más nos preguntan los productores antes de empezar." />
       <a
         href="/preguntas-frecuentes"
         class="mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-verde-enlace underline-offset-4 hover:underline"
@@ -21,7 +21,7 @@ const selected = homeFaqIds.map((id) => faqs.find((faq) => faq.id === id)).filte
       </a>
     </div>
     <div>
-      {selected.map((faq) => <Accordion id={`dudas-${faq.id}`} question={faq.question} answer={faq.answer} />)}
+      {selected.map((faq) => <Accordion id={`dudas-${faq.id}`} question={faq.question} answer={faq.answer} launchedAnswer={faq.launchedAnswer} />)}
     </div>
   </div>
 </Section>

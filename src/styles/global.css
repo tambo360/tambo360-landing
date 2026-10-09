@@ -148,3 +148,9 @@
     @apply text-tinta;
   }
 }
+
+/* Launch switch (LaunchSwitch.astro): BaseLayout sets data-launched once the launch date is reached. */
+html[data-launched] [data-prelaunch],
+html:not([data-launched]) [data-postlaunch] {
+  display: none !important;
+}

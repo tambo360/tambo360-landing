@@ -1,5 +1,5 @@
 ---
-import { site } from '../../config/site';
+import { isLaunched, site } from '../../config/site';
 
 export type SEOProps = {
   title: string;
@@ -15,9 +15,11 @@ type Props = SEOProps;
 
 const {
   title,
-  description = site.description,
+  description = isLaunched() ? site.launchedDescription : site.description,
   image = site.ogImage,
-  imageAlt = 'Logo de Tambo360: ordeñe, rodeo y costos de tu tambo en el celular. Piloto gratis de 3 meses',
+  imageAlt = isLaunched()
+    ? 'Logo de Tambo360: ordeñe, rodeo y costos de tu tambo en el celular. Probalo 30 días gratis'
+    : 'Logo de Tambo360: ordeñe, rodeo y costos de tu tambo en el celular. Piloto gratis de 3 meses',
   noindex = false,
   type = 'website',
   jsonLd,

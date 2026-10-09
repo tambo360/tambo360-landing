@@ -4,17 +4,26 @@ import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 import SEO, { type SEOProps } from '../components/layout/SEO.astro';
 import WhatsAppButton from '../components/layout/WhatsAppButton.astro';
-import { site } from '../config/site';
+import { isLaunched, site } from '../config/site';
 
 type Props = SEOProps;
 const seo = Astro.props;
+const launched = isLaunched();
+const launchTime = Date.parse(site.launchDate);
 ---
 
 <!doctype html>
-<html lang={site.lang}>
+<html lang={site.lang} data-launched={launched ? '' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {
+      !launched && (
+        <script is:inline define:vars={{ launchTime }}>
+          if (Date.now() >= launchTime) document.documentElement.setAttribute('data-launched', '');
+        </script>
+      )
+    }
     <meta name="theme-color" content="#1c2a1c" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />

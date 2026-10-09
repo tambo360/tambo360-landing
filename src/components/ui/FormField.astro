@@ -10,15 +10,9 @@ const { id, label, required = false, hint, class: className } = Astro.props;
 ---
 
 <div class:list={["flex flex-col gap-1.5", className]} data-field={id}>
-    <label for={id} class="text-[15px] flex flex-col font-semibold text-tinta">
+    <label for={id} class="text-[15px] font-semibold text-tinta">
         {label}
-        {
-            required ? (
-                <span class="font-normal text-texto"> (obligatorio)</span>
-            ) : (
-                <span class="font-normal text-texto"> (opcional)</span>
-            )
-        }
+        {required && <span class="text-error" aria-hidden="true">*</span>}
     </label>
     {
         hint && (

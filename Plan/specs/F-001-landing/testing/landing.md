@@ -84,3 +84,25 @@ No ejecutado en esta corrida: Lighthouse (el cambio es un script chico en el hea
 
 No ejecutado: Lighthouse y volver a pasar la herramienta SEO que dio el aviso.
 
+
+## Ejecución 2026-10-09 — Registro desde el lanzamiento (Q-46, RN-desde-lanzamiento)
+
+Edge (Playwright) contra `dist/client` servido local, con el reloj del navegador fijado. Capturas en `evidence/2026-10-09/`.
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 39 | Borde de la fecha | `isLaunched` | 25/10 23:59 AR = no lanzado; 26/10 00:00 AR = lanzado | false / true (`launchTime` 1792983600000 = 26/10 03:00 UTC) | passed |
+| 40 | Antes del lanzamiento | Home y preguntas, 320/390/1366 px | Todo igual que hoy: "Anotarme", sección y formulario del piloto, 0 enlaces a /registrarse | Igual que hoy, 0 enlaces a /registrarse, sin desborde | passed |
+| 41 | Desde el lanzamiento | Home y preguntas, 320/390/1366 px | Ninguna línea visible con piloto/fundadores/anotarse/3 meses; formulario oculto; header, hero, cierre y footer a /registrarse | 0 líneas del piloto; formulario oculto; 4 enlaces visibles en home, 3 en preguntas; sin desborde | passed |
+| 42 | Sin JavaScript, después del 26/10 | Home y preguntas | Se ve la versión del piloto (decisión de diseño) | Versión del piloto, 0 enlaces a /registrarse | passed |
+| 43 | Build posterior al lanzamiento | `launchDate` puesto el 01/10 solo para la prueba, restaurado después | HTML sin script ni versión del piloto; meta description, og:image:alt y JSON-LD con los textos nuevos | `data-launched` en `<html>`, 0 script, 0 "piloto" en index y preguntas; metas y JSON-LD nuevos | passed |
+| 44 | Build y tests unitarios | build | `astro check` sin errores; 18/18 | 0 errores, 0 avisos; 18/18 | passed |
+
+Primera corrida de la fila 41: faltaba el espacio en "antes de anotarse" (intro de preguntas). Corregido y vuelto a probar.
+No ejecutado: Lighthouse, Safari/Firefox, lectores de pantalla reales. `/privacidad` y `/terminos` siguen mencionando el piloto (fuera del alcance de Q-46).
+
+## Ejecución 2026-10-09 (2) — Viñetas del hero (Q-47)
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 45 | Viñetas antes y después del lanzamiento | Hero, 320/390/1366 px | Solo "Sin tarjeta" y "Te ayudamos por WhatsApp", con sus íconos; sin desborde | Esas dos en las 6 combinaciones, sin desborde (`hero-vinetas-*.png`); check 0 errores, build ok | passed |

@@ -2,13 +2,13 @@
 import ClosingCta from "../components/sections/ClosingCta.astro";
 import FaqPreview from "../components/sections/home/FaqPreview.astro";
 import Hero from "../components/sections/home/Hero.astro";
-import Honesty from "../components/sections/home/Honesty.astro";
 import HowItWorks from "../components/sections/home/HowItWorks.astro";
 import Modules from "../components/sections/home/Modules.astro";
 import Offline from "../components/sections/home/Offline.astro";
 import Pilot from "../components/sections/home/Pilot.astro";
 import Problems from "../components/sections/home/Problems.astro";
 import Story from "../components/sections/home/Story.astro";
+import LaunchSwitch from "../components/ui/LaunchSwitch.astro";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -39,8 +39,9 @@ const jsonLd = [
     <HowItWorks />
     <Modules />
     <Offline />
-    <Honesty />
-    <Pilot />
+    <LaunchSwitch>
+        <Fragment slot="before"><Pilot /></Fragment>
+    </LaunchSwitch>
     <FaqPreview />
     <ClosingCta />
 </BaseLayout>

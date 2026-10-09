@@ -2,15 +2,19 @@ import { SITE_URL } from './site-url.mjs';
 
 export const site = {
     name: 'Tambo360',
-    productionDate: new Date("2026-10-26"),
     url: SITE_URL,
     locale: 'es_AR',
     lang: 'es-AR',
     description:
         'Registrás el ordeñe, controlás el rodeo y ordenás los costos desde un solo lugar. Funciona en la fosa, aunque no haya señal. Sumate al piloto gratis de 3 meses.',
+    // Meta tags are fixed at build time: a build from the launch date on uses this one.
+    launchedDescription:
+        'Registrás el ordeñe, controlás el rodeo y ordenás los costos desde un solo lugar. Funciona en la fosa, aunque no haya señal. Probalo 30 días gratis.',
     ogImage: '/og-image.jpg',
     demoUrl: 'https://tambo360.vercel.app/iniciar-sesion',
-    launchDate: '2026-10-26',
+    registerUrl: 'https://tambo360.vercel.app/registrarse',
+    // Midnight in Argentina: a bare '2026-10-26' would be read as UTC, 21:00 of the day before here.
+    launchDate: '2026-10-26T00:00:00-03:00',
     launchDateLabel: '26 de octubre',
     email: 't360.arg@gmail.com',
     // Empty until the support number is confirmed: the floating button stays hidden meanwhile.
@@ -27,6 +31,10 @@ export const site = {
 export function whatsappUrl(message: string = site.whatsappMessage): string | null {
     if (!site.whatsappNumber) return null;
     return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+export function isLaunched(now: Date = new Date()): boolean {
+    return now.getTime() >= new Date(site.launchDate).getTime();
 }
 
 export const nav = [

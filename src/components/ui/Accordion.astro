@@ -1,8 +1,9 @@
 ---
 import Icon from './Icon.astro';
+import LaunchSwitch from './LaunchSwitch.astro';
 
-type Props = { id: string; question: string; answer: string; headingLevel?: 'h2' | 'h3' };
-const { id, question, answer, headingLevel: Heading = 'h3' } = Astro.props;
+type Props = { id: string; question: string; answer: string; launchedAnswer?: string; headingLevel?: 'h2' | 'h3' };
+const { id, question, answer, launchedAnswer, headingLevel: Heading = 'h3' } = Astro.props;
 ---
 
 <details id={id} class="group border-b border-borde-verde py-1 [&_summary::-webkit-details-marker]:hidden">
@@ -12,5 +13,14 @@ const { id, question, answer, headingLevel: Heading = 'h3' } = Astro.props;
       <Icon name="chevron-down" size={20} />
     </span>
   </summary>
-  <div class="prosa pr-12 pb-5" set:html={`<p>${answer}</p>`} />
+  {
+    launchedAnswer ? (
+      <LaunchSwitch>
+        <div slot="before" class="prosa pr-12 pb-5" set:html={`<p>${answer}</p>`} />
+        <div slot="after" class="prosa pr-12 pb-5" set:html={`<p>${launchedAnswer}</p>`} />
+      </LaunchSwitch>
+    ) : (
+      <div class="prosa pr-12 pb-5" set:html={`<p>${answer}</p>`} />
+    )
+  }
 </details>

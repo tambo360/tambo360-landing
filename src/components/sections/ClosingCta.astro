@@ -2,68 +2,62 @@
 import { site } from "../../config/site";
 import Button from "../ui/Button.astro";
 import Icon from "../ui/Icon.astro";
+import LaunchSwitch from "../ui/LaunchSwitch.astro";
 import Section from "../ui/Section.astro";
 
-type Props = { title?: string; lead?: string; href?: string };
-
-const now = new Date();
-const canShowRegisterSection = now >= site.productionDate ? true : false;
+// title/lead are the pre-launch copy; launchedTitle/launchedLead replace them from the launch date.
+type Props = {
+    title?: string;
+    lead?: string;
+    launchedTitle?: string;
+    launchedLead?: string;
+};
 
 const {
     title = "Tu tambo merece algo mejor que un cuaderno mojado",
-    lead = canShowRegisterSection ? "Registrate gratis hoy, no tardás mas de 5 minutos"
-        : "Buscamos 3 tambos fundadores para el piloto. Anotarte lleva un minuto.",
-    href = canShowRegisterSection ? "https://tambo360.vercel.app/iniciar-sesion"
-        : "/#sumate",
+    lead = "Buscamos 3 tambos fundadores para el piloto. Anotarte lleva un minuto.",
+    launchedTitle = title,
+    launchedLead = "Registrate gratis hoy, no tardás más de 5 minutos.",
 } = Astro.props;
 ---
 
-{
-    canShowRegisterSection ? (
-        <Section
-            tone="dark"
-            containerSize="md"
-            aria-labelledby="cierre-titulo"
-            class="text-center"
-        >
-            <h2
-                id="cierre-titulo"
-                class="text-3xl leading-tight font-extrabold tracking-tight text-white sm:text-display-lg"
-            >
-                {title}
-            </h2>
-            <p class="mx-auto mt-5 max-w-xl text-lg text-white/85">{lead}</p>
-            <div class="mt-8 flex justify-center">
-                <Button
-                    href={href}
-                    {...(canShowRegisterSection && { target: "_blank" })}
-                    size="lg"
-                >
-                    Registrarme gratis
-                    <Icon name="arrow-right" size={20} />
-                </Button>
-            </div>
-        </Section>
-    ) : (
-        <Section
-            tone="dark"
-            containerSize="md"
-            aria-labelledby="cierre-titulo"
-            class="text-center"
-        >
-            <h2
-                id="cierre-titulo"
-                class="text-3xl leading-tight font-extrabold tracking-tight text-white sm:text-display-lg"
-            >
-                {title}
-            </h2>
-            <p class="mx-auto mt-5 max-w-xl text-lg text-white/85">{lead}</p>
-            <div class="mt-8 flex justify-center">
-                <Button href={href} size="lg">
-                    Sumarme al piloto gratis
-                    <Icon name="arrow-right" size={20} />
-                </Button>
-            </div>
-        </Section>
-    )
-}
+<Section
+    tone="dark"
+    containerSize="md"
+    aria-labelledby="cierre-titulo"
+    class="text-center"
+>
+    <h2
+        id="cierre-titulo"
+        class="text-3xl leading-tight font-extrabold tracking-tight text-white sm:text-display-lg"
+    >
+        {
+            title === launchedTitle ? (
+                title
+            ) : (
+                <LaunchSwitch as="span">
+                    <Fragment slot="before">{title}</Fragment>
+                    <Fragment slot="after">{launchedTitle}</Fragment>
+                </LaunchSwitch>
+            )
+        }
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-lg text-white/85">
+        <LaunchSwitch as="span">
+            <Fragment slot="before">{lead}</Fragment>
+            <Fragment slot="after">{launchedLead}</Fragment>
+        </LaunchSwitch>
+    </p>
+    <div class="mt-8 flex justify-center">
+        <LaunchSwitch>
+            <Button slot="before" href="/#sumate" size="lg">
+                Sumarme al piloto gratis
+                <Icon name="arrow-right" size={20} />
+            </Button>
+            <Button slot="after" href={site.registerUrl} size="lg" external>
+                Registrarme gratis
+                <Icon name="arrow-right" size={20} />
+            </Button>
+        </LaunchSwitch>
+    </div>
+</Section>
