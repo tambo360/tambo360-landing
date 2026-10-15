@@ -114,3 +114,51 @@ No ejecutado: Lighthouse, Safari/Firefox, lectores de pantalla reales. `/privaci
 | 46 | Sección "sin señal" rediseñada | Home `#sin-senal`, 320/390/1366 px, Edge | h2 propio, 3 ítems con texto, foto sin la montaña en desktop, alineada al contenedor, sin desborde | h2 a 139/16/16 px igual que "Qué podés hacer"; overflow 0 en los tres anchos; foto 416/195/160 px de alto (`sin-senal-*.png`); detector 0 hallazgos; check 0 errores, build ok | passed |
 
 Observación: en celular (2:1) asoma la base de la montaña de la foto (no es paisaje de cuenca lechera argentina); en desktop queda recortada.
+
+## Ejecución 2026-10-09 (4) — Viñeta de WhatsApp fuera del hero (Q-50)
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 47 | Hero sin viñeta de WhatsApp, antes y después del lanzamiento | Hero, 320/390/1366 px, Edge | Solo "Sin tarjeta"; el botón flotante no tapa ninguna viñeta; sin desborde | Solo "Sin tarjeta" en las 6 capturas (`hero-sin-whatsapp-*.png`); overflow 0; check 0 errores, build ok | passed |
+
+Hallazgo nuevo (fuera de Q-50): en 320x640 el botón flotante de WhatsApp tapa la flecha de "Sumarme al piloto gratis" en la primera pantalla. Existe desde que se cargó el número (Q-49).
+
+## Ejecución 2026-10-09 (5) — Botón flotante de WhatsApp más chico en celular
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 48 | Flotante en celular: solo ícono, 48 px, a 8 px de la esquina | Home, 320x640, 360x640, 390x844, 1366x768, Edge | Objetivo táctil de 44 px o más; tapa menos el botón principal; desktop igual que antes ("Escribinos") | 48x48 en celular, 145x56 con texto en desktop; en 390x844 y 1366 no pisa nada; en 320x640 y 360x640 todavía tapa 40 px del extremo derecho de "Sumarme al piloto gratis" (se ve el texto, la flecha queda debajo) (`whatsapp-flotante-*.png`); check 0 errores | passed (con superposición residual, decisión del usuario) |
+
+
+## Ejecución 2026-10-09 (6) — Cierre separado del footer (u38)
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 49 | Cierre en fondo claro antes del footer oscuro | Home 320/390/1366, `/equipo` 390/1366, `/preguntas-frecuentes` 390 (fecha simulada 27/10), Edge | Cierre verde-025 con titular tinta y botón verde-cta; corte nítido contra el footer; home con 2 bloques verde-900; sin desborde | Así en las 6 capturas (`cierre-claro-*.png`), post-lanzamiento muestra "Registrarme gratis"; overflow 0; detector 0 hallazgos; build ok | passed |
+| 50 | `/preguntas-frecuentes` sin el índice duplicado | 390/1366 px, Edge | Intro y las 13 preguntas cerradas directo; `#precio` abre su respuesta; sin desborde | Así (`faq-sin-indice-*.png`, `faq-hash-precio-390.png`); overflow 0; build ok | passed |
+| 51 | La acción pre-lanzamiento con dos nombres | Código + home 390/1366, Edge | "Anotarme" solo en el header; "Sumarme al piloto gratis" en hero, formulario, cierre y footer; el título del formulario ya no repite la acción | Así (`grep` en `src`, `accion-dos-nombres-*.png`); título del form "Tus datos"; 18 tests, check 0 errores, build ok; overflow 0 | passed |
+| 52 | `/equipo`: intro y grilla con el mismo margen; fotos sin alt repetido | 390/1366 px, Edge + HTML del build | Borde izquierdo del h1 igual al de la grilla; fotos con `alt` vacío (el nombre ya está debajo); sin desborde | h1 y grilla en el contenedor ancho (`equipo-un-margen-*.png`); 12 `img` con `alt` vacío; overflow 0; build ok | passed |
+| 53 | `/equipo`: fotos en blanco y negro (Q-51 c) | 390/1366 px, Edge | Las 12 fotos en escala de grises con el mismo tratamiento; sin desborde | Así (`equipo-byn-*.png`), filtro CSS `grayscale` (se quita cuando lleguen fotos nuevas); el aro pasa a gris claro; overflow 0; build ok | passed |
+
+Pendiente del equipo (u50): 4 fotos por debajo de 352 px (lo que pide el 2x de 176 px): Cintia Duarte, Facundo Fernández y Nicolás Mansilla (200 px), Juan Meza (210 px). Pedirlas de 400 px o más.
+
+## Ejecución 2026-10-09 (7) — Verificación u22 (home y `/equipo`)
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 54 | Build, check y tests | repo | 0 errores, tests verdes | check 0 errores (1 aviso: `Badge` sin uso en Hero, lo saca u46); 18 tests passed; build ok | passed |
+| 55 | Head y datos estructurados | HTML del build de `/` y `/equipo` | title, description, og:*, twitter:*, canonical, un h1, JSON-LD válido, imágenes con alt | Todo presente; JSON-LD Organization+WebSite y AboutPage parsean; 1 h1 por página; 0 `img` sin alt; `/equipo` en el sitemap | passed |
+| 56 | Página entera sin desborde, antes y después del lanzamiento | `/` y `/equipo` 390/1366, home 390 con fecha 27/10, Edge | overflow 0; secciones en orden | overflow 0 en las 5 (`u22-*.png`) | passed |
+
+Observación: en las capturas de página entera la figura de "Cómo funciona" y la foto de "sin señal" salen vacías; en el navegador cargan (`complete`, 683 y 1366 px de ancho) y por elemento se ven. Es un límite de la captura de página completa en Edge, no del sitio.
+
+## Ejecución 2026-10-15 — Paleta de la app (u52-u55, Q-52)
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 57 | Build, check y tests con la paleta nueva | repo | 0 errores, tests verdes | check 0 errores (1 aviso de antes: `Badge` sin uso); 18 tests passed; build ok | passed |
+| 58 | Botón principal con el verde de la app | `/`, `/preguntas-frecuentes`, `/equipo` a 390/1366, Edge | Fondo `#29845A` y texto blanco (4.62:1) | Estilo calculado `rgb(41,132,90)` / `rgb(255,255,255)` en las 6 vistas (`paleta-app-*.png`) | passed |
+| 59 | Secciones claras en blanco, sin desborde | ídem | Sin fondos verdes de sección; secciones blancas seguidas separadas por borde; overflow 0 | Fondos de sección solo blanco y verde-900; overflow 0 en las 6; foto de "sin señal" vacía solo en la captura de página entera, carga por elemento (`paleta-app-home-sin-senal-1366.png`) | passed |
+| 60 | Cajas de ícono claras (u55) | Home y `/equipo` 1366 | verde-050 con ícono verde-enlace (6.36:1) | Así (`paleta-app-home-iconos-1366.png`, `paleta-app-equipo-1366.png`); aceptado por el usuario | passed |
+
+Hallazgo: en `/equipo` quedó un hueco blanco grande entre la intro y la grilla del equipo (~130 px a 1366). Antes la intro tenía fondo verde-025 y el corte de color justificaba el doble padding; con las dos en blanco sobra. Pendiente de decisión.

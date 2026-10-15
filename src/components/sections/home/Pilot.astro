@@ -7,7 +7,7 @@ import SectionHeading from '../../ui/SectionHeading.astro';
 import WaitlistForm from '../WaitlistForm.astro';
 ---
 
-<Section tone="soft" id="sumate" aria-labelledby="sumate-titulo">
+<Section id="sumate" aria-labelledby="sumate-titulo" class="border-t border-borde-verde">
   <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr]">
     <div>
       <SectionHeading
@@ -19,7 +19,7 @@ import WaitlistForm from '../WaitlistForm.astro';
         {
           pilotBenefits.map((benefit) => (
             <li class="flex gap-4">
-              <span class="flex size-12 shrink-0 items-center justify-center rounded-md bg-verde-cta text-verde-900">
+              <span class="flex size-12 shrink-0 items-center justify-center rounded-md bg-verde-cta text-white">
                 <Icon name={benefit.icon} />
               </span>
               <div>

@@ -25,7 +25,7 @@ const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
                 data-nav-link
-                class="relative rounded-md px-3 py-2 text-[15px] font-medium text-tinta transition-colors after:absolute after:inset-x-3 after:bottom-0.5 after:hidden after:h-0.5 after:rounded-full after:bg-verde-enlace hover:bg-verde-025 hover:text-verde-enlace [&[aria-current]]:text-verde-enlace [&[aria-current]]:after:block"
+                class="relative rounded-md px-3 py-2 text-[15px] font-medium text-tinta transition-colors after:absolute after:inset-x-3 after:bottom-0.5 after:hidden after:h-0.5 after:rounded-full after:bg-verde-enlace hover:bg-verde-050 hover:text-verde-enlace [&[aria-current]]:text-verde-enlace [&[aria-current]]:after:block"
               >
                 {item.label}
               </a>
@@ -47,7 +47,7 @@ const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
       </LaunchSwitch>
       <button
         type="button"
-        class="inline-flex size-11 items-center justify-center rounded-md text-tinta hover:bg-verde-025 lg:hidden"
+        class="inline-flex size-11 items-center justify-center rounded-md text-tinta hover:bg-verde-050 lg:hidden"
         aria-controls="menu-movil"
         aria-expanded="false"
         data-menu-toggle
@@ -69,7 +69,7 @@ const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
                 data-nav-link
-                class="flex min-h-12 items-center rounded-md px-3 text-base font-medium text-tinta hover:bg-verde-025 [&[aria-current]]:bg-verde-025 [&[aria-current]]:text-verde-enlace [&[aria-current]]:shadow-[inset_3px_0_0_var(--color-verde-enlace)]"
+                class="flex min-h-12 items-center rounded-md px-3 text-base font-medium text-tinta hover:bg-verde-050 [&[aria-current]]:bg-verde-050 [&[aria-current]]:text-verde-enlace [&[aria-current]]:shadow-[inset_3px_0_0_var(--color-verde-enlace)]"
               >
                 {item.label}
               </a>

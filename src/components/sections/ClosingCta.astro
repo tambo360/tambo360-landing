@@ -5,6 +5,7 @@ import Icon from "../ui/Icon.astro";
 import LaunchSwitch from "../ui/LaunchSwitch.astro";
 import Section from "../ui/Section.astro";
 
+// Light surface on purpose: the dark footer follows, and a dark closing merged with it (u38).
 // title/lead are the pre-launch copy; launchedTitle/launchedLead replace them from the launch date.
 type Props = {
     title?: string;
@@ -22,14 +23,13 @@ const {
 ---
 
 <Section
-    tone="dark"
     containerSize="md"
     aria-labelledby="cierre-titulo"
-    class="text-center"
+    class="border-t border-borde-verde text-center"
 >
     <h2
         id="cierre-titulo"
-        class="text-3xl leading-tight font-extrabold tracking-tight text-white sm:text-display-lg"
+        class="text-3xl leading-tight font-extrabold tracking-tight text-tinta sm:text-display-lg"
     >
         {
             title === launchedTitle ? (
@@ -42,7 +42,7 @@ const {
             )
         }
     </h2>
-    <p class="mx-auto mt-5 max-w-xl text-lg text-white/85">
+    <p class="mx-auto mt-5 max-w-xl text-lg">
         <LaunchSwitch as="span">
             <Fragment slot="before">{lead}</Fragment>
             <Fragment slot="after">{launchedLead}</Fragment>

@@ -2,14 +2,12 @@
 name: Tambo360 · landing
 description: Del cuaderno al bolsillo. Ordeñe, rodeo y costos del tambo en el celular.
 colors:
-  verde-cta: "#80b718"
-  verde-check: "#99c545"
-  verde-nav: "#669213"
-  verde-enlace: "#4d7a10"
-  verde-100: "#cfedba"
-  verde-050: "#e9faca"
-  verde-025: "#f7ffe6"
-  verde-010: "#f3ffe2"
+  verde-cta: "#29845a"
+  verde-check: "#236342"
+  verde-nav: "#236342"
+  verde-enlace: "#236342"
+  verde-100: "#e0f5eb"
+  verde-050: "#e8f5e9"
   verde-900: "#1c2a1c"
   verde-950: "#121c12"
   blanco: "#ffffff"
@@ -17,7 +15,7 @@ colors:
   gris-050: "#f1f5f9"
   gris-100: "#e8eaed"
   borde-neutro: "#dee0e3"
-  borde-verde: "#e0e8dc"
+  borde-verde: "#d4e6de"
   tinta: "#101828"
   texto: "#475569"
   error: "#b42318"
@@ -105,7 +103,7 @@ components:
     padding: "0 16px"
     height: "48px"
   card-suave:
-    backgroundColor: "{colors.verde-025}"
+    backgroundColor: "{colors.blanco}"
     textColor: "{colors.texto}"
     rounded: "{rounded.lg}"
     padding: "20px"
@@ -150,26 +148,55 @@ de etiquetas en mayúsculas encima de cada titular, nada que se esconda esperand
 
 Verdes de pasto sobre blanco, con un verde casi negro para los momentos que tienen que pegar.
 
+### Origen: la paleta de la app (Q-52)
+
+Los verdes se alinean con la app (`tambo360-frontend`, commit `53615f5` del 30/09/2026). Los valores se
+**copian**, no se importan: la landing compila y se publica sola. Fuente de cada valor: `app/globals.css`
+(`@theme`) y clases usadas en `components/`. Se mantienen los nombres de los tokens; cambia el valor.
+
+| Token | Hoy | Pasa a | Fuente en la app | Rol nuevo | Contraste |
+|---|---|---|---|---|---|
+| verde-cta | `#80b718` | `#29845A` | `--color-green-main`, botón `darkGreen` | Fondo del botón principal, tildes | blanco encima 4.62:1; sobre blanco 4.62:1 |
+| verde-check | `#99c545` | `#236342` | `BatchSuccessScreen`, `ChangeBatch` | Hover del botón principal | blanco encima 7.16:1 |
+| verde-enlace | `#4d7a10` | `#236342` | ídem | Enlaces sobre claro, anillo de foco | sobre blanco 7.16:1; sobre verde-050 6.36:1 |
+| verde-nav | `#669213` | `#236342` | ídem | Reservado a la marca | — |
+| verde-100 | `#cfedba` | `#E0F5EB` | `--color-dialogs` | Hover de la acción secundaria, insignias | verde-enlace encima 6.28:1 |
+| verde-050 | `#e9faca` | `#E8F5E9` | clases en 8 componentes | Fondo de la acción secundaria | verde-enlace encima 6.36:1 |
+| verde-025 / verde-010 | `#f7ffe6` / `#f3ffe2` | eliminados | la app usa fondos blancos | Secciones claras en blanco, separadas por borde-verde | — |
+| borde-verde | `#e0e8dc` | `#D4E6DE` | clases en 2 componentes | Separadores de 1 px | decorativo |
+| verde-900 | `#1c2a1c` | sin cambio | la app no tiene superficies oscuras | Hero e historia | blanco encima sin cambio |
+| verde-950 | `#121c12` | sin cambio | ídem | Footer | ídem |
+
+Consecuencias (aplicadas en u53):
+- **El botón principal pasa a texto blanco.** verde-900 sobre el verde nuevo da 3.25:1 y no alcanza. La Regla del
+  Blanco Prohibido pasa a ser la Regla del Texto Blanco: sobre verde-cta va blanco, nunca verde-900.
+- **Sobre oscuro, verde-cta solo en texto grande o íconos** (3.25:1 sobre verde-900, 3.78:1 sobre verde-950: pasa
+  el 3:1 de texto grande y gráficos, no el 4.5:1 de texto chico). La etiqueta de la historia y el hover del
+  footer pasan a blanco.
+- El botón principal sobre verde-900 (hero) se distingue del fondo con 3.25:1, por encima del mínimo de 3:1
+  para controles.
+- No se tocan: tinta, texto, error, WhatsApp (verde-900 encima, 7.58:1), grises, el logo PNG ni la imagen OG.
+- Decisión del usuario (15/10/2026): fondos claros en blanco como en la app y un solo verde, sin acento aparte.
+
 ### Primary
 - **Verde Pasto Nuevo** (verde-cta): la acción principal y nada más. Fondo de botones principales, y sobre
   verde-900 las cifras y palabras clave. Siempre con texto verde-900 encima, nunca blanco.
-- **Verde Brote** (verde-check): el hover del botón principal y los tildes.
+- **Verde Brote** (verde-check): el hover del botón principal.
 - **Verde Lote** (verde-enlace): todo texto de enlace sobre fondo claro, el anillo de foco y la marca de sección
   activa del nav.
 - **Verde Potrero** (verde-nav): reservado a la marca; no se usa para texto sobre claro.
 
 ### Secondary
-- **Verde Galpón** (verde-900): las superficies de corte con texto blanco encima. En la home: hero, la
-  historia y el cierre.
+- **Verde Galpón** (verde-900): las superficies de corte con texto blanco encima. En la home: hero y la
+  historia. El cierre va en blanco para que no se funda con el footer.
 - **Verde Noche** (verde-950): el footer, un paso más profundo que el galpón.
 
 ### Neutral
-- **Rocío** (verde-025) y **Rocío Tenue** (verde-010): fondos suaves para alternar secciones y tarjetas.
 - **Brote Pálido** (verde-050) y **Brote Claro** (verde-100): fondo y hover de la acción secundaria, insignias.
 - **Tinta de Libreta** (tinta): titulares y etiquetas.
 - **Pizarra** (texto): párrafos y bajadas.
 - **Bordes de Alambrado** (borde-verde, borde-neutro): separadores de 1 px, tarjetas y campos.
-- **Grises de Oficina** (gris-025, gris-050, gris-100): cajas neutras como el índice de preguntas.
+- **Grises de Oficina** (gris-025, gris-050, gris-100): cajas neutras (hoy sin uso en las páginas; el índice de preguntas se sacó el 09/10/2026, u39).
 - **Rojo Alerta** (error): solo errores, siempre con texto e ícono.
 - **Verde WhatsApp** (whatsapp): solo el botón flotante, con ícono verde-900.
 
@@ -177,13 +204,10 @@ Verdes de pasto sobre blanco, con un verde casi negro para los momentos que tien
 **La Regla del Verde Único.** verde-cta es la acción principal: aparece en un solo botón por bloque visual y,
 sobre oscuro, en una sola cifra o palabra por bloque. Si dos cosas son verde-cta, una sobra.
 
-**La Regla del Blanco Prohibido.** Nunca texto blanco sobre verde-cta (2.41:1) ni sobre verde-nav (3.69:1).
-Sobre verde-cta va verde-900.
+**La Regla del Texto Blanco.** Sobre verde-cta va texto blanco (4.62:1), nunca verde-900 (3.25:1).
 
-**La Regla del Corte.** Dos secciones seguidas nunca comparten fondo; se alterna blanco, verde claro y
-verde-900. Diferencia abierta (09/10/2026): `Docs/design-system.md` pide verde-900 en una o dos secciones por
-página y la home hoy tiene tres (hero, historia, cierre; "sin señal" pasó a fondo claro el 09/10/2026, Q-48).
-Se baja en u38.
+**La Regla del Corte.** Dos secciones blancas seguidas se separan con un borde de 1 px borde-verde; verde-900 en
+una o dos secciones por página. La última sección antes del footer (verde-950) nunca es oscura (u38).
 
 ## Typography
 
@@ -222,7 +246,7 @@ que mostrar todo. El único movimiento es la entrada del texto del hero y los ho
 
 ## Elevation & Depth
 
-Plano por defecto. La profundidad sale del color de fondo (tarjetas verde-025 sobre blanco, bloques verde-900
+Plano por defecto. La profundidad sale del color de fondo (tarjetas blancas con borde, bloques verde-900
 entre secciones claras) y de bordes de 1 px, no de sombras. La única sombra es la del botón flotante de
 WhatsApp, que tiene que despegarse de cualquier fondo.
 
@@ -255,11 +279,11 @@ Firmes y francos: grandes, fáciles de tocar, sin sombras ni efectos.
 
 ### Cards / Containers
 - **Corner Style:** 16 px; la caja del formulario y las figuras, 24 px.
-- **Background:** verde-025 sobre blanco; blanco sobre verde-025.
+- **Background:** blanco, con borde de 1 px.
 - **Shadow Strategy:** ninguna (ver Elevation & Depth).
 - **Border:** 1 px borde-verde.
 - **Internal Padding:** 20 px; el formulario, 24 a 32 px.
-- **Ícono en caja:** 44 a 48 px, esquinas de 8 px, verde-900 con ícono verde-cta (o al revés).
+- **Ícono en caja:** 44 a 48 px, esquinas de 8 px, verde-050 con ícono verde-enlace (6.36:1); o verde-cta con ícono blanco (4.62:1).
 
 ### Inputs / Fields
 - **Style:** fondo blanco, borde de 1 px borde-neutro, esquinas de 8 px, 48 px de alto, texto de 16 px.
@@ -268,7 +292,7 @@ Firmes y francos: grandes, fáciles de tocar, sin sombras ni efectos.
 
 ### Navigation
 - **Header:** blanco al 95 % con desenfoque, borde inferior borde-verde, 72 px de alto, fijo arriba. Enlaces en
-  tinta, 15 px, 500 de peso; hover con fondo verde-025 y texto verde-enlace; la página o sección actual en
+  tinta, 15 px, 500 de peso; hover con fondo verde-050 y texto verde-enlace; la página o sección actual en
   verde-enlace con una barra de 2 px debajo. A la derecha, la acción secundaria y la principal.
 - **Celular:** menú desplegable debajo del header, enlaces de 48 px de alto, actual con barra de 3 px a la
   izquierda; la acción principal queda siempre visible al lado del botón del menú.
@@ -281,7 +305,7 @@ abren solas cuando se llega con `#id`.
 
 ### Do:
 - **Do** usar verde-cta solo para la acción principal y para una cifra por bloque sobre verde-900.
-- **Do** alternar el fondo de cada sección (blanco, verde-025 o verde-010, verde-900).
+- **Do** separar dos secciones blancas seguidas con un borde de 1 px borde-verde.
 - **Do** mantener objetivos táctiles de 44 px o más.
 - **Do** declarar ancho y alto de cada foto, con `alt` que describa lo que se ve.
 - **Do** calcular el contraste de todo par de colores nuevo antes de usarlo (registro en

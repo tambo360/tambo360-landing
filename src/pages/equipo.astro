@@ -3,7 +3,9 @@ import { Image } from 'astro:assets';
 import ClosingCta from '../components/sections/ClosingCta.astro';
 import Container from '../components/ui/Container.astro';
 import Section from '../components/ui/Section.astro';
+import Icon from '../components/ui/Icon.astro';
 import { site } from '../config/site';
+import { problems } from '../data/home';
 import { team } from '../data/team';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -26,9 +28,9 @@ const jsonLd = {
   description={`Las personas que hacen ${site.name}: un equipo de desarrollo dedicado al campo que recorrió tambos y escuchó a quienes los trabajan antes de escribir una línea.`}
   jsonLd={jsonLd}
 >
-  <section class="bg-verde-025 py-14 sm:py-20" aria-labelledby="equipo-titulo">
-    <Container size="md">
-      <h1 id="equipo-titulo" class="text-4xl font-extrabold tracking-tight sm:text-display-xl">
+  <section class="bg-white py-14 sm:py-20" aria-labelledby="equipo-titulo">
+    <Container>
+      <h1 id="equipo-titulo" class="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-display-xl">
         Conocé al equipo que conforma {site.name}
       </h1>
       <p class="mt-5 max-w-2xl text-lg">
@@ -45,17 +47,51 @@ const jsonLd = {
           <li class="text-center">
             <Image
               src={member.photo}
-              alt={`Foto de ${member.name}`}
+              alt=""
               width={200}
               height={200}
               densities={[1, 2]}
-              class="mx-auto aspect-square w-full max-w-44 rounded-full object-cover ring-4 ring-verde-050"
+              class="mx-auto aspect-square w-full max-w-44 rounded-full object-cover ring-4 ring-verde-050 grayscale"
             />
             <p class="mt-3 text-lg leading-tight font-semibold text-tinta">{member.name}</p>
           </li>
         ))
       }
     </ul>
+  </Section>
+
+  <!-- Proof of the fieldwork (Q-51 a): only existing material, the story of Q-13 and the home problems. -->
+  <Section aria-labelledby="campo-titulo" class="pt-0! sm:pt-0! lg:pt-0!">
+    <div class="grid gap-10 border-t border-borde-verde pt-14 sm:pt-16 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+      <div>
+        <h2 id="campo-titulo" class="text-3xl leading-tight font-extrabold tracking-tight text-tinta sm:text-display-lg">
+          Lo que escuchamos en los tambos
+        </h2>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed">
+          Ramón, encargado de un tambo quesero en Corrientes, y Manuel, con 300 vacas en Entre Ríos, nos contaron lo
+          mismo: hasta 40 litros por día que no figuran en ningún lado. De ahí salió {site.name}.
+        </p>
+        <a href="/#como-funciona" class="mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-verde-enlace underline-offset-4 hover:underline">
+          Ver cómo funciona
+          <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+      <ul class="space-y-8">
+        {
+          problems.map((problem) => (
+            <li class="flex gap-4">
+              <span class="flex size-11 shrink-0 items-center justify-center rounded-md bg-verde-050 text-verde-enlace">
+                <Icon name={problem.icon} size={22} />
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-tinta">{problem.title}</h3>
+                <p class="mt-1 leading-relaxed">{problem.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </Section>
 
   <ClosingCta />

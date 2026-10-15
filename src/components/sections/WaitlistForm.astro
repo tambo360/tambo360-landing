@@ -25,7 +25,7 @@ const whatsapp = whatsappUrl(
         data-waitlist-form
         aria-describedby="form-nota"
     >
-        <h3 class="text-2xl font-extrabold">Anotate al piloto</h3>
+        <h3 class="text-2xl font-extrabold">Tus datos</h3>
         <p id="form-nota" class="-mt-3 text-[15px]">
             Te escribimos por WhatsApp. No hace falta tarjeta.
         </p>
@@ -106,7 +106,7 @@ const whatsapp = whatsappUrl(
         <input type="hidden" name="origen" data-origen />
 
         <Button type="submit" size="lg" class="w-full" data-submit>
-            <span data-submit-label>Quiero sumarme al piloto</span>
+            <span data-submit-label>Sumarme al piloto gratis</span>
         </Button>
     </form>
 
@@ -252,7 +252,7 @@ const whatsapp = whatsappUrl(
             submit.setAttribute("aria-busy", String(sending));
             submitLabel.textContent = sending
                 ? "Enviando…"
-                : "Quiero sumarme al piloto";
+                : "Sumarme al piloto gratis";
         };
 
         root.querySelector("[data-retry]")?.addEventListener("click", () => {

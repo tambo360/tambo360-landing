@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-09T13:55:47+00:00",
+  "generatedAt": "2026-10-15T15:40:00+00:00",
   "title": "Design System: Tambo360 · landing",
   "extensions": {
     "colorMeta": {
@@ -10,12 +10,10 @@
         "tonalRamp": [
           "#121c12",
           "#1c2a1c",
-          "#4d7a10",
-          "#669213",
-          "#80b718",
-          "#99c545",
-          "#cfedba",
-          "#f7ffe6"
+          "#236342",
+          "#29845a",
+          "#e0f5eb",
+          "#e8f5e9"
         ]
       },
       "verde-check": {
@@ -37,14 +35,6 @@
       "verde-950": {
         "role": "secondary",
         "displayName": "Verde Noche"
-      },
-      "verde-025": {
-        "role": "neutral",
-        "displayName": "Rocío"
-      },
-      "verde-010": {
-        "role": "neutral",
-        "displayName": "Rocío Tenue"
       },
       "verde-050": {
         "role": "neutral",
@@ -142,7 +132,7 @@
       "refersTo": "button-primary-lg",
       "description": "La acción principal de la página.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Registrarme gratis <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l14 0\"/><path d=\"M13 18l6 -6\"/><path d=\"M13 6l6 6\"/></svg></a>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border-radius:8px;background:var(--color-verde-cta,#80b718);color:var(--color-verde-900,#1c2a1c);font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-primary:hover{background:var(--color-verde-check,#99c545)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-verde-enlace,#4d7a10);outline-offset:2px}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border-radius:8px;background:var(--color-verde-cta,#29845a);color:#ffffff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-primary:hover{background:var(--color-verde-check,#236342)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-verde-enlace,#236342);outline-offset:2px}"
     },
     {
       "name": "Botón secundario",
@@ -150,7 +140,7 @@
       "refersTo": "button-secondary",
       "description": "Ver demo y acciones de apoyo.",
       "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver demo</a>",
-      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:8px;background:var(--color-verde-050,#e9faca);color:var(--color-verde-enlace,#4d7a10);font:600 15px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-secondary:hover{background:var(--color-verde-100,#cfedba)}.ds-btn-secondary:focus-visible{outline:2px solid var(--color-verde-enlace,#4d7a10);outline-offset:2px}"
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:8px;background:var(--color-verde-050,#e8f5e9);color:var(--color-verde-enlace,#236342);font:600 15px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-secondary:hover{background:var(--color-verde-100,#e0f5eb)}.ds-btn-secondary:focus-visible{outline:2px solid var(--color-verde-enlace,#236342);outline-offset:2px}"
     },
     {
       "name": "Botón sobre oscuro",
@@ -158,7 +148,7 @@
       "refersTo": "button-ghost-dark",
       "description": "Acción secundaria sobre verde-900.",
       "html": "<div class=\"ds-dark\"><a class=\"ds-btn-ghost\" href=\"#\">Ver demo</a></div>",
-      "css": ".ds-dark{background:#1c2a1c;padding:24px}.ds-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:8px;border:1px solid rgb(255 255 255 / .4);color:#fff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-ghost:hover{background:rgb(255 255 255 / .1)}.ds-btn-ghost:focus-visible{outline:2px solid #80b718;outline-offset:2px}"
+      "css": ".ds-dark{background:#1c2a1c;padding:24px}.ds-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:8px;border:1px solid rgb(255 255 255 / .4);color:#fff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-ghost:hover{background:rgb(255 255 255 / .1)}.ds-btn-ghost:focus-visible{outline:2px solid #29845a;outline-offset:2px}"
     },
     {
       "name": "Campo",
@@ -166,7 +156,7 @@
       "refersTo": "input",
       "description": "Campo de formulario con etiqueta arriba.",
       "html": "<label class=\"ds-label\" for=\"ds-n\">Nombre <span aria-hidden=\"true\">*</span></label><input class=\"ds-input\" id=\"ds-n\" placeholder=\"Ej.: Manuel\">",
-      "css": ".ds-label{display:block;margin-bottom:6px;font:600 15px/1.4 Figtree,system-ui,sans-serif;color:#101828}.ds-label span{color:#b42318}.ds-input{width:100%;min-height:48px;padding:0 16px;border:1px solid #dee0e3;border-radius:8px;background:#fff;color:#101828;font:400 16px Figtree,system-ui,sans-serif}.ds-input:focus{outline:none;border-color:#4d7a10;box-shadow:0 0 0 2px rgb(77 122 16 / .3)}"
+      "css": ".ds-label{display:block;margin-bottom:6px;font:600 15px/1.4 Figtree,system-ui,sans-serif;color:#101828}.ds-label span{color:#b42318}.ds-input{width:100%;min-height:48px;padding:0 16px;border:1px solid #dee0e3;border-radius:8px;background:#fff;color:#101828;font:400 16px Figtree,system-ui,sans-serif}.ds-input:focus{outline:none;border-color:#236342;box-shadow:0 0 0 2px rgb(77 122 16 / .3)}"
     },
     {
       "name": "Tarjeta suave",
@@ -174,7 +164,7 @@
       "refersTo": "card-suave",
       "description": "Problema o beneficio con ícono en caja.",
       "html": "<div class=\"ds-card\"><span class=\"ds-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l5 5l10 -10\"/></svg></span><div><h3>El cuaderno no alcanza</h3><p>Los litros se anotan tarde o se pierden.</p></div></div>",
-      "css": ".ds-card{display:flex;gap:16px;padding:20px;border:1px solid #e0e8dc;border-radius:16px;background:#f7ffe6;font-family:Figtree,system-ui,sans-serif;color:#475569}.ds-card h3{margin:0;font-size:18px;font-weight:700;color:#101828}.ds-card p{margin:4px 0 0;line-height:1.625}.ds-icon{display:flex;flex:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:#1c2a1c;color:#80b718}"
+      "css": ".ds-card{display:flex;gap:16px;padding:20px;border:1px solid #d4e6de;border-radius:16px;background:#ffffff;font-family:Figtree,system-ui,sans-serif;color:#475569}.ds-card h3{margin:0;font-size:18px;font-weight:700;color:#101828}.ds-card p{margin:4px 0 0;line-height:1.625}.ds-icon{display:flex;flex:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:#1c2a1c;color:#29845a}"
     },
     {
       "name": "Insignia",
@@ -182,14 +172,14 @@
       "refersTo": "badge",
       "description": "Etiqueta corta sobre claro.",
       "html": "<span class=\"ds-badge\">Funciona sin señal</span>",
-      "css": ".ds-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;background:#e9faca;color:#4d7a10;font:600 14px/1.4 Figtree,system-ui,sans-serif}"
+      "css": ".ds-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;background:#e8f5e9;color:#236342;font:600 14px/1.4 Figtree,system-ui,sans-serif}"
     },
     {
       "name": "Navegación",
       "kind": "nav",
       "description": "Enlaces del header con la sección actual marcada.",
       "html": "<nav class=\"ds-nav\"><a href=\"#\">Cómo funciona</a><a href=\"#\" aria-current=\"page\">Preguntas</a></nav>",
-      "css": ".ds-nav{display:flex;gap:4px;font:500 15px Figtree,system-ui,sans-serif}.ds-nav a{position:relative;padding:8px 12px;border-radius:8px;color:#101828;text-decoration:none}.ds-nav a:hover{background:#f7ffe6;color:#4d7a10}.ds-nav a[aria-current]{color:#4d7a10}.ds-nav a[aria-current]::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:9999px;background:#4d7a10}.ds-nav a:focus-visible{outline:2px solid #4d7a10;outline-offset:2px}"
+      "css": ".ds-nav{display:flex;gap:4px;font:500 15px Figtree,system-ui,sans-serif}.ds-nav a{position:relative;padding:8px 12px;border-radius:8px;color:#101828;text-decoration:none}.ds-nav a:hover{background:#ffffff;color:#236342}.ds-nav a[aria-current]{color:#236342}.ds-nav a[aria-current]::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:9999px;background:#236342}.ds-nav a:focus-visible{outline:2px solid #236342;outline-offset:2px}"
     }
   ],
   "narrative": {
@@ -209,13 +199,13 @@
         "section": "colors"
       },
       {
-        "name": "La Regla del Blanco Prohibido",
-        "body": "Nunca texto blanco sobre verde-cta (2.41:1) ni sobre verde-nav (3.69:1). Sobre verde-cta va verde-900.",
+        "name": "La Regla del Texto Blanco",
+        "body": "Sobre verde-cta va texto blanco (4.62:1), nunca verde-900 (3.25:1). Paleta de la app (Q-52).",
         "section": "colors"
       },
       {
         "name": "La Regla del Corte",
-        "body": "Dos secciones seguidas nunca comparten fondo; se alterna blanco, verde claro y verde-900. Diferencia abierta (09/10/2026): `Docs/design-system.md` pide verde-900 en una o dos secciones por página y la home hoy tiene cuatro (hero, historia, sin señal, cierre). Se resuelve en la crítica (u36).",
+        "body": "Dos secciones blancas seguidas se separan con un borde de 1 px borde-verde; verde-900 en una o dos secciones por página. La última sección antes del footer (verde-950) nunca es oscura (u38).",
         "section": "colors"
       },
       {
@@ -236,7 +226,7 @@
     ],
     "dos": [
       "Do usar verde-cta solo para la acción principal y para una cifra por bloque sobre verde-900.",
-      "Do alternar el fondo de cada sección (blanco, verde-025 o verde-010, verde-900).",
+      "Do separar dos secciones blancas seguidas con un borde de 1 px borde-verde.",
       "Do mantener objetivos táctiles de 44 px o más.",
       "Do declarar ancho y alto de cada foto, con `alt` que describa lo que se ve.",
       "Do calcular el contraste de todo par de colores nuevo antes de usarlo (registro en `Docs/design-system.md`)."

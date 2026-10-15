@@ -14,7 +14,7 @@ const socials: { href: string; label: string; icon: IconName }[] = [
 
 const whatsapp = whatsappUrl();
 const year = new Date().getFullYear();
-const linkClass = 'inline-flex min-h-11 items-center text-white/85 transition-colors hover:text-verde-cta';
+const linkClass = 'inline-flex min-h-11 items-center text-white/85 transition-colors hover:text-white hover:underline';
 ---
 
 <footer class="sobre-oscuro bg-verde-950 text-white/85">
@@ -33,7 +33,7 @@ const linkClass = 'inline-flex min-h-11 items-center text-white/85 transition-co
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex size-11 items-center justify-center rounded-md text-white/85 transition-colors hover:bg-white/10 hover:text-verde-cta"
+                class="inline-flex size-11 items-center justify-center rounded-md text-white/85 transition-colors hover:bg-white/10 hover:text-white hover:underline"
               >
                 <Icon name={social.icon} size={22} />
                 <span class="sr-only">{social.label} de Tambo360 (se abre en otra pestaña)</span>
@@ -50,7 +50,7 @@ const linkClass = 'inline-flex min-h-11 items-center text-white/85 transition-co
         {nav.map((item) => <li><a href={item.href} class={linkClass}>{item.label}</a></li>)}
         <li>
           <LaunchSwitch as="span">
-            <a slot="before" href="/#sumate" class={linkClass}>Sumarme al piloto</a>
+            <a slot="before" href="/#sumate" class={linkClass}>Sumarme al piloto gratis</a>
             <a slot="after" href={site.registerUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
               Registrarme<span class="sr-only"> (se abre en otra pestaña)</span>
             </a>
