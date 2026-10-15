@@ -3,6 +3,10 @@ update-when: cambia un color de marca, la tipografía, un rol o una convención 
 ---
 # Sistema de diseño — landing Tambo360
 
+> Desde el 09/10/2026 la referencia visual principal es `DESIGN.md` (raíz): valores, roles de color, tipografía,
+> formas, componentes y reglas. Este documento se queda con los pares de contraste calculados y la
+> accesibilidad; si algo de acá choca con `DESIGN.md`, se corrige acá.
+
 Los valores viven en `src/styles/global.css` (`@theme`), tomados de
 `assets/tambo360-design-system.json`. Este documento dice **para qué** se usa cada cosa y
 **hasta dónde**. No se copian valores acá, salvo los pares de contraste que justifican una
@@ -12,7 +16,7 @@ decisión.
 - **Referencia del contenido:** Mercado Pago (Q-27). Primero lo que el productor hace y obtiene; la tecnología no se nombra.
 - **Anclada en el tambo:** fotos reales de vacas y campo a sangre, verdes de pasto, fondo oscuro verde-900 para los momentos que tienen que pegar (la historia de los 40 litros). Nada de fondos de "startup": ni degradados violetas, ni glassmorphism, ni ilustraciones 3D.
 - **La audacia se gasta en un solo lugar:** la franja oscura de la historia, con la cifra "40 litros" grande en verde-cta. El resto es sobrio y respira.
-- **Vida sin decoración gratuita:** la vida la ponen las fotos, los cortes de color entre secciones (blanco → verde-025 → verde-900) y textos en primera persona del tambero. Decoración descartada antes de presentar: la etiqueta en mayúsculas sobre cada titular (queda solo en el hero y en la franja oscura).
+- **Vida sin decoración gratuita:** la vida la ponen las fotos, los cortes de color entre secciones (blanco con bordes de 1 px → verde-900) y textos en primera persona del tambero. Decoración descartada antes de presentar: la etiqueta en mayúsculas sobre cada titular (queda solo en el hero y en la franja oscura).
 - **Tipografía:** Figtree (variable, autoalojada, solo subconjunto latino). Redondeada y muy legible en pantallas chicas al sol. Decisión del agente: el design system declara fuentes del sistema y pide reemplazarlas por la real, que está en Figma y no es accesible desde acá. Si la de Figma es otra, se cambia en un solo lugar.
 - **Íconos:** línea de trazo uniforme, 24 px, estilo Lucide, en SVG inline (sin librería en el cliente).
 - **Sin sombras:** las tarjetas se separan por borde de 1 px y por su fondo (design system, "elevation").
@@ -20,15 +24,15 @@ decisión.
 ## Roles de color
 | Rol | Cuándo se usa | Su límite |
 |---|---|---|
-| Acción principal | Anotarse al piloto. Fondo verde-cta con texto verde-900 (6.23:1) | Una sola acción principal por página; puede repetirse en el header y al final |
-| Acción secundaria | Ver demo, escribir por WhatsApp. Fondo verde-050 con texto verde-enlace (4.62:1) | Nunca más llamativa que la principal |
-| Texto de enlace | Enlaces sobre fondo claro: verde-enlace (5.11:1 sobre blanco, 4.97:1 sobre verde-025) | No usar verde-cta ni verde-nav para texto sobre claro |
-| Acento sobre oscuro | Cifras y palabras clave sobre verde-900: verde-cta (6.23:1) | Una por bloque |
+| Acción principal | Anotarse al piloto. Fondo verde-cta (#29845A, el de la app) con texto blanco (4.62:1) | Una sola acción principal por página; puede repetirse en el header y al final |
+| Acción secundaria | Ver demo, escribir por WhatsApp. Fondo verde-050 con texto verde-enlace (6.36:1) | Nunca más llamativa que la principal |
+| Texto de enlace | Enlaces sobre fondo claro: verde-enlace (7.16:1 sobre blanco, 6.36:1 sobre verde-050) | No usar verde-cta ni verde-nav para texto sobre claro |
+| Acento sobre oscuro | Cifras y palabras clave grandes sobre verde-900: verde-cta (3.25:1, solo texto ≥ 24 px o íconos) | Una por bloque; texto chico sobre oscuro va en blanco |
 | Superficie de corte | verde-900 con texto blanco (15:1) | Una o dos secciones por página |
-| Superficie suave | verde-025 / verde-010 para alternar secciones | No apilar dos secciones del mismo fondo |
+| Superficie clara | blanco, como en la app; dos secciones blancas seguidas se separan con borde-verde | Sin fondos verdes de sección |
 | Texto | tinta para titulares, texto (#475569) para párrafos | texto-suave y texto-tenue no se usan: no cumplen contraste |
 
-Corrección pedida por el usuario (Q-28): los colores de marca no cambian. Lo que cambia es con qué se combinan: blanco sobre verde-cta (2.41:1) y blanco sobre verde-nav (3.69:1) quedan prohibidos. Sobre verde-cta va texto verde-900.
+Paleta de la app (Q-52, 15/10/2026; reemplaza Q-28): los verdes son los de `tambo360-frontend` y el detalle token por token está en `DESIGN.md` § Origen. Sobre verde-cta va texto blanco (4.62:1), nunca verde-900 (3.25:1).
 
 ## Convenciones
 - **Marca:** logo oficial completo (isotipo de la vaca + "Tambo360") de `assets/logos/tambo-logo-360.png`: negro sobre fondos claros, blanco (`logo-tambo360-blanco.png`, mismo dibujo recoloreado) sobre fondos oscuros. Imagen con texto alternativo "Tambo360" (Q-44). No usar verde-cta para texto que no sea la marca.

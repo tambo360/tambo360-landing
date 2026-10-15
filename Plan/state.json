@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "updated": "2026-10-09T15:00:00Z",
-  "goal": "Desde el 26/10 (hora AR) la landing deja el piloto y lleva a registrarse en https://tambo360.vercel.app/registrarse",
-  "phase": "build",
+  "updated": "2026-10-15T16:40:00Z",
+  "goal": "Alinear la paleta de la landing con la app (tambo360-frontend): verde principal #29845A (decisión del usuario 2026-10-15, revierte Q-28)",
+  "phase": "ux",
   "approved": true,
   "units": [
     {
@@ -140,8 +140,8 @@
     {
       "id": 22,
       "do": "Verificación: build, check, tests, HTML de head/OG y capturas de /equipo y home",
-      "status": "todo",
-      "detail": "propuesto"
+      "status": "done",
+      "detail": "testing filas 54-56 passed: check/tests/build, head+OG+JSON-LD de / y /equipo, capturas 390/1366 y post-lanzamiento"
     },
     {
       "id": 24,
@@ -202,13 +202,159 @@
       "do": "Hero: sacar viñeta '3 meses sin pagar'/'30 días gratis' siempre; íconos credit-card-off y brand-whatsapp en las viñetas",
       "status": "done",
       "detail": "Hero.astro sin viñeta de meses/días; icons/credit-card-off.svg (Tabler 3.34.1); Q-47, pages.md fila 1, testing fila 45 passed"
+    },
+    {
+      "id": 34,
+      "do": "PRODUCT.md (impeccable init) desde analysis/spec, en español",
+      "status": "done",
+      "detail": "usuario confirmó usuario/problema/posicionamiento; éxito post-lanzamiento sin definir; live mode no configurado (ofrecido)"
+    },
+    {
+      "id": 35,
+      "do": "/impeccable document: DESIGN.md del sistema visual actual, conciliado con Docs/design-system.md",
+      "status": "done",
+      "detail": "DESIGN.md (norte 'Del cuaderno al bolsillo', componentes firmes y francos) + .impeccable/design.json; Docs/design-system.md apunta a DESIGN.md; diferencia: 4 secciones verde-900 en la home vs regla 1-2"
+    },
+    {
+      "id": 36,
+      "do": "/impeccable critique de la home (y /preguntas-frecuentes): puntaje y lista priorizada P0-P3",
+      "status": "done",
+      "detail": "26/36 (72%, n/a H7); P1 Offline.astro a medio terminar, P1 captura app ilegible (683px, 'Dashboard'); P2 exceso verde-900+cierre/footer, P2 índice FAQ duplicado; P3 5 nombres de la acción; .impeccable/critique/; single-context (NZT sin subagentes)"
+    },
+    {
+      "id": 37,
+      "do": "/impeccable layout: Offline.astro como 2º momento fuerte (sección con h2, 3 ítems con texto, foto, fondo claro); 'Organizá'; título nuevo a aprobar",
+      "status": "done",
+      "detail": "Offline.astro #sin-senal: foto potrero full-bleed + verde-010 + borde inf; Q-48; pages.md fila 6, DESIGN.md, testing fila 46 passed"
+    },
+    {
+      "id": 38,
+      "do": "/impeccable layout: bajar verde-900 a 3 bloques y separar el cierre del footer",
+      "status": "done",
+      "detail": "ClosingCta tone soft (verde-025, titular tinta) en home/equipo/FAQ; home 2 verde-900; DESIGN.md+design.json+pages.md; testing fila 49"
+    },
+    {
+      "id": 39,
+      "do": "/impeccable distill: índice de /preguntas-frecuentes (sacar o agrupar en 3-4 temas)",
+      "status": "done",
+      "detail": "índice sacado (no agrupado): las 13 preguntas cerradas son el índice; #hash ok; pages.md (+fila 9 blanco), DESIGN.md; testing fila 50"
+    },
+    {
+      "id": 40,
+      "do": "/impeccable clarify: nombres de la acción pre-lanzamiento de 5 a 2",
+      "status": "done",
+      "detail": "\"Anotarme\" (header) + \"Sumarme al piloto gratis\" (hero, form, cierre, footer); h3 del form \"Tus datos\"; pages.md; testing fila 51"
+    },
+    {
+      "id": 41,
+      "do": "/impeccable polish: figura de 'Cómo funciona' con captura nueva de la app (>=1400px, sin 'Dashboard')",
+      "status": "todo",
+      "detail": "bloqueada: la captura la provee el equipo"
+    },
+    {
+      "id": 42,
+      "do": "/impeccable polish final + re-critique (base 26/36)",
+      "status": "todo",
+      "detail": "propuesto"
+    },
+    {
+      "id": 43,
+      "do": "WhatsApp: número de soporte +54 11 6831-8568 en site.ts (Q-49)",
+      "status": "done",
+      "detail": "whatsappNumber 5491168318568 (formato 549, sin verificar en fuente oficial); botón en 6 páginas del build; build+18 tests ok; falta probar el link en un celular"
+    },
+    {
+      "id": 44,
+      "do": "/impeccable critique del hero (pedido del usuario)",
+      "status": "done",
+      "detail": "17/24 (71%, n/a 5,7,9,10); P1 flotante WhatsApp tapa viñeta en 390; P2 foto stock/tablet, P2 nota del piloto ausente (pages.md fila 1 desactualizada); esperando prioridades"
+    },
+    {
+      "id": 45,
+      "do": "Hero: sacar la viñeta 'Te ayudamos por WhatsApp' (la tapa el flotante en celular) (Q-50)",
+      "status": "done",
+      "detail": "Hero.astro sin la viñeta; pages.md fila 1, Q-50, testing fila 47 passed; hallazgo: en 320x640 el flotante tapa el botón principal"
+    },
+    {
+      "id": 46,
+      "do": "Hero pre-lanzamiento: nota de qué es el piloto (fecha/cupo) + pages.md fila 1 + sacar Badge sin uso",
+      "status": "todo",
+      "detail": "elegido tras u44; contenido de la nota a definir con el usuario"
+    },
+    {
+      "id": 47,
+      "do": "Flotante de WhatsApp en celular: solo ícono, 48 px, pegado a la esquina (opción b del usuario)",
+      "status": "done",
+      "detail": "WhatsAppButton.astro 48px right/bottom-2 <640px; testing fila 48; en 320/360x640 sigue tapando 40px del botón principal (aceptado, opción b)"
+    },
+    {
+      "id": 48,
+      "do": "/impeccable critique de /equipo: puntaje y lista P0-P3",
+      "status": "done",
+      "detail": "16/24 (67%, n/a 5,7,9,10); P2 no prueba el trabajo de campo ni roles, P2 fotos dispares/baja res (3 de 200px), P2 dos márgenes; P3 alt repetido; detector 390 no corrió (preview se cae)"
+    },
+    {
+      "id": 49,
+      "do": "/equipo: bloque que prueba el trabajo de campo con material existente (Q-13), sin roles (Q-51)",
+      "status": "doing",
+      "detail": "bloque \"Lo que escuchamos en los tambos\" en equipo.astro (local, sin publicar); capturas equipo-campo-*; FALTA aprobación del texto, luego pages.md+testing"
+    },
+    {
+      "id": 50,
+      "do": "/equipo: fotos del equipo en blanco y negro (Q-51) + pedir fotos >=400px al equipo",
+      "status": "done",
+      "detail": "grayscale CSS en equipo.astro (reversible); pages.md; testing fila 53; FALTA que el equipo mande fotos >=400px de Cintia, Facundo, N. Mansilla, Juan Meza"
+    },
+    {
+      "id": 51,
+      "do": "/equipo: intro y grilla en el mismo contenedor + alt vacío en las fotos",
+      "status": "done",
+      "detail": "equipo.astro: intro en Container ancho (h1 max-w-3xl) alineada con la grilla; alt=\"\" en fotos; testing fila 52"
+    },
+    {
+      "id": 52,
+      "do": "Mapeo de tokens landing->app con contraste calculado, en DESIGN.md + Q-52 (revierte Q-28); solo documento",
+      "status": "done",
+      "detail": "DESIGN.md §Origen + Q-52; usuario: fondos blancos como la app y un solo verde (sin acento)"
+    },
+    {
+      "id": 53,
+      "do": "Aplicar el mapeo en src/styles/global.css, BaseLayout theme-color, .impeccable/design.json y Docs/design-system.md",
+      "status": "done",
+      "detail": "global.css verdes de la app (#29845a/#236342/#e8f5e9/#e0f5eb/#d4e6de), sin verde-025/010; secciones blancas con borde; botón texto blanco; docs+design.json; check/18 tests/build ok"
+    },
+    {
+      "id": 54,
+      "do": "Verificación: build/check/tests, contraste de cada par, capturas 390/1366 de home, FAQ y equipo; testing/landing.md",
+      "status": "done",
+      "detail": "testing filas 57-60 passed; evidence/2026-10-15/paleta-app-*; hallazgo: hueco blanco intro/grilla en /equipo"
+    },
+    {
+      "id": 55,
+      "do": "Cajas de ícono oscuras (Problems, equipo) a verde-050 + ícono verde-enlace (6.36:1 vs 3.25:1), pedido del usuario",
+      "status": "done",
+      "detail": "Problems.astro:22, equipo.astro:83, DESIGN.md; aceptado por el usuario 15/10"
     }
   ],
-  "waiting_on": "aceptación de u28-u33; build+deploy el 26/10 o después (metas/JSON-LD); pnpm db:migrate:remote (u27); privacidad/términos aún mencionan el piloto (fuera de Q-46)",
+  "waiting_on": "decisión: arreglar hueco de /equipo; u49 sigue esperando aprobación de texto",
   "notes": [
-    "Decisiones del usuario 2026-10-09 (Q-46): desde el 26/10 00:00 AR se saca TODO lo del piloto y se reemplaza por registro a /registrarse; antes queda igual; sin JS = versión piloto",
-    "Antes de publicar: pnpm db:migrate:remote (0002), database_id real en wrangler.jsonc, dominio en site-url.mjs, número en site.ts, revisión legal",
+    "Autonomía 2026-10-09: orden 38,39,40,51,50,22,49,42; para en u49. Plan u52-54 sin autonomía. Q-46: desde 26/10 sin piloto",
+    "Antes de publicar: pnpm db:migrate:remote (0002), database_id real en wrangler.jsonc, dominio en site-url.mjs, revisión legal",
     "Fotos vacas.webp, vacas_3, vacas_4 descartadas (ganado de carne); dominio provisorio tambo360.com.ar; matar el proceso de astro preview antes de build (bloquea dist en Windows)"
   ],
-  "autonomy": {}
+  "autonomy": {
+    "units": [
+      38,
+      39,
+      40,
+      51,
+      50,
+      22,
+      49,
+      42
+    ],
+    "keep_stops": [
+      49
+    ]
+  }
 }

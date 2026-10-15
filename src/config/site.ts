@@ -17,8 +17,8 @@ export const site = {
     launchDate: '2026-10-26T00:00:00-03:00',
     launchDateLabel: '26 de octubre',
     email: 't360.arg@gmail.com',
-    // Empty until the support number is confirmed: the floating button stays hidden meanwhile.
-    whatsappNumber: '',
+    // wa.me format: digits only, 54 + 9 (Argentine mobile) + area code without 0 + number without 15. Empty hides the floating button.
+    whatsappNumber: '5491168318568',
     whatsappMessage: 'Hola, quiero saber más sobre Tambo360 para mi tambo.',
     social: {
         instagram: 'https://www.instagram.com/tambo360.app/',
