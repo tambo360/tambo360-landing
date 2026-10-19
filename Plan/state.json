@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "updated": "2026-10-15T16:40:00Z",
-  "goal": "Alinear la paleta de la landing con la app (tambo360-frontend): verde principal #29845A (decisión del usuario 2026-10-15, revierte Q-28)",
-  "phase": "ux",
+  "updated": "2026-10-19T12:55:00Z",
+  "goal": "Hosting: pasar de Cloudflare (adapter+wrangler) a Vercel; el form queda sin base hasta elegir una (decisión del usuario 2026-10-19)",
+  "phase": "build",
   "approved": true,
   "units": [
     {
@@ -334,27 +334,31 @@
       "do": "Cajas de ícono oscuras (Problems, equipo) a verde-050 + ícono verde-enlace (6.36:1 vs 3.25:1), pedido del usuario",
       "status": "done",
       "detail": "Problems.astro:22, equipo.astro:83, DESIGN.md; aceptado por el usuario 15/10"
+    },
+    {
+      "id": 56,
+      "do": "Adapter @astrojs/vercel 11.0.15 en vez de cloudflare; sacar wrangler, wrangler.jsonc, worker-configuration.d.ts y scripts db/cf",
+      "status": "done",
+      "detail": "check 0 errores, 18 tests ok; build local falla en Windows (EPERM symlink del adapter, sin Developer Mode); 11.0.16 rechazada por minimumReleaseAge"
+    },
+    {
+      "id": 57,
+      "do": "Docs al día: stack doc (hosting/persistencia/deps), QT nueva en architecture-decisions.md, README sin pasos de D1",
+      "status": "done",
+      "detail": "stack doc (hosting, persistencia, paquetes, evidencia), QT-15 en architecture-decisions.md, README sin D1; analysis.md Q-31 queda como historial"
+    },
+    {
+      "id": 58,
+      "do": "Elegir base para el form en Vercel (Turso, D1 por HTTP, Neon) y conectarla",
+      "status": "todo",
+      "detail": "pendiente de decisión del usuario; hasta entonces el form no guarda"
     }
   ],
-  "waiting_on": "decisión: arreglar hueco de /equipo; u49 sigue esperando aprobación de texto",
+  "waiting_on": "u58: elegir base del form (Turso, D1 por HTTP, Neon); u49 sigue esperando aprobación de texto",
   "notes": [
     "Autonomía 2026-10-09: orden 38,39,40,51,50,22,49,42; para en u49. Plan u52-54 sin autonomía. Q-46: desde 26/10 sin piloto",
-    "Antes de publicar: pnpm db:migrate:remote (0002), database_id real en wrangler.jsonc, dominio en site-url.mjs, revisión legal",
+    "Antes de publicar en Vercel: base del form conectada (u58), dominio en site-url.mjs, revisión legal; primer deploy confirma el build (local Windows falla por symlinks)",
     "Fotos vacas.webp, vacas_3, vacas_4 descartadas (ganado de carne); dominio provisorio tambo360.com.ar; matar el proceso de astro preview antes de build (bloquea dist en Windows)"
   ],
-  "autonomy": {
-    "units": [
-      38,
-      39,
-      40,
-      51,
-      50,
-      22,
-      49,
-      42
-    ],
-    "keep_stops": [
-      49
-    ]
-  }
+  "autonomy": {}
 }

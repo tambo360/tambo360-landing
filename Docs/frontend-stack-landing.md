@@ -12,19 +12,19 @@ componente: tambo360-landing · área: frontend
 | Salida | estática, con el endpoint de inscripción a pedido (QT-04) | 2026-10 |
 | Estilos | Tailwind CSS 4.3.3, tokens en `@theme` de CSS | 2026-10 |
 | JS en el cliente | sin framework de UI; scripts mínimos de Astro solo donde hay interacción (menú móvil, sección activa del nav, formulario, acordeón nativo `<details>`) | 2026-10 |
-| Hosting | Cloudflare Workers + assets estáticos (QT-03) | 2026-10 |
-| Persistencia | Cloudflare D1 (QT-02) | 2026-10 |
+| Hosting | Vercel: assets estáticos + función para lo que se renderiza a pedido (QT-15) | 2026-10-19 |
+| Persistencia | ninguna por ahora: el endpoint valida y responde `error` sin guardar (QT-15) | 2026-10-19 |
 | Imágenes | `astro:assets` con optimización en build (QT-06) | 2026-10 |
 | Tipografía | Figtree variable, archivo latino autoalojado en `public/fonts` (OFL) | 2026-10 |
 | Iconos | Tabler Icons outline (MIT) descargados como SVG en `src/icons/`, renderizados inline en build con astro-icon 1.2.0 | 2026-10 |
-| Sesiones | desactivadas (`session: false`): sin esto el adaptador exige un KV | 2026-10 |
+| Sesiones | desactivadas (`session: false`): nada usa sesiones en el servidor | 2026-10 |
 | Tests | Vitest 5.0.3, entorno node (QT-12) | 2026-10 |
 
 ## Opt-ins
-- **Niveles de test:** unitario: sí, para la lógica de `src/lib` (validación, normalización del teléfono, guardado con una D1 simulada) · integración contra el motor real: no — el endpoint contra D1 local se verifica en la fase de verificación con `astro preview` · contenedores efímeros: no · API en proceso: no.
+- **Niveles de test:** unitario: sí, para la lógica de `src/lib` (validación, normalización del teléfono, guardado con una base simulada) · integración contra el motor real: no hay motor mientras QT-15 siga abierta · contenedores efímeros: no · API en proceso: no.
 - **Test primero:** no.
 - **Tests end-to-end automatizados:** no. La verificación es build + Lighthouse + revisión manual.
-- **Datos de test:** D1 local de wrangler (`--local`), cargado por el agente cuando haga falta.
+- **Datos de test:** ninguno mientras no haya base (QT-15).
 
 ## Convenciones
 - `src/components/ui/`: piezas reutilizables sin contenido de negocio (Button, Input, Select, Checkbox, Container, Section, Badge, Icon, Modal).
@@ -34,17 +34,16 @@ componente: tambo360-landing · área: frontend
 - `src/pages/`: una ruta por archivo; `src/pages/api/` solo endpoints.
 - `src/content/` y `src/data/`: textos y datos (FAQ, módulos, equipo) separados de la maquetación.
 - `src/config/site.ts`: dominio, WhatsApp, email, redes, URL de la demo. Nada de esto se repite en otro lugar.
-- `src/lib/`: lógica sin UI (validación de la inscripción, acceso a D1), con sus tests `*.test.ts` al lado.
+- `src/lib/`: lógica sin UI (validación de la inscripción, acceso a la base SQL — hoy sin uso, QT-15), con sus tests `*.test.ts` al lado.
 - Imágenes de contenido en `src/assets/` (las optimiza el build); en `public/` solo favicon, OG y robots.
 
 ## Paquetes
 | Paquete | Versión | Por qué está |
 |---|---|---|
 | astro | 7.3.5 | Framework |
-| @astrojs/cloudflare | 14.3.3 | Adaptador para Workers y acceso a D1 |
+| @astrojs/vercel | 11.0.15 | Adaptador para Vercel: arma `.vercel/output` con los estáticos y una función para el endpoint y `/gracias`. 11.0.16 no se usa: salió el 2026-10-19 y la frena `minimumReleaseAge` de pnpm |
 | @astrojs/sitemap | 3.7.4 | sitemap.xml |
 | tailwindcss / @tailwindcss/vite | 4.3.3 | Estilos |
-| wrangler | 4.147.0 | D1 local, migraciones y deploy (peer del adaptador: ^4.125.0) |
 | sharp | 0.35.5 | Optimización de imágenes en build |
 | astro-icon | 1.2.0 | Lee `src/icons/*.svg` por nombre y los incrusta en el HTML en build (sin JS en el cliente). No declara compatibilidad con Astro 7; verificado con build. Sus tipos de nombres se generan después de `astro check`, por eso `IconName` es `string` |
 | vitest | 5.0.3 | Tests unitarios (`pnpm test`), archivos `*.test.ts` junto al código |
@@ -53,5 +52,6 @@ componente: tambo360-landing · área: frontend
 ## Planeado
 
 ## Evidencia
-Versiones leídas de `package.json` y `pnpm-lock.yaml` el 2026-10-05. API de bindings e image service: docs.astro.build/en/guides/integrations-guide/cloudflare/ y developers.cloudflare.com/d1/get-started/, leídos el 2026-10-05.
+Versiones leídas de `package.json` y `pnpm-lock.yaml` el 2026-10-05. @astrojs/vercel: versión, peer `astro ^7.0.0` y licencia MIT leídos de npm (`npm view`) el 2026-10-19. Imágenes: el log de `astro build` del 2026-10-19 muestra que sharp las sigue transformando en el build.
+Build local en Windows: el adaptador falla al copiar dependencias de la función (`EPERM` al crear symlinks; Windows los permite solo con Developer Mode o como administrador). En Linux, que es donde construye Vercel, no aplica; sin verificar hasta el primer deploy.
 Indeterminado: dominio (QT-11).

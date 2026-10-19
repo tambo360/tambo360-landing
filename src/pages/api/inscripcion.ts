@@ -1,7 +1,5 @@
 import type { APIRoute } from 'astro';
-import { env } from 'cloudflare:workers';
 import { type SubmitStatus, validateWaitlist } from '../../lib/waitlist';
-import { saveWaitlistEntry } from '../../lib/waitlist-repository';
 
 export const prerender = false;
 
@@ -25,13 +23,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   if (result.isBot) return respond('ok', 200);
   if (!result.ok) return respond('invalido', 422, result.errors);
 
-  try {
-    const saved = await saveWaitlistEntry(env.DB, result.entry);
-    return saved === 'duplicate' ? respond('repetido', 200) : respond('ok', 201);
-  } catch (error) {
-    console.error('waitlist: could not save entry', error);
-    return respond('error', 500);
-  }
+  // No store is configured on this host yet; until one is chosen,
+  // answering ok would tell the person they are on the list when nothing was saved.
+  console.error('waitlist: no storage configured, entry not saved');
+  return respond('error', 503);
 };
 
 export const ALL: APIRoute = () => new Response(null, { status: 405, headers: { Allow: 'POST' } });

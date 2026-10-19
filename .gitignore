@@ -3,5 +3,4 @@ dist/
 .wrangler/
 node_modules/
 .env
-.dev.vars
-worker-configuration.d.ts
+.vercel/
