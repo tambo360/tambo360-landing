@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "updated": "2026-10-19T12:55:00Z",
-  "goal": "Hosting: pasar de Cloudflare (adapter+wrangler) a Vercel; el form queda sin base hasta elegir una (decisión del usuario 2026-10-19)",
-  "phase": "build",
-  "approved": true,
+  "updated": "2026-10-20T21:00:00Z",
+  "goal": "Form a HubSpot (Forms API v3 desde el endpoint) + código de seguimiento; reemplaza la base de u58 (propuesto)",
+  "phase": "architecture",
+  "approved": false,
   "units": [
     {
       "id": 1,
@@ -351,10 +351,52 @@
       "id": 58,
       "do": "Elegir base para el form en Vercel (Turso, D1 por HTTP, Neon) y conectarla",
       "status": "todo",
-      "detail": "pendiente de decisión del usuario; hasta entonces el form no guarda"
+      "detail": "propuesta: reemplazada por HubSpot (u59-u63) si se aprueba"
+    },
+    {
+      "id": 59,
+      "do": "Decisión QT-16: HubSpot como destino del form (mapeo de campos, contacto sin email, región, consentimiento) en architecture-decisions.md",
+      "status": "todo",
+      "detail": "propuesto; portal 52179962; falta formGuid del form creado en HubSpot"
+    },
+    {
+      "id": 60,
+      "do": "Endpoint /api/inscripcion envía a HubSpot Forms API v3 (env HUBSPOT_PORTAL_ID/FORM_GUID, hutk, pageUri) + tests con fetch simulado",
+      "status": "todo",
+      "detail": "propuesto"
+    },
+    {
+      "id": 61,
+      "do": "Código de seguimiento de HubSpot (js.hs-scripts.com/52179962.js) en BaseLayout antes de </body>",
+      "status": "todo",
+      "detail": "propuesto; ofrecido, se puede dropear"
+    },
+    {
+      "id": 62,
+      "do": "Docs: privacidad (HubSpot como encargado, cookies), spec RN del form, stack doc, README (variables en Vercel)",
+      "status": "todo",
+      "detail": "propuesto"
+    },
+    {
+      "id": 63,
+      "do": "Verificación: check/tests/build, envío real a HubSpot en preview de Vercel, Lighthouse con el script; testing/landing.md",
+      "status": "todo",
+      "detail": "propuesto"
+    },
+    {
+      "id": 64,
+      "do": "Verde principal verde-cta -> #80b718 (pedido del usuario, revierte Q-52 solo en ese token); texto verde-900 encima, hover verde-check #99c545",
+      "status": "done",
+      "detail": "global.css cta #80b718/check #99c545; texto verde-900 en Button, HowItWorks, Pilot; borde legal a verde-enlace; Q-53, DESIGN.md, design.json, design-system.md; check+18 tests ok; capturas evidence/2026-10-20; build local no corrido (symlink Windows)"
+    },
+    {
+      "id": 65,
+      "do": "Botón secundario como tambo360-prueba.netlify.app: fondo #e9faca, texto #4d7a10, hover #cfedba (solo el botón)",
+      "status": "done",
+      "detail": "tokens lima-* en global.css, Button secondary; hover texto #436b0d (4.92:1, el viejo daba 4.01); Q-54, DESIGN.md, design.json, design-system.md; check+18 tests ok; reposo/hover medidos en Edge"
     }
   ],
-  "waiting_on": "u58: elegir base del form (Turso, D1 por HTTP, Neon); u49 sigue esperando aprobación de texto",
+  "waiting_on": "plan HubSpot (u59-u63) NO aprobado; u49 sigue esperando aprobación de texto",
   "notes": [
     "Autonomía 2026-10-09: orden 38,39,40,51,50,22,49,42; para en u49. Plan u52-54 sin autonomía. Q-46: desde 26/10 sin piloto",
     "Antes de publicar en Vercel: base del form conectada (u58), dominio en site-url.mjs, revisión legal; primer deploy confirma el build (local Windows falla por symlinks)",

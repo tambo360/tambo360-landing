@@ -62,6 +62,8 @@ conversación con Joaquín el 05/10/2026.
 - **Q-50** (09/10/2026) Pedido de cambio (crítica del hero): se saca la viñeta "Te ayudamos por WhatsApp" del hero; el botón flotante de WhatsApp ya la cubre y en celular la tapaba. Modifica Q-47.
 - **Q-51** (09/10/2026) Decisiones del usuario tras la crítica de `/equipo`: (a) se agrega un bloque que pruebe el trabajo de campo, armado solo con material existente (historia de Ramón y Manuel, Q-13; problemas de la home), sin inventar lugares ni citas; (b) sin roles: se muestran solo los nombres; (c) mientras no haya fotos nuevas, todas las fotos del equipo van en blanco y negro.
 - **Q-52** (15/10/2026) El usuario pide que la paleta de la landing sea la de la app (`tambo360-frontend`): el verde principal pasa a `#29845A` (`--color-green-main`). Los valores se copian y se documenta su origen; no se importan del otro repo. Revierte Q-28 en cuanto a los colores de marca. El mapeo token por token está en `DESIGN.md` § Origen.
+- **Q-53** (20/10/2026) El usuario pide que el verde principal sea `#80B718`. verde-cta vuelve a ese valor y verde-check (hover) a `#99C545`; el texto sobre ese verde pasa a verde-900 (casi negro), porque el blanco da 2.41:1. Modifica Q-52 solo en estos dos tokens.
+- **Q-54** (20/10/2026) El usuario pide los botones como en la landing anterior (tambo360-prueba.netlify.app). El principal ya coincidía (Q-53). El secundario vuelve a fondo `#E9FACA`, texto `#4D7A10` y hover `#CFEDBA`, solo en el botón; el resto de la página no cambia. En hover el texto pasa a `#436B0D` porque `#4D7A10` sobre `#CFEDBA` da 4.01:1.
 
 ## Notas técnicas (las resuelve arquitectura)
 

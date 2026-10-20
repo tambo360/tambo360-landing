@@ -2,8 +2,8 @@
 name: Tambo360 · landing
 description: Del cuaderno al bolsillo. Ordeñe, rodeo y costos del tambo en el celular.
 colors:
-  verde-cta: "#29845a"
-  verde-check: "#236342"
+  verde-cta: "#80b718"
+  verde-check: "#99c545"
   verde-nav: "#236342"
   verde-enlace: "#236342"
   verde-100: "#e0f5eb"
@@ -20,6 +20,10 @@ colors:
   texto: "#475569"
   error: "#b42318"
   whatsapp: "#25d366"
+  lima-050: "#e9faca"
+  lima-100: "#cfedba"
+  lima-texto: "#4d7a10"
+  lima-texto-hover: "#436b0d"
 typography:
   display:
     fontFamily: "Figtree, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif"
@@ -83,8 +87,8 @@ components:
     padding: "0 24px"
     height: "52px"
   button-secondary:
-    backgroundColor: "{colors.verde-050}"
-    textColor: "{colors.verde-enlace}"
+    backgroundColor: "{colors.lima-050}"
+    textColor: "{colors.lima-texto}"
     rounded: "{rounded.md}"
     padding: "0 20px"
     height: "44px"
@@ -175,6 +179,9 @@ Consecuencias (aplicadas en u53):
   footer pasan a blanco.
 - El botón principal sobre verde-900 (hero) se distingue del fondo con 3.25:1, por encima del mínimo de 3:1
   para controles.
+- **Q-53 (20/10/2026) revierte el verde principal:** verde-cta vuelve a `#80b718` y verde-check a `#99c545` (hover);
+  el resto del mapeo sigue. Blanco sobre `#80b718` da 2.41:1, así que encima va verde-900 (6.23:1; hover 7.46:1).
+  Sobre verde-900, verde-cta da 6.23:1 y sobre verde-950 7.25:1: ya pasa también en texto chico.
 - No se tocan: tinta, texto, error, WhatsApp (verde-900 encima, 7.58:1), grises, el logo PNG ni la imagen OG.
 - Decisión del usuario (15/10/2026): fondos claros en blanco como en la app y un solo verde, sin acento aparte.
 
@@ -204,7 +211,7 @@ Consecuencias (aplicadas en u53):
 **La Regla del Verde Único.** verde-cta es la acción principal: aparece en un solo botón por bloque visual y,
 sobre oscuro, en una sola cifra o palabra por bloque. Si dos cosas son verde-cta, una sobra.
 
-**La Regla del Texto Blanco.** Sobre verde-cta va texto blanco (4.62:1), nunca verde-900 (3.25:1).
+**La Regla del Texto Oscuro.** Sobre verde-cta y verde-check va texto verde-900 (6.23:1 y 7.46:1), nunca blanco (2.41:1). Q-53.
 
 **La Regla del Corte.** Dos secciones blancas seguidas se separan con un borde de 1 px borde-verde; verde-900 en
 una o dos secciones por página. La última sección antes del footer (verde-950) nunca es oscura (u38).
@@ -268,7 +275,7 @@ Firmes y francos: grandes, fáciles de tocar, sin sombras ni efectos.
 - **Primary:** verde-cta con texto verde-900, 600 de peso; flecha a la derecha cuando lleva a otra parte.
 - **Hover / Focus:** el fondo pasa a verde-check; foco con anillo Verde Lote (verde-enlace) de 2 px a 2 px de distancia
   (verde-cta sobre oscuro).
-- **Secondary:** verde-050 con texto verde-enlace ("Ver demo"); hover verde-100. Nunca más llamativo que el
+- **Secondary:** lima-050 con texto lima-texto ("Ver demo", 4.62:1); hover lima-100 con texto lima-texto-hover (4.92:1). Colores de la landing anterior, solo en este botón (Q-54). Nunca más llamativo que el
   principal.
 - **Ghost sobre oscuro:** borde blanco al 40 % y texto blanco, solo sobre verde-900.
 - Si abre otra pestaña, lo anuncia al lector de pantalla.
@@ -283,7 +290,7 @@ Firmes y francos: grandes, fáciles de tocar, sin sombras ni efectos.
 - **Shadow Strategy:** ninguna (ver Elevation & Depth).
 - **Border:** 1 px borde-verde.
 - **Internal Padding:** 20 px; el formulario, 24 a 32 px.
-- **Ícono en caja:** 44 a 48 px, esquinas de 8 px, verde-050 con ícono verde-enlace (6.36:1); o verde-cta con ícono blanco (4.62:1).
+- **Ícono en caja:** 44 a 48 px, esquinas de 8 px, verde-050 con ícono verde-enlace (6.36:1); o verde-cta con ícono verde-900 (6.23:1).
 
 ### Inputs / Fields
 - **Style:** fondo blanco, borde de 1 px borde-neutro, esquinas de 8 px, 48 px de alto, texto de 16 px.
@@ -312,7 +319,7 @@ abren solas cuando se llega con `#id`.
   `Docs/design-system.md`).
 
 ### Don't:
-- **Don't** poner texto blanco sobre verde-cta ni sobre verde-nav.
+- **Don't** poner texto blanco sobre verde-cta ni sobre verde-check.
 - **Don't** usar sombras para separar tarjetas o secciones.
 - **Don't** usar degradados violetas, glassmorphism ni ilustraciones 3D.
 - **Don't** poner etiquetas en mayúsculas encima de los titulares (solo hero y franja oscura).

@@ -11,7 +11,8 @@
           "#121c12",
           "#1c2a1c",
           "#236342",
-          "#29845a",
+          "#80b718",
+          "#99c545",
           "#e0f5eb",
           "#e8f5e9"
         ]
@@ -132,7 +133,7 @@
       "refersTo": "button-primary-lg",
       "description": "La acción principal de la página.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Registrarme gratis <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l14 0\"/><path d=\"M13 18l6 -6\"/><path d=\"M13 6l6 6\"/></svg></a>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border-radius:8px;background:var(--color-verde-cta,#29845a);color:#ffffff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-primary:hover{background:var(--color-verde-check,#236342)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-verde-enlace,#236342);outline-offset:2px}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border-radius:8px;background:var(--color-verde-cta,#80b718);color:#1c2a1c;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-primary:hover{background:var(--color-verde-check,#99c545)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-verde-enlace,#236342);outline-offset:2px}"
     },
     {
       "name": "Botón secundario",
@@ -140,7 +141,7 @@
       "refersTo": "button-secondary",
       "description": "Ver demo y acciones de apoyo.",
       "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver demo</a>",
-      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:8px;background:var(--color-verde-050,#e8f5e9);color:var(--color-verde-enlace,#236342);font:600 15px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-secondary:hover{background:var(--color-verde-100,#e0f5eb)}.ds-btn-secondary:focus-visible{outline:2px solid var(--color-verde-enlace,#236342);outline-offset:2px}"
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:8px;background:var(--color-lima-050,#e9faca);color:var(--color-lima-texto,#4d7a10);font:600 15px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-secondary:hover{background:var(--color-lima-100,#cfedba);color:var(--color-lima-texto-hover,#436b0d)}.ds-btn-secondary:focus-visible{outline:2px solid var(--color-verde-enlace,#236342);outline-offset:2px}"
     },
     {
       "name": "Botón sobre oscuro",
@@ -148,7 +149,7 @@
       "refersTo": "button-ghost-dark",
       "description": "Acción secundaria sobre verde-900.",
       "html": "<div class=\"ds-dark\"><a class=\"ds-btn-ghost\" href=\"#\">Ver demo</a></div>",
-      "css": ".ds-dark{background:#1c2a1c;padding:24px}.ds-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:8px;border:1px solid rgb(255 255 255 / .4);color:#fff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-ghost:hover{background:rgb(255 255 255 / .1)}.ds-btn-ghost:focus-visible{outline:2px solid #29845a;outline-offset:2px}"
+      "css": ".ds-dark{background:#1c2a1c;padding:24px}.ds-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:8px;border:1px solid rgb(255 255 255 / .4);color:#fff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-ghost:hover{background:rgb(255 255 255 / .1)}.ds-btn-ghost:focus-visible{outline:2px solid #80b718;outline-offset:2px}"
     },
     {
       "name": "Campo",
@@ -164,7 +165,7 @@
       "refersTo": "card-suave",
       "description": "Problema o beneficio con ícono en caja.",
       "html": "<div class=\"ds-card\"><span class=\"ds-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l5 5l10 -10\"/></svg></span><div><h3>El cuaderno no alcanza</h3><p>Los litros se anotan tarde o se pierden.</p></div></div>",
-      "css": ".ds-card{display:flex;gap:16px;padding:20px;border:1px solid #d4e6de;border-radius:16px;background:#ffffff;font-family:Figtree,system-ui,sans-serif;color:#475569}.ds-card h3{margin:0;font-size:18px;font-weight:700;color:#101828}.ds-card p{margin:4px 0 0;line-height:1.625}.ds-icon{display:flex;flex:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:#1c2a1c;color:#29845a}"
+      "css": ".ds-card{display:flex;gap:16px;padding:20px;border:1px solid #d4e6de;border-radius:16px;background:#ffffff;font-family:Figtree,system-ui,sans-serif;color:#475569}.ds-card h3{margin:0;font-size:18px;font-weight:700;color:#101828}.ds-card p{margin:4px 0 0;line-height:1.625}.ds-icon{display:flex;flex:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:#1c2a1c;color:#80b718}"
     },
     {
       "name": "Insignia",
@@ -199,8 +200,8 @@
         "section": "colors"
       },
       {
-        "name": "La Regla del Texto Blanco",
-        "body": "Sobre verde-cta va texto blanco (4.62:1), nunca verde-900 (3.25:1). Paleta de la app (Q-52).",
+        "name": "La Regla del Texto Oscuro",
+        "body": "Sobre verde-cta y verde-check va texto verde-900 (6.23:1 y 7.46:1), nunca blanco (2.41:1). Q-53.",
         "section": "colors"
       },
       {
@@ -232,7 +233,7 @@
       "Do calcular el contraste de todo par de colores nuevo antes de usarlo (registro en `Docs/design-system.md`)."
     ],
     "donts": [
-      "Don't poner texto blanco sobre verde-cta ni sobre verde-nav.",
+      "Don't poner texto blanco sobre verde-cta ni sobre verde-check.",
       "Don't usar sombras para separar tarjetas o secciones.",
       "Don't usar degradados violetas, glassmorphism ni ilustraciones 3D.",
       "Don't poner etiquetas en mayúsculas encima de los titulares (solo hero y franja oscura).",

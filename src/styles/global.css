@@ -14,14 +14,19 @@
 @theme {
   --font-sans: 'Figtree', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
 
-  --color-verde-cta: #29845a;
+  --color-verde-cta: #80b718;
   --color-verde-nav: #236342;
   --color-verde-enlace: #236342;
-  --color-verde-check: #236342;
+  --color-verde-check: #99c545;
   --color-verde-100: #e0f5eb;
   --color-verde-050: #e8f5e9;
   --color-verde-900: #1c2a1c;
   --color-verde-950: #121c12;
+  --color-lima-050: #e9faca;
+  --color-lima-100: #cfedba;
+  --color-lima-texto: #4d7a10;
+  /* Más oscuro que lima-texto: sobre lima-100 da 4.92:1, lima-texto solo 4.01:1. */
+  --color-lima-texto-hover: #436b0d;
   --color-gris-025: #fafbfb;
   --color-gris-050: #f1f5f9;
   --color-gris-100: #e8eaed;
