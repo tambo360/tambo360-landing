@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -16,6 +16,12 @@ export default defineConfig({
     trailingSlash: 'never',
     build: { format: 'file' },
     adapter: vercel(),
+    // Read at request time on Vercel; optional so a build or preview without it still works and the form answers error.
+    env: {
+        schema: {
+            RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+        },
+    },
     integrations: [
         icon(),
         sitemap({

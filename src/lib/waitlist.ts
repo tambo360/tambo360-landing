@@ -110,4 +110,4 @@ export function validateWaitlist(form: FormData): ValidationResult {
   };
 }
 
-export type SubmitStatus = 'ok' | 'repetido' | 'invalido' | 'error';
+export type SubmitStatus = 'ok' | 'invalido' | 'error';

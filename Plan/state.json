@@ -1,406 +1,237 @@
 {
   "version": 1,
-  "updated": "2026-10-20T21:00:00Z",
-  "goal": "Form a HubSpot (Forms API v3 desde el endpoint) + código de seguimiento; reemplaza la base de u58 (propuesto)",
-  "phase": "architecture",
-  "approved": false,
-  "units": [
+  "updated": "2026-10-23T21:25:00Z",
+  "goal": "Cerrar pendientes de la landing y dejar SEO/sitemap verificados antes de publicar",
+  "phases": [
     {
-      "id": 1,
-      "do": "Spec de la landing: mensajes, secciones, reglas del form y preguntas abiertas (Docs/specs/landing.md)",
+      "name": "ux",
       "status": "done",
-      "detail": "Plan/specs/F-001-landing/spec.md + analysis.md; historias indexadas, no escritas (fuera del plan)"
+      "units": [
+        {
+          "id": 66,
+          "do": "Critique global + dirección visual nueva (superficies con color, carácter por sección, WhatsApp); DESIGN.md Q-55+",
+          "status": "done",
+          "detail": "Q-55 WhatsApp verde-900, Q-56 blanco/papel #F5F1E6, Q-57 libreta con medida; DESIGN.md § Dirección con mapa por sección y contrastes"
+        }
+      ]
     },
     {
-      "id": 2,
-      "do": "Stack doc del componente landing: Astro 7.3.5, Tailwind 4.3.3, Cloudflare D1 para el form, imágenes, hosting",
+      "name": "build",
       "status": "done",
-      "detail": "Docs/frontend-stack-landing.md + Docs/architecture-decisions.md (QT-01..12); QT-11 dominio TO-DEFINE, QT-12 tests propuesto"
+      "units": [
+        {
+          "id": 67,
+          "do": "Token papel en global.css + DESIGN.md/design.json + WhatsApp flotante verde-900 (Q-55)",
+          "status": "done",
+          "detail": "--color-papel #f5f1e6; WhatsAppButton bg-verde-900 + ícono text-whatsapp; DESIGN.md/design.json/design-system.md; check 0 err, 18 tests; captura ok"
+        },
+        {
+          "id": 68,
+          "do": "Problems + Story con la dirección nueva (sin molde tarjeta+ícono)",
+          "status": "done",
+          "detail": "Section tone paper; .renglones en global.css; Problems como hoja numerada sin cajas; Story sin cambios (mapa); ui-components.md; capturas 1366/390 ok (390 vía iframe: headless Edge tiene ancho mínimo)"
+        },
+        {
+          "id": 69,
+          "do": "HowItWorks + Modules con la dirección nueva (pasos sin círculos 1-2-3)",
+          "status": "done",
+          "detail": "HowItWorks: números grandes verde-enlace sobre línea, sin círculos lima ni íconos, sin border-t; Modules tone paper, borde-neutro, sin código comentado; captura 1366 ok"
+        },
+        {
+          "id": 70,
+          "do": "Offline + Pilot/form con la dirección nueva",
+          "status": "done",
+          "detail": "Offline: dl título/texto con divisores, sin íconos ni borde inferior; Pilot tone paper + hoja .renglones con tildes; captura 1366 ok, 390 en u72"
+        },
+        {
+          "id": 71,
+          "do": "FaqPreview, ClosingCta, footer, /equipo y /preguntas-frecuentes coherentes",
+          "status": "done",
+          "detail": "ClosingCta tone paper sin borde; intro de /equipo y /preguntas-frecuentes en papel; FAQ preview y footer sin cambios; DESIGN.md reglas Corte/Do, pages.md; check+tests ok"
+        }
+      ]
     },
     {
-      "id": 3,
-      "do": "Dirección visual y mapa de páginas: tokens accesibles, tipografía, secciones y uso de fotos",
+      "name": "verify",
       "status": "done",
-      "detail": "Docs/design-system.md + Plan/specs/F-001-landing/design/pages.md; fotos de carne descartadas; fuente Figtree (agente)"
+      "units": [
+        {
+          "id": 72,
+          "do": "build/check/tests, contraste de pares nuevos, capturas 390/1366; testing/landing.md",
+          "status": "done",
+          "detail": "testing filas 61-66: 4 passed, 61 blocked (build local Windows), 63 failed BUG-001 /equipo (bloque u49); evidence/2026-10-23"
+        }
+      ]
     },
     {
-      "id": 4,
-      "do": "Scaffold: proyecto Astro+Tailwind, tokens, layout base, componentes UI, SEO base, pipeline de imágenes",
+      "name": "ajustes",
       "status": "done",
-      "detail": "build y astro check verdes; UI en src/components/ui, layout+SEO+robots+sitemap+OG; Docs/ui-components.md"
+      "units": [
+        {
+          "id": 81,
+          "do": "Lanzamiento al 16/11/2026 (launchDate) y lead del piloto sin fecha; sacar launchDateLabel; spec/README/analysis",
+          "status": "done",
+          "detail": "launchDate 2026-11-16T00:00-03:00 (launchTime 1794798000000 en el build); lead piloto sin fecha; launchDateLabel borrado; Q-58; spec/PRODUCT/README/pages.md; check 0 err, 18 tests"
+        },
+        {
+          "id": 82,
+          "do": "Sacar \"Ver demo\" del nav (desktop y menú móvil) y, según QT-21, del hero; demoUrl fuera si queda sin uso",
+          "status": "done",
+          "detail": "Ver demo fuera de header (desktop+móvil) y hero; demoUrl y variante ghost-dark borrados; Q-59; spec/PRODUCT/DESIGN/design.json/design-system/pages.md; check 0 err, 18 tests, build sin iniciar-sesion; visual sin captura"
+        },
+        {
+          "id": 83,
+          "do": "Dominio: site-url.mjs a tambo360.vercel.app; registerUrl vacío y botones Registrarme ocultos sin URL (QT-23); spec/README/Q-60",
+          "status": "done",
+          "detail": "SITE_URL tambo360.vercel.app; registerUrl vacío oculta Registrarme en header/hero/cierre/footer (li del footer no queda vacío); builds pre y post lanzamiento ok; QT-11/Q-60/spec/PRODUCT/README"
+        }
+      ]
     },
     {
-      "id": 5,
-      "do": "Home: hero, problemas, cómo funciona, módulos, offline, piloto, equipo, CTA final",
+      "name": "seo",
       "status": "done",
-      "detail": "home sin sección del piloto (va en u6); revisada en 1366 y 390 px con Playwright+Edge, sin overflow; reveal por scroll quitado"
+      "units": [
+        {
+          "id": 73,
+          "do": "Verificar lo que emite el build: sitemap-index/sitemap-0 (URLs = canonical, sin /gracias ni /404), robots, meta y JSON-LD por página",
+          "status": "done",
+          "detail": "testing filas 67-73: todo passed; /gracias noindex solo en código (on-demand); obs: salida equipo/index.html pese a format file, description /terminos ~175, canonical en /404"
+        },
+        {
+          "id": 74,
+          "do": "Corregir lo que salió de u73: canonical fuera de páginas noindex, description /terminos (QT-24)",
+          "status": "done",
+          "detail": "SEO.astro sin canonical con noindex (/404 y /gracias); /terminos 140 caracteres (Q-61); ui-components.md; check 0 err, 18 tests, build ok"
+        },
+        {
+          "id": 84,
+          "do": "Meta de verificación de Google Search Console por PUBLIC_GOOGLE_SITE_VERIFICATION (QT-25)",
+          "status": "done",
+          "detail": "SEO.astro lee PUBLIC_GOOGLE_SITE_VERIFICATION; build sin var = sin meta, con var = meta en todas las páginas; QT-25 en architecture-decisions; README"
+        },
+        {
+          "id": 75,
+          "do": "Docs SEO al día: frontend-stack, README, testing/landing.md",
+          "status": "done",
+          "detail": "frontend-stack: config/robots/sitemap/env/medición Windows; README registerUrl antes del 16/11; testing: re-correr 67-71 en producción con dominio nuevo"
+        },
+        {
+          "id": 76,
+          "do": "BUG-001 + u49: bloque \"Lo que escuchamos en los tambos\" en /equipo con fondo papel y sin ícono en caja; texto aprobado (QT-19); pages.md+testing",
+          "status": "done",
+          "detail": "campo en verde-900 (QT-26, papel chocaba con el cierre), lista con divisores sin íconos; BUG-001 fixed pending verification; Q-62, pages.md; check 0 err; capturas u76-equipo-1366 y u82-home-hero-1366"
+        }
+      ]
     },
     {
-      "id": 6,
-      "do": "Formulario de lista de espera/piloto con endpoint a Cloudflare D1 + botón flotante de WhatsApp",
-      "status": "done",
-      "detail": "form+endpoint+/gracias probados contra D1 local (ok, repetido, inválido, sin JS, bot, falla DB) y en Edge 390px; README con pasos de D1"
-    },
-    {
-      "id": 7,
-      "do": "Página de preguntas frecuentes con datos estructurados FAQPage",
-      "status": "done",
-      "detail": "/preguntas-frecuentes: 13 preguntas, JSON-LD FAQPage, índice y apertura por #hash; aria-current en nav"
-    },
-    {
-      "id": 8,
-      "do": "Páginas legales: política de privacidad y términos (borradores marcados para revisión legal) + 404",
-      "status": "done",
-      "detail": "/privacidad y /terminos (borrador visible, Ley 25.326 verificada en argentina.gob.ar) + /404; faltan razón social/CUIT y revisión legal"
-    },
-    {
-      "id": 9,
-      "do": "Verificación: build, Lighthouse, contraste, HTML semántico, meta/OG, robots y sitemap con evidencia",
-      "status": "done",
-      "detail": "Plan/specs/F-001-landing/testing/landing.md: 19 passed, 1 blocked (WhatsApp sin número); Lighthouse móvil 99-100"
-    },
-    {
-      "id": 10,
-      "do": "Legales y spec: datos de IA tras la eliminación quedan disociados (Q-37)",
-      "status": "done",
-      "detail": "privacidad §4 y §6, términos §6 y spec (RN-ia-tras-eliminacion, RN-campos-inscripcion); build verde"
-    },
-    {
-      "id": 11,
-      "do": "Marca en nav y footer: isotipo + 'Tambo' texto + '360' en verde-cta (Q-40)",
-      "status": "done",
-      "detail": "Brand.astro en header/footer; sin overflow a 320/360/390; corregido corte de \"Hasta 40 litros\" en móvil chico"
-    },
-    {
-      "id": 12,
-      "do": "database_id fuera del repo: plantilla wrangler + script que genera wrangler.jsonc desde D1_DATABASE_ID (QT-13)",
-      "status": "dropped",
-      "detail": "el usuario decidió dejar el database_id en wrangler.jsonc (QT-13)"
-    },
-    {
-      "id": 13,
-      "do": "Tests unitarios con Vitest: validación, normalización de teléfono y repositorio (QT-12)",
-      "status": "done",
-      "detail": "17 tests en src/lib/*.test.ts, pnpm test verde; probado que fallan con el código roto; stack doc y README al día"
-    },
-    {
-      "id": 14,
-      "do": "Dominio definitivo en site-url.mjs y rebuild (QT-14)",
-      "status": "todo",
-      "detail": "bloqueado: tambo360.vercel.app es de la app"
-    },
-    {
-      "id": 15,
-      "do": "Re-verificación: build, tests, Lighthouse y capturas",
-      "status": "done",
-      "detail": "testing/landing.md ejecución 2026-10-06: 7 passed, 1 blocked (WhatsApp); Lighthouse 98-100"
-    },
-    {
-      "id": 16,
-      "do": "Indicador de sección activa en nav (desktop y menú móvil): scroll-spy en la home + estilo para página actual",
-      "status": "done",
-      "detail": "Header.astro: scroll-spy (aria-current=true) solo en secciones del nav, nada entre ellas (decisión del usuario); testing filas 28-34, 21 PASS"
-    },
-    {
-      "id": 17,
-      "do": "H1 de la home alineado al contenido (aviso SEO: sus palabras casi no aparecen) + <title> coherente",
-      "status": "done",
-      "detail": "Hero.astro (H1 + bajada) y SEO.astro (title); Q-41 en analysis.md; testing filas 35-38"
-    },
-    {
-      "id": 18,
-      "do": "Icon.astro lee SVG de Tabler desde src/icons/ por nombre (astro-icon o import.meta.glob) en vez del objeto inline",
-      "status": "done",
-      "detail": "astro-icon 1.2.0 + 28 SVG Tabler en src/icons; build/check/17 tests verdes; capturas ok; arreglado swap menú→X (data-* se perdían)"
-    },
-    {
-      "id": 19,
-      "do": "Favicons: unificar public/favicon como fuente única, links en BaseLayout, manifest al día, borrar duplicados",
-      "status": "done",
-      "detail": "public/favicon fuente única (+/favicon.ico raíz por crawlers); BaseLayout svg/96/ico/apple/manifest; manifest purpose any; logo JSON-LD; build ok"
-    },
-    {
-      "id": 20,
-      "do": "OG/Twitter: imagen social con el logo de Tambo360 bien visible + metas completas en SEO.astro",
-      "status": "done",
-      "detail": "public/og-image.jpg nueva 1200x630 (vaca blanca+wordmark centrados, fondo verde-900, Edge+Figtree); alt en SEO.astro; build+check ok"
-    },
-    {
-      "id": 21,
-      "do": "Página /equipo \"Conocé al equipo\": sin Entre Ríos/Corrientes/Patagonia, sacada de la home, nav apunta ahí",
-      "status": "done",
-      "detail": "src/pages/equipo.astro (AboutPage JSON-LD), Team.astro y map-pin.svg borrados, nav /equipo; pages.md y Q-42/Q-43; preview 390/1366 sin overflow"
-    },
-    {
-      "id": 23,
-      "do": "Header y footer con el logo oficial (assets/logos/tambo-logo-360.png), negro y blanco (Q-44)",
-      "status": "done",
-      "detail": "Brand.astro usa logo-tambo360(.png|-blanco.png); isotipos y wordmark SVG borrados; Docs al día; build ok; 320/1366 sin overflow"
-    },
-    {
-      "id": 22,
-      "do": "Verificación: build, check, tests, HTML de head/OG y capturas de /equipo y home",
-      "status": "done",
-      "detail": "testing filas 54-56 passed: check/tests/build, head+OG+JSON-LD de / y /equipo, capturas 390/1366 y post-lanzamiento"
-    },
-    {
-      "id": 24,
-      "do": "\"Qué podés hacer\": layout sin descripciones (A actual, B lista compacta, C título al costado, D mosaico); textos NO cambian",
-      "status": "done",
-      "detail": "variante C en Modules.astro; pages.md fila 5; build+check ok; 1366/390/320 sin overflow, capturas en testing/evidence/2026-10-08"
-    },
-    {
-      "id": 25,
-      "do": "Form: rol \"Tambero\" + test; obligatorios solo con * rojo, opcionales sin texto (decisión del usuario); ui-components.md",
-      "status": "done",
-      "detail": "Tambero primero en ROLES; FormField: * rojo aria-hidden, sin (opcional); build ok; capturas evidence/2026-10-08"
-    },
-    {
-      "id": 26,
-      "do": "Form: \"Vacas en ordeñe\" -> \"¿Cuántas vacas tenés en tu campo?\" + opción, privacidad, spec y Q-45",
-      "status": "done",
-      "detail": "label+opción \"Menos de 100 vacas\", privacidad §datos, spec RN-campos-inscripcion, Q-45; 18 tests+build ok; capturas evidence/2026-10-08"
-    },
-    {
-      "id": 27,
-      "do": "Migración 0002: vacas_ordene -> vacas_campo; código vacasOrdene -> vacasCampo; README; probar en D1 local",
-      "status": "done",
-      "detail": "migrations/0002 aplicada y probada en D1 local (POST 303, fila con vacas_campo, borrada); 18 tests+build ok; FALTA pnpm db:migrate:remote"
-    },
-    {
-      "id": 28,
-      "do": "site.ts: una sola fecha de lanzamiento con hora AR (-03:00) en vez de productionDate+launchDate; registerUrl /registrarse",
-      "status": "done",
-      "detail": "site.ts: launchDate '2026-10-26T00:00:00-03:00', registerUrl, isLaunched(); productionDate borrada; ClosingCta usa isLaunched; check 0 errores, 18 tests"
-    },
-    {
-      "id": 29,
-      "do": "Mecanismo de lanzamiento (script en head + CSS + LaunchSwitch) y header Anotarme->Registrarme + ClosingCta a registerUrl",
-      "status": "done",
-      "detail": "LaunchSwitch.astro + script inline en BaseLayout + CSS data-launched; Header y ClosingCta (props launchedTitle/launchedLead); Edge: antes/después/sin JS ok, 320-1366 sin overflow; evidence/2026-10-09"
-    },
-    {
-      "id": 31,
-      "do": "Home post-lanzamiento: hero (botón y viñetas), sección piloto + formulario ocultos, footer, lead de FaqPreview",
-      "status": "done",
-      "detail": "Hero (botón + viñeta '30 días gratis'), Pilot envuelto en LaunchSwitch en index, footer, SectionHeading.launchedLead (FaqPreview); check 0 errores; navegador en u30"
-    },
-    {
-      "id": 32,
-      "do": "Preguntas frecuentes post-lanzamiento: intro, respuestas carga-rodeo y precio, ClosingCta de la página; meta description y alt OG",
-      "status": "done",
-      "detail": "faq.ts launchedAnswer (carga-inicial, precio) + Accordion; intro y ClosingCta de /preguntas-frecuentes; JSON-LD, meta description y alt OG por fecha de build"
-    },
-    {
-      "id": 30,
-      "do": "Verificación (build, check, tests, fecha simulada antes/después, capturas 390/1366) + spec, pages.md y README (rebuild el 26/10)",
-      "status": "done",
-      "detail": "testing/landing.md filas 39-44 todas passed; spec RN-desde-lanzamiento + Q-46; pages.md, README §Lanzamiento, ui-components.md al día"
-    },
-    {
-      "id": 33,
-      "do": "Hero: sacar viñeta '3 meses sin pagar'/'30 días gratis' siempre; íconos credit-card-off y brand-whatsapp en las viñetas",
-      "status": "done",
-      "detail": "Hero.astro sin viñeta de meses/días; icons/credit-card-off.svg (Tabler 3.34.1); Q-47, pages.md fila 1, testing fila 45 passed"
-    },
-    {
-      "id": 34,
-      "do": "PRODUCT.md (impeccable init) desde analysis/spec, en español",
-      "status": "done",
-      "detail": "usuario confirmó usuario/problema/posicionamiento; éxito post-lanzamiento sin definir; live mode no configurado (ofrecido)"
-    },
-    {
-      "id": 35,
-      "do": "/impeccable document: DESIGN.md del sistema visual actual, conciliado con Docs/design-system.md",
-      "status": "done",
-      "detail": "DESIGN.md (norte 'Del cuaderno al bolsillo', componentes firmes y francos) + .impeccable/design.json; Docs/design-system.md apunta a DESIGN.md; diferencia: 4 secciones verde-900 en la home vs regla 1-2"
-    },
-    {
-      "id": 36,
-      "do": "/impeccable critique de la home (y /preguntas-frecuentes): puntaje y lista priorizada P0-P3",
-      "status": "done",
-      "detail": "26/36 (72%, n/a H7); P1 Offline.astro a medio terminar, P1 captura app ilegible (683px, 'Dashboard'); P2 exceso verde-900+cierre/footer, P2 índice FAQ duplicado; P3 5 nombres de la acción; .impeccable/critique/; single-context (NZT sin subagentes)"
-    },
-    {
-      "id": 37,
-      "do": "/impeccable layout: Offline.astro como 2º momento fuerte (sección con h2, 3 ítems con texto, foto, fondo claro); 'Organizá'; título nuevo a aprobar",
-      "status": "done",
-      "detail": "Offline.astro #sin-senal: foto potrero full-bleed + verde-010 + borde inf; Q-48; pages.md fila 6, DESIGN.md, testing fila 46 passed"
-    },
-    {
-      "id": 38,
-      "do": "/impeccable layout: bajar verde-900 a 3 bloques y separar el cierre del footer",
-      "status": "done",
-      "detail": "ClosingCta tone soft (verde-025, titular tinta) en home/equipo/FAQ; home 2 verde-900; DESIGN.md+design.json+pages.md; testing fila 49"
-    },
-    {
-      "id": 39,
-      "do": "/impeccable distill: índice de /preguntas-frecuentes (sacar o agrupar en 3-4 temas)",
-      "status": "done",
-      "detail": "índice sacado (no agrupado): las 13 preguntas cerradas son el índice; #hash ok; pages.md (+fila 9 blanco), DESIGN.md; testing fila 50"
-    },
-    {
-      "id": 40,
-      "do": "/impeccable clarify: nombres de la acción pre-lanzamiento de 5 a 2",
-      "status": "done",
-      "detail": "\"Anotarme\" (header) + \"Sumarme al piloto gratis\" (hero, form, cierre, footer); h3 del form \"Tus datos\"; pages.md; testing fila 51"
-    },
-    {
-      "id": 41,
-      "do": "/impeccable polish: figura de 'Cómo funciona' con captura nueva de la app (>=1400px, sin 'Dashboard')",
-      "status": "todo",
-      "detail": "bloqueada: la captura la provee el equipo"
-    },
-    {
-      "id": 42,
-      "do": "/impeccable polish final + re-critique (base 26/36)",
-      "status": "todo",
-      "detail": "propuesto"
-    },
-    {
-      "id": 43,
-      "do": "WhatsApp: número de soporte +54 11 6831-8568 en site.ts (Q-49)",
-      "status": "done",
-      "detail": "whatsappNumber 5491168318568 (formato 549, sin verificar en fuente oficial); botón en 6 páginas del build; build+18 tests ok; falta probar el link en un celular"
-    },
-    {
-      "id": 44,
-      "do": "/impeccable critique del hero (pedido del usuario)",
-      "status": "done",
-      "detail": "17/24 (71%, n/a 5,7,9,10); P1 flotante WhatsApp tapa viñeta en 390; P2 foto stock/tablet, P2 nota del piloto ausente (pages.md fila 1 desactualizada); esperando prioridades"
-    },
-    {
-      "id": 45,
-      "do": "Hero: sacar la viñeta 'Te ayudamos por WhatsApp' (la tapa el flotante en celular) (Q-50)",
-      "status": "done",
-      "detail": "Hero.astro sin la viñeta; pages.md fila 1, Q-50, testing fila 47 passed; hallazgo: en 320x640 el flotante tapa el botón principal"
-    },
-    {
-      "id": 46,
-      "do": "Hero pre-lanzamiento: nota de qué es el piloto (fecha/cupo) + pages.md fila 1 + sacar Badge sin uso",
-      "status": "todo",
-      "detail": "elegido tras u44; contenido de la nota a definir con el usuario"
-    },
-    {
-      "id": 47,
-      "do": "Flotante de WhatsApp en celular: solo ícono, 48 px, pegado a la esquina (opción b del usuario)",
-      "status": "done",
-      "detail": "WhatsAppButton.astro 48px right/bottom-2 <640px; testing fila 48; en 320/360x640 sigue tapando 40px del botón principal (aceptado, opción b)"
-    },
-    {
-      "id": 48,
-      "do": "/impeccable critique de /equipo: puntaje y lista P0-P3",
-      "status": "done",
-      "detail": "16/24 (67%, n/a 5,7,9,10); P2 no prueba el trabajo de campo ni roles, P2 fotos dispares/baja res (3 de 200px), P2 dos márgenes; P3 alt repetido; detector 390 no corrió (preview se cae)"
-    },
-    {
-      "id": 49,
-      "do": "/equipo: bloque que prueba el trabajo de campo con material existente (Q-13), sin roles (Q-51)",
+      "name": "form-resend",
       "status": "doing",
-      "detail": "bloque \"Lo que escuchamos en los tambos\" en equipo.astro (local, sin publicar); capturas equipo-campo-*; FALTA aprobación del texto, luego pages.md+testing"
+      "units": [
+        {
+          "id": 77,
+          "do": "QT-20 Resend como destino del form en architecture-decisions.md: remitente, destinatario, contenido del mail, RESEND_API_KEY por env",
+          "status": "done",
+          "detail": "QT-20/27/28 + QT-29..35 en architecture-decisions; QT-34 usuario: el mail es el registro (cambia RN-repetida/guardada/falla)"
+        },
+        {
+          "id": 78,
+          "do": "Endpoint /api/inscripcion envía con Resend (RESEND_API_KEY) + tests con fetch/cliente simulado",
+          "status": "done",
+          "detail": "src/lib/waitlist-mail.ts + 9 tests (fetch simulado); env.schema RESEND_* en astro.config; sin estado repetido, waitlist-repository ni migrations; stack doc; check 0 err, 26 tests, build ok, dev sin env=503; QT-36: solo RESEND_API_KEY (from fijo, to=site.email)"
+        },
+        {
+          "id": 79,
+          "do": "Docs: privacidad (Resend como encargado), spec RN del form, stack doc, README (variables en Vercel)",
+          "status": "todo",
+          "detail": "spec: reescribir RN-inscripcion-repetida/guardada/falla + Q nueva (QT-34); privacidad: Resend encargado, datos en EEUU (QT-35); README: RESEND_API_KEY en Vercel, from/to en código (QT-36); testing/landing.md filas del form repetido"
+        },
+        {
+          "id": 80,
+          "do": "Verificación: check/tests, envío real en preview de Vercel, Lighthouse; testing/landing.md",
+          "status": "todo",
+          "detail": "propuesto"
+        }
+      ]
     },
     {
-      "id": 50,
-      "do": "/equipo: fotos del equipo en blanco y negro (Q-51) + pedir fotos >=400px al equipo",
-      "status": "done",
-      "detail": "grayscale CSS en equipo.astro (reversible); pages.md; testing fila 53; FALTA que el equipo mande fotos >=400px de Cintia, Facundo, N. Mansilla, Juan Meza"
-    },
-    {
-      "id": 51,
-      "do": "/equipo: intro y grilla en el mismo contenedor + alt vacío en las fotos",
-      "status": "done",
-      "detail": "equipo.astro: intro en Container ancho (h1 max-w-3xl) alineada con la grilla; alt=\"\" en fotos; testing fila 52"
-    },
-    {
-      "id": 52,
-      "do": "Mapeo de tokens landing->app con contraste calculado, en DESIGN.md + Q-52 (revierte Q-28); solo documento",
-      "status": "done",
-      "detail": "DESIGN.md §Origen + Q-52; usuario: fondos blancos como la app y un solo verde (sin acento)"
-    },
-    {
-      "id": 53,
-      "do": "Aplicar el mapeo en src/styles/global.css, BaseLayout theme-color, .impeccable/design.json y Docs/design-system.md",
-      "status": "done",
-      "detail": "global.css verdes de la app (#29845a/#236342/#e8f5e9/#e0f5eb/#d4e6de), sin verde-025/010; secciones blancas con borde; botón texto blanco; docs+design.json; check/18 tests/build ok"
-    },
-    {
-      "id": 54,
-      "do": "Verificación: build/check/tests, contraste de cada par, capturas 390/1366 de home, FAQ y equipo; testing/landing.md",
-      "status": "done",
-      "detail": "testing filas 57-60 passed; evidence/2026-10-15/paleta-app-*; hallazgo: hueco blanco intro/grilla en /equipo"
-    },
-    {
-      "id": 55,
-      "do": "Cajas de ícono oscuras (Problems, equipo) a verde-050 + ícono verde-enlace (6.36:1 vs 3.25:1), pedido del usuario",
-      "status": "done",
-      "detail": "Problems.astro:22, equipo.astro:83, DESIGN.md; aceptado por el usuario 15/10"
-    },
-    {
-      "id": 56,
-      "do": "Adapter @astrojs/vercel 11.0.15 en vez de cloudflare; sacar wrangler, wrangler.jsonc, worker-configuration.d.ts y scripts db/cf",
-      "status": "done",
-      "detail": "check 0 errores, 18 tests ok; build local falla en Windows (EPERM symlink del adapter, sin Developer Mode); 11.0.16 rechazada por minimumReleaseAge"
-    },
-    {
-      "id": 57,
-      "do": "Docs al día: stack doc (hosting/persistencia/deps), QT nueva en architecture-decisions.md, README sin pasos de D1",
-      "status": "done",
-      "detail": "stack doc (hosting, persistencia, paquetes, evidencia), QT-15 en architecture-decisions.md, README sin D1; analysis.md Q-31 queda como historial"
-    },
-    {
-      "id": 58,
-      "do": "Elegir base para el form en Vercel (Turso, D1 por HTTP, Neon) y conectarla",
+      "name": "pendientes-run-anterior",
       "status": "todo",
-      "detail": "propuesta: reemplazada por HubSpot (u59-u63) si se aprueba"
-    },
-    {
-      "id": 59,
-      "do": "Decisión QT-16: HubSpot como destino del form (mapeo de campos, contacto sin email, región, consentimiento) en architecture-decisions.md",
-      "status": "todo",
-      "detail": "propuesto; portal 52179962; falta formGuid del form creado en HubSpot"
-    },
-    {
-      "id": 60,
-      "do": "Endpoint /api/inscripcion envía a HubSpot Forms API v3 (env HUBSPOT_PORTAL_ID/FORM_GUID, hutk, pageUri) + tests con fetch simulado",
-      "status": "todo",
-      "detail": "propuesto"
-    },
-    {
-      "id": 61,
-      "do": "Código de seguimiento de HubSpot (js.hs-scripts.com/52179962.js) en BaseLayout antes de </body>",
-      "status": "todo",
-      "detail": "propuesto; ofrecido, se puede dropear"
-    },
-    {
-      "id": 62,
-      "do": "Docs: privacidad (HubSpot como encargado, cookies), spec RN del form, stack doc, README (variables en Vercel)",
-      "status": "todo",
-      "detail": "propuesto"
-    },
-    {
-      "id": 63,
-      "do": "Verificación: check/tests/build, envío real a HubSpot en preview de Vercel, Lighthouse con el script; testing/landing.md",
-      "status": "todo",
-      "detail": "propuesto"
-    },
-    {
-      "id": 64,
-      "do": "Verde principal verde-cta -> #80b718 (pedido del usuario, revierte Q-52 solo en ese token); texto verde-900 encima, hover verde-check #99c545",
-      "status": "done",
-      "detail": "global.css cta #80b718/check #99c545; texto verde-900 en Button, HowItWorks, Pilot; borde legal a verde-enlace; Q-53, DESIGN.md, design.json, design-system.md; check+18 tests ok; capturas evidence/2026-10-20; build local no corrido (symlink Windows)"
-    },
-    {
-      "id": 65,
-      "do": "Botón secundario como tambo360-prueba.netlify.app: fondo #e9faca, texto #4d7a10, hover #cfedba (solo el botón)",
-      "status": "done",
-      "detail": "tokens lima-* en global.css, Button secondary; hover texto #436b0d (4.92:1, el viejo daba 4.01); Q-54, DESIGN.md, design.json, design-system.md; check+18 tests ok; reposo/hover medidos en Edge"
+      "units": [
+        {
+          "id": 14,
+          "do": "Dominio definitivo en site-url.mjs y rebuild (QT-14)",
+          "status": "dropped",
+          "detail": "sigue en u83"
+        },
+        {
+          "id": 41,
+          "do": "/impeccable polish: figura de 'Cómo funciona' con captura nueva de la app (>=1400px, sin 'Dashboard')",
+          "status": "todo",
+          "detail": "bloqueada: la captura la provee el equipo"
+        },
+        {
+          "id": 42,
+          "do": "/impeccable polish final + re-critique (base 26/36)",
+          "status": "todo",
+          "detail": "propuesto"
+        },
+        {
+          "id": 46,
+          "do": "Hero pre-lanzamiento: nota de qué es el piloto (fecha/cupo) + pages.md fila 1 + sacar Badge sin uso",
+          "status": "todo",
+          "detail": "elegido tras u44; contenido de la nota a definir con el usuario"
+        },
+        {
+          "id": 49,
+          "do": "/equipo: bloque que prueba el trabajo de campo con material existente (Q-13), sin roles (Q-51)",
+          "status": "dropped",
+          "detail": "sigue en u76 (QT-19: texto aprobado, corregir fondo e íconos)"
+        },
+        {
+          "id": 58,
+          "do": "Elegir base para el form en Vercel (Turso, D1 por HTTP, Neon) y conectarla",
+          "status": "dropped",
+          "detail": "QT-20: el form usa Resend (u77-u80)"
+        },
+        {
+          "id": 59,
+          "do": "Decisión QT-16: HubSpot como destino del form (mapeo de campos, contacto sin email, región, consentimiento) en architecture-decisions.md",
+          "status": "dropped",
+          "detail": "QT-20: el form usa Resend (u77-u80)"
+        },
+        {
+          "id": 60,
+          "do": "Endpoint /api/inscripcion envía a HubSpot Forms API v3 (env HUBSPOT_PORTAL_ID/FORM_GUID, hutk, pageUri) + tests con fetch simulado",
+          "status": "dropped",
+          "detail": "QT-20: el form usa Resend (u77-u80)"
+        },
+        {
+          "id": 61,
+          "do": "Código de seguimiento de HubSpot (js.hs-scripts.com/52179962.js) en BaseLayout antes de </body>",
+          "status": "dropped",
+          "detail": "QT-20: el form usa Resend (u77-u80)"
+        },
+        {
+          "id": 62,
+          "do": "Docs: privacidad (HubSpot como encargado, cookies), spec RN del form, stack doc, README (variables en Vercel)",
+          "status": "dropped",
+          "detail": "QT-20: el form usa Resend (u77-u80)"
+        },
+        {
+          "id": 63,
+          "do": "Verificación: check/tests/build, envío real a HubSpot en preview de Vercel, Lighthouse con el script; testing/landing.md",
+          "status": "dropped",
+          "detail": "QT-20: el form usa Resend (u77-u80)"
+        }
+      ]
     }
   ],
-  "waiting_on": "plan HubSpot (u59-u63) NO aprobado; u49 sigue esperando aprobación de texto",
+  "approved": true,
+  "autonomy": {},
+  "waiting_on": "u79 lista; RESEND_API_KEY ya cargada en Vercel (usuario); falta PUBLIC_GOOGLE_SITE_VERIFICATION y URL del registro antes del 16/11",
   "notes": [
-    "Autonomía 2026-10-09: orden 38,39,40,51,50,22,49,42; para en u49. Plan u52-54 sin autonomía. Q-46: desde 26/10 sin piloto",
-    "Antes de publicar en Vercel: base del form conectada (u58), dominio en site-url.mjs, revisión legal; primer deploy confirma el build (local Windows falla por symlinks)",
-    "Fotos vacas.webp, vacas_3, vacas_4 descartadas (ganado de carne); dominio provisorio tambo360.com.ar; matar el proceso de astro preview antes de build (bloquea dist en Windows)"
-  ],
-  "autonomy": {}
+    "u1-u72: ver git history; QT-16..19, 21..24, 26 respondidas en chat pero sin entrada en architecture-decisions (solo citadas en analysis)",
+    "Antes de publicar: Resend en el form, URL del registro de la app (registerUrl vacío), revisión legal; build local Windows: usar config temporal sin hook astro:build:done del adapter",
+    "Capturas: Playwright MCP sin Chrome; usar scratchpad cdp.mjs (Edge CDP, viewport emulado) — no --window-size<500"
+  ]
 }
