@@ -27,6 +27,7 @@
   --color-lima-texto: #4d7a10;
   /* Más oscuro que lima-texto: sobre lima-100 da 4.92:1, lima-texto solo 4.01:1. */
   --color-lima-texto-hover: #436b0d;
+  --color-papel: #f5f1e6;
   --color-gris-025: #fafbfb;
   --color-gris-050: #f1f5f9;
   --color-gris-100: #e8eaed;
@@ -156,4 +157,11 @@
 html[data-launched] [data-prelaunch],
 html:not([data-launched]) [data-postlaunch] {
   display: none !important;
+}
+
+/* Notebook sheet: rules every 2rem (text on it uses leading-8 to sit on them) and a margin line. */
+.renglones {
+  background-image:
+    linear-gradient(to right, transparent calc(2.5rem - 1px), rgb(35 99 66 / 0.35) calc(2.5rem - 1px), rgb(35 99 66 / 0.35) 2.5rem, transparent 2.5rem),
+    repeating-linear-gradient(to bottom, transparent 0, transparent calc(2rem - 1px), var(--color-borde-neutro) calc(2rem - 1px), var(--color-borde-neutro) 2rem);
 }

@@ -1,31 +1,28 @@
 ---
 import engine from '../../../assets/images/tambo-engine.webp';
 import { steps } from '../../../data/home';
-import Icon from '../../ui/Icon.astro';
 import Picture from '../../ui/Picture.astro';
 import Section from '../../ui/Section.astro';
 import SectionHeading from '../../ui/SectionHeading.astro';
 ---
 
-<Section id="como-funciona" aria-labelledby="como-funciona-titulo" class="border-t border-borde-verde">
+<Section id="como-funciona" aria-labelledby="como-funciona-titulo">
   <SectionHeading
     id="como-funciona-titulo"
     title="Anotás una vez y Tambo360 hace el resto"
     lead="Sin pasar del cuaderno a la planilla y de la planilla a la computadora. Lo que se anota en la fosa ya está en la oficina."
   />
   <div class="mt-12 grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
-    <ol class="space-y-8">
+    <!-- Steps read like notes in the margin: a large number on a line that ties them together. -->
+    <ol class="relative space-y-10 before:absolute before:top-4 before:bottom-4 before:left-6 before:w-px before:bg-borde-neutro">
       {
         steps.map((step, index) => (
-          <li class="relative flex gap-5">
-            <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-verde-cta text-lg font-extrabold text-verde-900" aria-hidden="true">
+          <li class="relative grid grid-cols-[3rem_1fr] gap-5">
+            <span class="relative bg-white py-1 text-center text-5xl leading-none font-extrabold text-verde-enlace" aria-hidden="true">
               {index + 1}
             </span>
             <div>
-              <h3 class="flex items-center gap-2 text-xl font-bold">
-                <Icon name={step.icon} size={22} class="text-verde-enlace" />
-                {step.title}
-              </h3>
+              <h3 class="text-xl font-bold">{step.title}</h3>
               <p class="mt-2 leading-relaxed">{step.body}</p>
             </div>
           </li>

@@ -1,5 +1,4 @@
 ---
-import { site } from '../../../config/site';
 import { pilotBenefits } from '../../../data/home';
 import Icon from '../../ui/Icon.astro';
 import Section from '../../ui/Section.astro';
@@ -7,24 +6,25 @@ import SectionHeading from '../../ui/SectionHeading.astro';
 import WaitlistForm from '../WaitlistForm.astro';
 ---
 
-<Section id="sumate" aria-labelledby="sumate-titulo" class="border-t border-borde-verde">
+<Section tone="paper" id="sumate" aria-labelledby="sumate-titulo">
   <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr]">
     <div>
       <SectionHeading
         id="sumate-titulo"
         title="Sumate al piloto: 3 meses gratis y te acompañamos"
-        lead={`Tambo360 sale el ${site.launchDateLabel}. Buscamos 3 tambos fundadores para arrancar el piloto; si llegás después, quedás primero en la lista de espera.`}
+        lead="Buscamos 3 tambos fundadores para arrancar el piloto; si llegás después, quedás primero en la lista de espera."
       />
-      <ul class="mt-10 space-y-6">
+      <!-- Same notebook sheet as the problems, ticked instead of numbered. -->
+      <ul class="renglones mt-10 space-y-8 py-8">
         {
           pilotBenefits.map((benefit) => (
-            <li class="flex gap-4">
-              <span class="flex size-12 shrink-0 items-center justify-center rounded-md bg-verde-cta text-verde-900">
-                <Icon name={benefit.icon} />
+            <li class="grid grid-cols-[2.5rem_1fr] leading-8">
+              <span class="flex h-8 items-center justify-end pr-3 text-verde-enlace" aria-hidden="true">
+                <Icon name="check" size={22} />
               </span>
-              <div>
-                <h3 class="text-lg font-bold">{benefit.title}</h3>
-                <p class="mt-1 leading-relaxed">{benefit.body}</p>
+              <div class="pl-4">
+                <h3 class="text-lg leading-8 font-bold">{benefit.title}</h3>
+                <p class="leading-8">{benefit.body}</p>
               </div>
             </li>
           ))

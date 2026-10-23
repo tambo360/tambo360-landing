@@ -11,7 +11,6 @@ export const prerender = false;
 
 const messages: Record<SubmitStatus, { title: string; body: string; ok: boolean }> = {
   ok: { title: '¡Listo, ya estás anotado!', body: 'Te vamos a escribir por WhatsApp antes del lanzamiento para contarte cómo seguimos.', ok: true },
-  repetido: { title: 'Ya estabas en la lista', body: 'Ese número ya está anotado. No tenés que hacer nada más: te vamos a escribir por WhatsApp.', ok: true },
   invalido: { title: 'Faltan datos', body: 'Revisá tu nombre, tu número de WhatsApp y que hayas aceptado la política de privacidad.', ok: false },
   error: { title: 'No pudimos guardar tus datos', body: 'Fue un problema nuestro, no tuyo. Probá de nuevo en un rato.', ok: false },
 };

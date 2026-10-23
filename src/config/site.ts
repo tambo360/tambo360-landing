@@ -11,11 +11,10 @@ export const site = {
     launchedDescription:
         'Registrás el ordeñe, controlás el rodeo y ordenás los costos desde un solo lugar. Funciona en la fosa, aunque no haya señal. Probalo 30 días gratis.',
     ogImage: '/og-image.jpg',
-    demoUrl: 'https://tambo360.vercel.app/iniciar-sesion',
-    registerUrl: 'https://tambo360.vercel.app/registrarse',
-    // Midnight in Argentina: a bare '2026-10-26' would be read as UTC, 21:00 of the day before here.
-    launchDate: '2026-10-26T00:00:00-03:00',
-    launchDateLabel: '26 de octubre',
+    // The app is moving to a domain not decided yet. Empty hides the "Registrarme" buttons from the launch date.
+    registerUrl: '',
+    // Midnight in Argentina: a bare '2026-11-16' would be read as UTC, 21:00 of the day before here.
+    launchDate: '2026-11-16T00:00:00-03:00',
     email: 't360.arg@gmail.com',
     // wa.me format: digits only, 54 + 9 (Argentine mobile) + area code without 0 + number without 15. Empty hides the floating button.
     whatsappNumber: '5491168318568',

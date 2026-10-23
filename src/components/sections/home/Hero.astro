@@ -57,17 +57,15 @@ import Picture from "../../ui/Picture.astro";
                         Sumarme al piloto gratis
                         <Icon name="arrow-right" size={20} />
                     </Button>
-                    <Button slot="after" href={site.registerUrl} size="lg" external>
-                        Registrarme gratis
-                        <Icon name="arrow-right" size={20} />
-                    </Button>
+                    {
+                        site.registerUrl && (
+                            <Button slot="after" href={site.registerUrl} size="lg" external>
+                                Registrarme gratis
+                                <Icon name="arrow-right" size={20} />
+                            </Button>
+                        )
+                    }
                 </LaunchSwitch>
-                <Button
-                    href={site.demoUrl}
-                    variant="ghost-dark"
-                    size="lg"
-                    external>Ver demo</Button
-                >
             </div>
             <ul
                 class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-white/85"

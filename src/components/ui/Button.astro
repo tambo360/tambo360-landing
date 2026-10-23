@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type Variant = 'primary' | 'secondary' | 'ghost-dark';
+type Variant = 'primary' | 'secondary';
 type Size = 'md' | 'lg';
 
 type Props = (HTMLAttributes<'a'> | HTMLAttributes<'button'>) & {
@@ -20,7 +20,6 @@ const base =
 const variants: Record<Variant, string> = {
   primary: 'bg-verde-cta text-verde-900 hover:bg-verde-check active:bg-verde-cta',
   secondary: 'bg-lima-050 text-lima-texto hover:bg-lima-100 hover:text-lima-texto-hover',
-  'ghost-dark': 'border border-white/40 text-white hover:bg-white/10',
 };
 
 const sizes: Record<Size, string> = {

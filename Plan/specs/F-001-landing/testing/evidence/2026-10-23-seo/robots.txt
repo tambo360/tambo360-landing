@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /gracias
+
+Sitemap: https://tambo360-landing.vercel.app/sitemap-index.xml

@@ -11,6 +11,7 @@ colors:
   verde-900: "#1c2a1c"
   verde-950: "#121c12"
   blanco: "#ffffff"
+  papel: "#f5f1e6"
   gris-025: "#fafbfb"
   gris-050: "#f1f5f9"
   gris-100: "#e8eaed"
@@ -95,11 +96,6 @@ components:
   button-secondary-hover:
     backgroundColor: "{colors.verde-100}"
     textColor: "{colors.verde-enlace}"
-  button-ghost-dark:
-    textColor: "{colors.blanco}"
-    rounded: "{rounded.md}"
-    padding: "0 24px"
-    height: "52px"
   input:
     backgroundColor: "{colors.blanco}"
     textColor: "{colors.tinta}"
@@ -133,7 +129,7 @@ diseño se pone al servicio de esa claridad práctica. El campo real va de fondo
 de pasto, el verde casi negro del galpón) y adelante va lo que el productor hace y obtiene, dicho en grande y sin
 vueltas.
 
-La densidad es baja y el ritmo, de corte: secciones anchas que alternan blanco, verde muy claro y verde oscuro,
+La densidad es baja y el ritmo, de corte: secciones anchas que alternan blanco, papel y verde oscuro,
 con mucho aire entre bloques. La audacia se gasta en un solo lugar por página (en la home, la franja oscura de
 la historia con la cifra de los 40 litros); el resto es sobrio y respira. Todo tiene que leerse en un celular de
 gama media al sol de la fosa.
@@ -147,6 +143,44 @@ de etiquetas en mayúsculas encima de cada titular, nada que se esconda esperand
 - Un solo verde de acción (verde-cta) con texto verde-900 encima.
 - Tipografía redondeada y gruesa en los titulares, cómoda en el cuerpo.
 - Objetivos táctiles grandes: se usa con guantes o con las manos mojadas.
+
+## Dirección "Libreta de tambo" (u66, 23/10/2026 · Q-55, Q-56, Q-57)
+
+Aprobada por el usuario y aplicada en u67-u71 (home, `/equipo`, `/preguntas-frecuentes`); las reglas de abajo ya la reflejan.
+
+**Por qué:** crítica del 23/10 sobre la home en 1366 px. 7 secciones blancas seguidas (ritmo plano, sev. 3),
+WhatsApp `#25d366` junto al lima (sev. 2), el mismo molde de ícono en caja + título + texto repetido 4 veces
+(sev. 2) y el lima usado en 5 roles (sev. 1). Se quedan las fotos reales, la franja de los 40 litros y Figtree.
+
+**Superficies.** Blanco y **papel** (`#F5F1E6`, token nuevo `papel`) se alternan, y entre ellos van las franjas
+verde-900. Nunca quedan dos secciones del mismo fondo seguidas, así que el borde de 1 px entre secciones sobra.
+
+| Sección | Fondo | Qué cambia |
+|---|---|---|
+| Hero | foto + velo verde-900 | nada |
+| Problemas | papel con renglones | notas de cuaderno: sin tarjetas ni cajas de ícono |
+| Historia | verde-900 | nada; sigue siendo el único momento audaz |
+| Cómo funciona | blanco | números grandes de anotación unidos por una línea, sin círculos lima |
+| Qué podés hacer | papel | nada estructural (ya es una lista con divisores) |
+| Sin señal | blanco + foto | los 3 ítems dejan la fila de íconos y pasan a lista con divisores |
+| Piloto | papel con renglones | el formulario en blanco sobre papel; beneficios con su cifra, sin cajas lima |
+| Preguntas | blanco | nada |
+| Cierre | papel | sin borde superior |
+| Footer | verde-950 | nada |
+
+**Renglones.** Líneas horizontales de 1 px en borde-neutro cada 2 rem, con la línea de margen vertical en
+verde-enlace al 30 %. Solo en problemas y piloto: es un recurso con medida, no una textura de fondo general.
+Sin fuentes manuscritas.
+
+**Lima con un solo rol.** verde-cta queda para los botones principales, la palabra clave del H1 y la cifra de los 40
+litros. Salen los círculos de los pasos y las cajas del piloto.
+
+**WhatsApp.** Píldora verde-900 con texto blanco y el ícono en verde WhatsApp (7.58:1). La sombra se queda: es
+el único elemento flotante.
+
+**Contraste calculado** (WCAG, 23/10): sobre papel, tinta da 15.72:1, texto 6.71:1, verde-enlace 6.34:1 y
+lima-texto 4.53:1. Papel contra blanco da 1.13:1, y por eso las secciones se distinguen por el cambio de tono y
+no por un borde.
 
 ## Colors
 
@@ -205,7 +239,8 @@ Consecuencias (aplicadas en u53):
 - **Bordes de Alambrado** (borde-verde, borde-neutro): separadores de 1 px, tarjetas y campos.
 - **Grises de Oficina** (gris-025, gris-050, gris-100): cajas neutras (hoy sin uso en las páginas; el índice de preguntas se sacó el 09/10/2026, u39).
 - **Rojo Alerta** (error): solo errores, siempre con texto e ícono.
-- **Verde WhatsApp** (whatsapp): solo el botón flotante, con ícono verde-900.
+- **Verde WhatsApp** (whatsapp): solo el ícono del botón flotante, sobre píldora verde-900 (7.58:1). Q-55.
+- **Papel de Libreta** (papel): superficie clara que alterna con el blanco (Q-56).
 
 ### Named Rules
 **La Regla del Verde Único.** verde-cta es la acción principal: aparece en un solo botón por bloque visual y,
@@ -213,8 +248,8 @@ sobre oscuro, en una sola cifra o palabra por bloque. Si dos cosas son verde-cta
 
 **La Regla del Texto Oscuro.** Sobre verde-cta y verde-check va texto verde-900 (6.23:1 y 7.46:1), nunca blanco (2.41:1). Q-53.
 
-**La Regla del Corte.** Dos secciones blancas seguidas se separan con un borde de 1 px borde-verde; verde-900 en
-una o dos secciones por página. La última sección antes del footer (verde-950) nunca es oscura (u38).
+**La Regla del Corte.** Blanco y papel se alternan: nunca dos secciones seguidas con el mismo fondo, y sin borde
+entre secciones. verde-900 en una o dos secciones por página. La última sección antes del footer (verde-950) nunca es oscura (u38).
 
 ## Typography
 
@@ -275,7 +310,7 @@ Firmes y francos: grandes, fáciles de tocar, sin sombras ni efectos.
 - **Primary:** verde-cta con texto verde-900, 600 de peso; flecha a la derecha cuando lleva a otra parte.
 - **Hover / Focus:** el fondo pasa a verde-check; foco con anillo Verde Lote (verde-enlace) de 2 px a 2 px de distancia
   (verde-cta sobre oscuro).
-- **Secondary:** lima-050 con texto lima-texto ("Ver demo", 4.62:1); hover lima-100 con texto lima-texto-hover (4.92:1). Colores de la landing anterior, solo en este botón (Q-54). Nunca más llamativo que el
+- **Secondary:** lima-050 con texto lima-texto ("Ver preguntas frecuentes", "Escribir por WhatsApp"; 4.62:1); hover lima-100 con texto lima-texto-hover (4.92:1). Colores de la landing anterior, solo en este botón (Q-54). Nunca más llamativo que el
   principal.
 - **Ghost sobre oscuro:** borde blanco al 40 % y texto blanco, solo sobre verde-900.
 - Si abre otra pestaña, lo anuncia al lector de pantalla.
@@ -312,7 +347,7 @@ abren solas cuando se llega con `#id`.
 
 ### Do:
 - **Do** usar verde-cta solo para la acción principal y para una cifra por bloque sobre verde-900.
-- **Do** separar dos secciones blancas seguidas con un borde de 1 px borde-verde.
+- **Do** alternar blanco y papel; si dos secciones quedan con el mismo fondo, cambiar una, no agregar un borde.
 - **Do** mantener objetivos táctiles de 44 px o más.
 - **Do** declarar ancho y alto de cada foto, con `alt` que describa lo que se ve.
 - **Do** calcular el contraste de todo par de colores nuevo antes de usarlo (registro en

@@ -25,24 +25,23 @@ decisión.
 | Rol | Cuándo se usa | Su límite |
 |---|---|---|
 | Acción principal | Anotarse al piloto. Fondo verde-cta (#80B718) con texto verde-900 (6.23:1); hover verde-check (#99C545, 7.46:1) | Una sola acción principal por página; puede repetirse en el header y al final |
-| Acción secundaria | Ver demo, escribir por WhatsApp. Fondo verde-050 con texto verde-enlace (6.36:1) | Nunca más llamativa que la principal |
-| Acción secundaria | "Ver demo": fondo lima-050 (#E9FACA) con texto lima-texto (#4D7A10, 4.62:1); hover lima-100 (#CFEDBA) con texto #436B0D (4.92:1). Q-54 | Solo en el botón secundario |
+| Acción secundaria | Reintentar, WhatsApp, ver preguntas: fondo lima-050 (#E9FACA) con texto lima-texto (#4D7A10, 4.62:1); hover lima-100 (#CFEDBA) con texto #436B0D (4.92:1). Q-54 | Solo en el botón secundario |
 | Texto de enlace | Enlaces sobre fondo claro: verde-enlace (7.16:1 sobre blanco, 6.36:1 sobre verde-050) | No usar verde-cta ni verde-nav para texto sobre claro |
 | Acento sobre oscuro | Cifras y palabras clave grandes sobre verde-900: verde-cta (6.23:1) | Una por bloque; texto chico sobre oscuro va en blanco |
 | Superficie de corte | verde-900 con texto blanco (15:1) | Una o dos secciones por página |
-| Superficie clara | blanco, como en la app; dos secciones blancas seguidas se separan con borde-verde | Sin fondos verdes de sección |
+| Superficie clara | blanco y papel (#F5F1E6: tinta 15.72:1, texto 6.71:1, verde-enlace 6.34:1) alternados, Q-56 | Nunca dos secciones del mismo fondo seguidas; sin fondos verdes de sección |
 | Texto | tinta para titulares, texto (#475569) para párrafos | texto-suave y texto-tenue no se usan: no cumplen contraste |
 
 Paleta de la app (Q-52, 15/10/2026; reemplaza Q-28): los verdes son los de `tambo360-frontend` y el detalle token por token está en `DESIGN.md` § Origen. Excepción Q-53 (20/10/2026): verde-cta vuelve a `#80B718` y verde-check a `#99C545`; encima va texto verde-900, nunca blanco (2.41:1).
 
 ## Convenciones
 - **Marca:** logo oficial completo (isotipo de la vaca + "Tambo360") de `assets/logos/tambo-logo-360.png`: negro sobre fondos claros, blanco (`logo-tambo360-blanco.png`, mismo dibujo recoloreado) sobre fondos oscuros. Imagen con texto alternativo "Tambo360" (Q-44). No usar verde-cta para texto que no sea la marca.
-- **Header:** marca a la izquierda; enlaces a secciones de la home y a preguntas frecuentes; "Ver demo" (secundaria, abre la app en otra pestaña) y "Anotarme" (principal). En celular, menú desplegable con los mismos enlaces; los dos botones quedan visibles. El enlace de la página actual (`aria-current="page"`) y, en la home, el de la sección del nav que está en pantalla (`aria-current="true"`) se marcan en verde-enlace con una barra: debajo del texto en desktop, a la izquierda en el menú del celular. Entre secciones que no están en el nav no se marca ninguna; con el menú del celular abierto la marca no cambia.
+- **Header:** marca a la izquierda; enlaces a secciones de la home y a preguntas frecuentes; "Anotarme" (principal; desde el lanzamiento, "Registrarme"). Sin "Ver demo" (Q-59). En celular, menú desplegable con los mismos enlaces; el botón queda visible. El enlace de la página actual (`aria-current="page"`) y, en la home, el de la sección del nav que está en pantalla (`aria-current="true"`) se marcan en verde-enlace con una barra: debajo del texto en desktop, a la izquierda en el menú del celular. Entre secciones que no están en el nav no se marca ninguna; con el menú del celular abierto la marca no cambia.
 - **Hero:** foto a sangre con velo oscuro desde la izquierda (design system); el texto nunca va sobre la foto sin velo.
 - **Sección:** titular en oración, sin punto final, dos líneas como máximo; bajada de una sola idea. Encabezado a la izquierda; centrado solo en el cierre.
 - **Imágenes:** toda foto lleva `alt` que describe lo que se ve; las decorativas llevan `alt=""`. Ancho y alto declarados para que no salte el contenido. Solo la foto del hero carga con prioridad; el resto, diferida.
 - **Formulario:** etiqueta visible arriba de cada campo; el error va junto al campo y se resume arriba del botón; un formulario que falló conserva lo escrito; el botón muestra "Enviando…" y no se puede tocar dos veces.
-- **Botón flotante de WhatsApp:** abajo a la derecha, fondo verde WhatsApp con ícono verde-900 (7.58:1); nunca tapa el botón de envío del formulario en celular.
+- **Botón flotante de WhatsApp:** abajo a la derecha, píldora verde-900 con texto blanco (15:1) e ícono verde WhatsApp (7.58:1), Q-55; nunca tapa el botón de envío del formulario en celular.
 - **Movimiento:** solo la entrada del texto del hero y los estados de hover. Nada se oculta esperando el scroll: un bot o una captura de página completa tiene que ver todo. Todo se desactiva con `prefers-reduced-motion`.
 - **Números:** en cifra ("3 meses", "40 litros"). Sin emoji.
 

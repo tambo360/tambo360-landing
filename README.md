@@ -18,16 +18,18 @@ Todo lo que cambia entre entornos o se define más adelante está en un solo lug
 | Qué | Dónde |
 |---|---|
 | Dominio (canonical, sitemap, previews) | `src/config/site-url.mjs` |
+| Verificación de Google Search Console (vacía = sin meta) | Variable de entorno `PUBLIC_GOOGLE_SITE_VERIFICATION` en Vercel, solo Production; se lee en el build, así que después de cargarla o cambiarla hay que redeployar |
 | Número de WhatsApp (vacío = el botón flotante no se muestra) | `src/config/site.ts` → `whatsappNumber`, solo dígitos con código de país, ej. `5493434567890` |
-| Email, redes, URL de la demo y del registro, fecha de lanzamiento | `src/config/site.ts` |
+| Email, redes, URL del registro en la app (vacía = los botones "Registrarme" no se muestran), fecha de lanzamiento | `src/config/site.ts` |
 
 ## Lanzamiento
 
-Desde `site.launchDate` (26/10/2026 00:00, hora de Argentina) el sitio deja el piloto y lleva a `site.registerUrl`.
+Desde `site.launchDate` (16/11/2026 00:00, hora de Argentina) el sitio deja el piloto y lleva a `site.registerUrl`.
+Antes de esa fecha hay que cargar `registerUrl` con el dominio nuevo de la app: vacío, los botones "Registrarme" no se muestran.
 El sitio es estático, así que `src/components/ui/LaunchSwitch.astro` mete las dos versiones en el HTML y un script
 en el `<head>` (BaseLayout) muestra la que corresponde según la fecha de quien visita; sin JavaScript se ve la del piloto.
 
-**Hay que volver a hacer build y deploy el 26/10 o después.** La meta descripción, el texto alternativo de la imagen
+**Hay que volver a hacer build y deploy el 16/11 o después.** La meta descripción, el texto alternativo de la imagen
 para redes y el JSON-LD de preguntas frecuentes se fijan en el build, y un build posterior a la fecha ya no lleva la
 versión del piloto ni el script.
 

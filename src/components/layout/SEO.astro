@@ -30,12 +30,16 @@ const cleanPath = Astro.url.pathname.replace(/(index)?\.html$/, '').replace(/(.)
 const canonical = new URL(cleanPath, site.url).href;
 const imageUrl = new URL(image, site.url).href;
 const fullTitle = title === site.name ? `${site.name} · Ordeñe, rodeo y costos de tu tambo en el celular` : `${title} · ${site.name}`;
+// Set only on the production environment in Vercel; read at build time, so a change needs a redeploy.
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 const structuredData = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
+{/* A page kept out of the index has no preferred URL to declare. */}
+{!noindex && <link rel="canonical" href={canonical} />}
+{googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
 <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
 
 <meta property="og:type" content={type} />

@@ -2,13 +2,14 @@
 import type { HTMLAttributes } from 'astro/types';
 import Container from './Container.astro';
 
-type Tone = 'white' | 'dark';
+type Tone = 'white' | 'paper' | 'dark';
 type Props = HTMLAttributes<'section'> & { tone?: Tone; containerSize?: 'md' | 'lg' };
 
 const { tone = 'white', containerSize = 'lg', class: className, ...rest } = Astro.props;
 
 const tones: Record<Tone, string> = {
   white: 'bg-white',
+  paper: 'bg-papel',
   dark: 'sobre-oscuro bg-verde-900 text-white/85',
 };
 ---

@@ -1,13 +1,12 @@
 ---
 import vacas from "../../../assets/images/vacas-5.webp";
 import { problems } from "../../../data/home";
-import Icon from "../../ui/Icon.astro";
 import Picture from "../../ui/Picture.astro";
 import Section from "../../ui/Section.astro";
 import SectionHeading from "../../ui/SectionHeading.astro";
 ---
 
-<Section aria-labelledby="problemas-titulo">
+<Section tone="paper" aria-labelledby="problemas-titulo">
     <div class="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
         <div>
             <SectionHeading
@@ -15,25 +14,27 @@ import SectionHeading from "../../ui/SectionHeading.astro";
                 title="¿Te suena alguna de estas?"
                 lead="Cuando el tambo crece, el cuaderno ya no alcanza. Y lo que no se anota, no se puede arreglar."
             />
-            <ul class="mt-10 space-y-4">
+            <!-- A notebook page: every line of text is leading-8 so it sits on the 2rem rules. -->
+            <ol class="renglones mt-10 space-y-8 py-8">
                 {
-                    problems.map((problem) => (
-                        <li class="flex gap-4 rounded-lg border border-borde-verde bg-white p-5">
-                            <span class="flex size-11 shrink-0 items-center justify-center rounded-md bg-verde-050 text-verde-enlace">
-                                <Icon name={problem.icon} />
+                    problems.map((problem, index) => (
+                        <li class="grid grid-cols-[2.5rem_1fr] leading-8">
+                            <span
+                                class="pr-3 text-right text-lg font-extrabold text-verde-enlace"
+                                aria-hidden="true"
+                            >
+                                {index + 1}.
                             </span>
-                            <div>
-                                <h3 class="text-lg font-bold">
+                            <div class="pl-4">
+                                <h3 class="text-lg leading-8 font-bold">
                                     {problem.title}
                                 </h3>
-                                <p class="mt-1 leading-relaxed">
-                                    {problem.body}
-                                </p>
+                                <p class="leading-8">{problem.body}</p>
                             </div>
                         </li>
                     ))
                 }
-            </ul>
+            </ol>
         </div>
         <div class="relative">
             <Picture
@@ -42,7 +43,6 @@ import SectionHeading from "../../ui/SectionHeading.astro";
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 class="aspect-4/5 w-full rounded-xl object-cover"
             />
-           
         </div>
     </div>
 </Section>

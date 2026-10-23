@@ -4,7 +4,7 @@
 El dueño o administrador de un tambo chico o mediano llega desde redes sociales o un mensaje
 directo y no sabe qué es Tambo360 ni si es para él. La página tiene que hacerle sentir que
 entendemos su día (el cuaderno que no alcanza, la leche que se tira y nadie anota, enterarse
-tarde) y llevarlo a anotarse en el piloto gratuito antes del lanzamiento del 26/10/2026; desde
+tarde) y llevarlo a anotarse en el piloto gratuito antes del lanzamiento del 16/11/2026; desde
 el lanzamiento, a registrarse en la app (RN-desde-lanzamiento).
 
 ## Alcance
@@ -12,9 +12,8 @@ el lanzamiento, a registrarse en la app (RN-desde-lanzamiento).
 **Entra**
 - Página de inicio que cuenta los 3 problemas, cómo los resuelve Tambo360, qué hay el día del lanzamiento, que funciona sin señal, qué recibe quien se anota y quién está detrás.
 - Formulario para anotarse en el piloto o en la lista de espera, hasta el lanzamiento.
-- Botón "Registrarme" que lleva a la app (https://tambo360.vercel.app/registrarse), desde el lanzamiento.
+- Botón "Registrarme" que lleva a la app (`site.registerUrl`), desde el lanzamiento; sin URL cargada no se muestra (Q-60).
 - Botón flotante de WhatsApp en todas las páginas.
-- Botón "Ver demo" en la barra superior que lleva al entorno de prueba (https://tambo360.vercel.app/iniciar-sesion).
 - Página de preguntas frecuentes con las preguntas de Q-25 y las dudas de Q-21 y Q-23.
 - Política de privacidad y términos y condiciones.
 - Página de "no encontrada".
@@ -31,10 +30,10 @@ el lanzamiento, a registrarse en la app (RN-desde-lanzamiento).
 ## Reglas de negocio
 
 ### RN-una-accion-principal · origin: Q-02
-La acción principal de cada página es anotarse en el piloto hasta el lanzamiento y registrarse en la app desde el lanzamiento (RN-desde-lanzamiento); WhatsApp y "Ver demo" son acciones secundarias.
+La acción principal de cada página es anotarse en el piloto hasta el lanzamiento y registrarse en la app desde el lanzamiento (RN-desde-lanzamiento); WhatsApp es la acción secundaria.
 
 ### RN-desde-lanzamiento · origin: Q-46
-Desde el 26/10/2026 a las 00:00 hora de Argentina (`site.launchDate`) ninguna página muestra el piloto: no hay formulario, ni sección del piloto, ni "Anotarme", ni textos sobre el piloto, y los botones de acción llevan a https://tambo360.vercel.app/registrarse. Antes de esa fecha el sitio no cambia. RN-beneficio-piloto, RN-tres-fundadores y las RN-inscripcion-* rigen solo hasta el lanzamiento.
+Desde el 16/11/2026 a las 00:00 hora de Argentina (`site.launchDate`, Q-58) ninguna página muestra el piloto: no hay formulario, ni sección del piloto, ni "Anotarme", ni textos sobre el piloto, y los botones de acción llevan al registro de la app (`site.registerUrl`); mientras no tenga URL, esos botones no se muestran (Q-60). Antes de esa fecha el sitio no cambia. RN-beneficio-piloto, RN-tres-fundadores y las RN-inscripcion-* rigen solo hasta el lanzamiento.
 
 ### RN-beneficio-piloto · origin: Q-03
 Quien se anota recibe acceso gratuito al piloto de 3 meses y acompañamiento 1 a 1 por WhatsApp para configurar su tambo.
@@ -104,6 +103,6 @@ El soporte se ofrece solo por WhatsApp, las 24 horas.
 
 ## Abierto
 - Q-34 · ¿Se anuncia lo que viene después?
-- Q-39 · Dominio de la landing (tambo360.vercel.app es el de la app).
+- Q-60 · Dominio nuevo de la app para `site.registerUrl` (estimado `app.tambo360.vercel.app`, sin confirmar que Vercel lo permita).
 - Q-30 · Número de WhatsApp.
 - Revisión legal de privacidad y términos; razón social, CUIT y domicilio.
