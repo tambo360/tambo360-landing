@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-15T15:40:00+00:00",
+  "generatedAt": "2026-10-23T13:59:12.768Z",
   "title": "Design System: Tambo360 · landing",
   "extensions": {
     "colorMeta": {
@@ -65,6 +65,10 @@
         "role": "neutral",
         "displayName": "Rojo Alerta"
       },
+      "papel": {
+        "role": "neutral",
+        "displayName": "Papel de Libreta"
+      },
       "whatsapp": {
         "role": "neutral",
         "displayName": "Verde WhatsApp"
@@ -100,7 +104,7 @@
       {
         "name": "flotante",
         "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-        "purpose": "Solo el botón flotante de WhatsApp."
+        "purpose": "Solo el botón flotante de WhatsApp (píldora verde-900, Q-55)."
       }
     ],
     "motion": [
@@ -139,17 +143,9 @@
       "name": "Botón secundario",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Ver demo y acciones de apoyo.",
-      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver demo</a>",
+      "description": "Acciones de apoyo: reintentar, escribir por WhatsApp, ver preguntas frecuentes.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver preguntas frecuentes</a>",
       "css": ".ds-btn-secondary{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:8px;background:var(--color-lima-050,#e9faca);color:var(--color-lima-texto,#4d7a10);font:600 15px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-secondary:hover{background:var(--color-lima-100,#cfedba);color:var(--color-lima-texto-hover,#436b0d)}.ds-btn-secondary:focus-visible{outline:2px solid var(--color-verde-enlace,#236342);outline-offset:2px}"
-    },
-    {
-      "name": "Botón sobre oscuro",
-      "kind": "button",
-      "refersTo": "button-ghost-dark",
-      "description": "Acción secundaria sobre verde-900.",
-      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-ghost\" href=\"#\">Ver demo</a></div>",
-      "css": ".ds-dark{background:#1c2a1c;padding:24px}.ds-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:8px;border:1px solid rgb(255 255 255 / .4);color:#fff;font:600 16px/1 Figtree,system-ui,sans-serif;text-decoration:none;transition:background-color .2s}.ds-btn-ghost:hover{background:rgb(255 255 255 / .1)}.ds-btn-ghost:focus-visible{outline:2px solid #80b718;outline-offset:2px}"
     },
     {
       "name": "Campo",

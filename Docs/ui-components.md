@@ -10,7 +10,7 @@ Lo usan: header, hero, sección del piloto, cierre, 404. Carga: `primary` = la a
 No usar para: enlaces dentro de un párrafo.
 
 ## Section + SectionHeading
-Lo usan: todas las secciones de la home y las preguntas frecuentes. Carga: el fondo por `tone` (white, soft, softer, dark) para alternar cortes y el espaciado vertical; el titular en oración con bajada opcional; `launchedLead` reemplaza la bajada desde el lanzamiento.
+Lo usan: todas las secciones de la home y las preguntas frecuentes. Carga: el fondo por `tone` (white, paper, dark) para alternar cortes: nunca dos secciones seguidas con el mismo tono (Q-56) y el espaciado vertical; el titular en oración con bajada opcional; `launchedLead` reemplaza la bajada desde el lanzamiento.
 
 ## LaunchSwitch
 Lo usan: header, footer, hero, sección del piloto, cierre, preguntas (Accordion con `launchedAnswer`). Carga: slots `before` (hasta el lanzamiento) y `after` (desde `site.launchDate`); en un build anterior a la fecha van los dos y el script de BaseLayout elige en el navegador (sin JS, `before`); en uno posterior solo `after`. `as` = `div`, `span` o `li` según dónde va; el envoltorio es `display: contents`.
@@ -28,4 +28,7 @@ Lo usan: header, footer, secciones. Carga: SVG de Tabler Icons (outline) en `src
 Lo usan: header y footer. Carga: el logo oficial en PNG (`src/assets/logo-tambo360.png`), 32 px de alto en celular y 36 px desde `sm`; `tone="dark"` usa la versión blanca para fondos oscuros.
 
 ## SEO (layout)
-Lo usan: todas las páginas, vía BaseLayout. Carga: title, description, canonical, robots, Open Graph, Twitter y JSON-LD.
+Lo usan: todas las páginas, vía BaseLayout. Carga: title, description, canonical (salvo en páginas `noindex`), robots, Open Graph, Twitter y JSON-LD.
+
+## Hoja de cuaderno (`.renglones`)
+Lo usan: problemas de la home y beneficios del piloto. Carga: renglones cada 2 rem y línea de margen a 2.5 rem (Q-57). El texto que va encima usa `leading-8` y separaciones múltiplos de 2 rem para quedar sobre las líneas; la primera columna (2.5 rem) es el margen, para el número. No usar como textura de fondo de una sección entera.

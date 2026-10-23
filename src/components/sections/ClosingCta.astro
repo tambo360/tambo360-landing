@@ -5,7 +5,8 @@ import Icon from "../ui/Icon.astro";
 import LaunchSwitch from "../ui/LaunchSwitch.astro";
 import Section from "../ui/Section.astro";
 
-// Light surface on purpose: the dark footer follows, and a dark closing merged with it (u38).
+// Light surface on purpose: the dark footer follows, and a dark closing merged with it (u38). Paper, so it
+// never sits on the same tone as the white section before it.
 // title/lead are the pre-launch copy; launchedTitle/launchedLead replace them from the launch date.
 type Props = {
     title?: string;
@@ -23,9 +24,10 @@ const {
 ---
 
 <Section
+    tone="paper"
     containerSize="md"
     aria-labelledby="cierre-titulo"
-    class="border-t border-borde-verde text-center"
+    class="text-center"
 >
     <h2
         id="cierre-titulo"
@@ -54,10 +56,14 @@ const {
                 Sumarme al piloto gratis
                 <Icon name="arrow-right" size={20} />
             </Button>
-            <Button slot="after" href={site.registerUrl} size="lg" external>
-                Registrarme gratis
-                <Icon name="arrow-right" size={20} />
-            </Button>
+            {
+                site.registerUrl && (
+                    <Button slot="after" href={site.registerUrl} size="lg" external>
+                        Registrarme gratis
+                        <Icon name="arrow-right" size={20} />
+                    </Button>
+                )
+            }
         </LaunchSwitch>
     </div>
 </Section>
