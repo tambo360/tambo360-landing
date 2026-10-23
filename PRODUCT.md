@@ -22,8 +22,8 @@ establecimientos con varias cuencas y cooperativas con varios establecimientos (
 
 Tambo360 es una web app para registrar el ordeñe, controlar el rodeo y ordenar los costos del tambo desde un
 solo lugar, y saber si el tambo es rentable. La landing tiene que hacerle sentir al productor que entendemos su
-día y llevarlo a la acción principal: hasta el 25/10/2026, anotarse en el piloto; desde el 26/10/2026 00:00
-(hora de Argentina), registrarse en la app (https://tambo360.vercel.app/registrarse) (Q-02, Q-46).
+día y llevarlo a la acción principal: hasta el 15/11/2026, anotarse en el piloto; desde el 16/11/2026 00:00
+(hora de Argentina), registrarse en la app (dominio nuevo a definir; sin él no hay botón de registro) (Q-02, Q-46, Q-58, Q-60).
 
 Medida de éxito después del lanzamiento: **sin definir** (el usuario la dejó abierta el 09/10/2026).
 
@@ -78,7 +78,7 @@ sistemas viejos que piden horas frente a una PC.
 ## Product Principles
 
 1. El productor tiene que reconocer su día antes de que le vendan nada.
-2. Una sola acción principal por página; WhatsApp y "Ver demo" acompañan.
+2. Una sola acción principal por página; WhatsApp acompaña.
 3. Prometer solo lo que la app hace hoy.
 4. Pensado para el celular, en la fosa y al aire libre.
 

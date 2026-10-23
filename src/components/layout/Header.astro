@@ -36,14 +36,15 @@ const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
     </nav>
 
     <div class="flex items-center gap-1.5 sm:gap-2">
-      <div class="hidden sm:block">
-        <Button href={site.demoUrl} variant="secondary" external>Ver demo</Button>
-      </div>
       <LaunchSwitch>
         <Button slot="before" href="/#sumate" class="max-[359px]:px-3 max-[359px]:text-sm">Anotarme</Button>
-        <Button slot="after" href={site.registerUrl} external class="max-[359px]:px-3 max-[359px]:text-sm">
-          Registrarme
-        </Button>
+        {
+          site.registerUrl && (
+            <Button slot="after" href={site.registerUrl} external class="max-[359px]:px-3 max-[359px]:text-sm">
+              Registrarme
+            </Button>
+          )
+        }
       </LaunchSwitch>
       <button
         type="button"
@@ -76,9 +77,6 @@ const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
             </li>
           ))
         }
-        <li class="mt-2 border-t border-borde-verde pt-3 sm:hidden">
-          <Button href={site.demoUrl} variant="secondary" external class="w-full">Ver demo</Button>
-        </li>
       </ul>
     </Container>
   </nav>
