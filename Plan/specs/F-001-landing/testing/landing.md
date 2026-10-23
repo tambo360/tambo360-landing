@@ -1,4 +1,4 @@
-# F-001 · Verificación de la landing
+Vercel agrega `X-Robots-Tag: noindex` por defecto a los deploys de preview y a los de producción viejos; no a un dominio propio asignado a una rama de preview (vercel.com/kb/guide/are-vercel-preview-deployment-indexed-by-search-engines, leído 2026-10-23) | passed (documental, sin request real) |Home: Organization (logo 512 existe, 4 redes) + WebSite. FAQ: FAQPage con 13 Question/Answer = 13 preguntas visibles. `/equipo`: AboutPage. Todo parsea | passed |Títulos distintos en las 5; description presente; canonical; `og:image` absoluto; `lang="es-AR"`; 1 `h1` por página | passed |`Disallow: /api/` y `Disallow: /gracias`; `Sitemap: https://tambo360-landing.vercel.app/sitemap-index.xml`, que existe | passed |Ni `/gracias` ni `/404` en el sitemap; `/404` con `noindex, follow`. `/gracias` se renderiza a pedido (`prerender = false`): su `noindex` está en el código pero no se pudo ver en la salida sin servidor | passed (sitemap y /404); /gracias en salida: blocked, sin servidor local del adapter |Las 5 URLs esperadas, sin `.html` ni barra final, cada una igual al canonical de su página | passed |`sitemap-index.xml` y `sitemap-0.xml` en `dist/client`; el índice lista `https://tambo360-landing.vercel.app/sitemap-0.xml` (`evidence/2026-10-23-seo/`) | passed |# F-001 · Verificación de la landing
 
 Las historias US-001..US-004 están indexadas en el spec pero no se escribieron (fuera del plan), así que los escenarios se derivan de las reglas y los NFR del spec. Estado del vocabulario cerrado: `pending`, `passed`, `failed`, `blocked`.
 
@@ -162,3 +162,40 @@ Observación: en las capturas de página entera la figura de "Cómo funciona" y 
 | 60 | Cajas de ícono claras (u55) | Home y `/equipo` 1366 | verde-050 con ícono verde-enlace (6.36:1) | Así (`paleta-app-home-iconos-1366.png`, `paleta-app-equipo-1366.png`); aceptado por el usuario | passed |
 
 Hallazgo: en `/equipo` quedó un hueco blanco grande entre la intro y la grilla del equipo (~130 px a 1366). Antes la intro tenía fondo verde-025 y el corte de color justificaba el doble padding; con las dos en blanco sobra. Pendiente de decisión.
+
+## Ejecución 2026-10-23 — Rediseño "Libreta de tambo" (u66-u71, Q-55, Q-56, Q-57)
+
+Objetivo: las páginas servidas por `astro dev` (localhost:4321) en Edge headless controlado por CDP, con viewport emulado de 390 y 1366 px. Sin datos de prueba: solo lectura.
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 61 | Check, tests y build | repo | check 0 errores, 18 tests verdes, build ok | check 0 errores (1 aviso de antes); 18 tests passed; `astro build` falla en el paso del adapter de Vercel (EPERM symlink en Windows, conocido desde u56): las páginas no se pudieron confirmar con el build local | blocked: build local en Windows sin permiso de symlinks; lo confirma el primer deploy |
+| 62 | Flotante de WhatsApp (Q-55) | `/` a 390 y 1366 | Fondo verde-900 `rgb(28,42,28)`, texto blanco, ícono `rgb(37,211,102)` | Estilo calculado igual al esperado en las 6 vistas; sobre el footer se distingue por el aro blanco al 20 % (`rediseno-*.png`) | passed |
+| 63 | Fondos alternados (Q-56) | `/`, `/equipo`, `/preguntas-frecuentes` a 1366 | Ninguna sección seguida de otra con el mismo fondo; papel `rgb(245,241,230)` presente | Home: verde-900, papel, verde-900, blanco, papel, blanco, papel, blanco, papel. FAQ: papel, transparente (blanco del body), papel. `/equipo`: papel, **blanco, blanco**, papel | failed: BUG-001 (solo `/equipo`) |
+| 64 | Sin desborde horizontal | las 3 páginas a 390 y 1366 | `scrollWidth` igual al ancho del viewport | 390/390 y 1366/1366 en las 6 vistas | passed |
+| 65 | Contraste de los pares nuevos | pares de DESIGN.md § Dirección | texto ≥ 4.5:1 sobre papel; ícono WhatsApp ≥ 3:1 | Calculado (WCAG 2.x): tinta 15.72, texto 6.71, verde-enlace 6.34, lima-texto 4.53 sobre papel; ícono `#25d366` sobre verde-900 7.58; blanco sobre verde-900 15.03 | passed |
+| 66 | Hojas de cuaderno legibles | problemas y piloto a 390 y 1366 | El texto cae sobre los renglones, sin solaparse con el número ni con la tilde | Cada línea de texto ocupa un renglón; número y tilde en el margen, alineados con el título (`rediseno-home-*.png`) | passed |
+
+Todas las vistas se capturaron con el viewport emulado por CDP (Edge headless), con la altura de la página entera. La ventana de Edge headless no baja de unos 500 px de ancho, y por eso una captura con `--window-size=390` sale cortada aunque la página no desborde.
+
+## Ejecución 2026-10-23 (2) — SEO y sitemap en el build (u73)
+
+Objetivo: la salida estática del build (`dist/client`), leída con Node; no hace falta navegador. El build local con el adapter de Vercel falla en Windows (escenario 61), así que se mide con una config temporal que importa `astro.config.mjs` y anula solo el hook `astro:build:done` del adapter (no se commitea). Lo esperado sale de la spec (Lighthouse SEO ≥ 95), de `astro.config.mjs` (`NOT_INDEXED`, `trailingSlash: 'never'`) y de QT-04/QT-11.
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 67 | Se genera el sitemap | `dist/client` | Existen `sitemap-index.xml` y `sitemap-0.xml`, y el índice apunta al segundo con URL absoluta | `sitemap-index.xml` y `sitemap-0.xml` en `dist/client`; el índice lista `https://tambo360-landing.vercel.app/sitemap-0.xml` (`evidence/2026-10-23-seo/`) | passed |
+| 68 | URLs del sitemap = canonical | `sitemap-0.xml` y el HTML de cada página | Exactamente `/`, `/equipo`, `/preguntas-frecuentes`, `/privacidad`, `/terminos` sobre `SITE_URL`, sin `.html` ni barra final, cada una igual al `canonical` de su página | Las 5 URLs esperadas, sin `.html` ni barra final, cada una igual al canonical de su página | passed |
+| 69 | Páginas fuera del índice | `/gracias`, `/404` | No figuran en el sitemap y llevan `noindex` | Ni `/gracias` ni `/404` en el sitemap; `/404` con `noindex, follow`. `/gracias` se renderiza a pedido (`prerender = false`): su `noindex` está en el código pero no se pudo ver en la salida sin servidor | passed (sitemap y /404); /gracias en salida: blocked, sin servidor local del adapter |
+| 70 | robots.txt | `dist/client/robots.txt` | `Disallow: /api/` y `/gracias`; `Sitemap:` absoluto que apunta a un archivo que existe | `Disallow: /api/` y `Disallow: /gracias`; `Sitemap: https://tambo360-landing.vercel.app/sitemap-index.xml`, que existe | passed |
+| 71 | Meta por página indexable | las 5 páginas | `<title>` y description únicos y no vacíos, canonical, `og:image` absoluto, `html lang`, un solo `h1` | Títulos distintos en las 5; description presente; canonical; `og:image` absoluto; `lang="es-AR"`; 1 `h1` por página | passed |
+| 72 | JSON-LD | home y `/preguntas-frecuentes` | Cada bloque parsea como JSON; home: Organization y WebSite; FAQ: FAQPage con una Question por pregunta visible | Home: Organization (logo 512 existe, 4 redes) + WebSite. FAQ: FAQPage con 13 Question/Answer = 13 preguntas visibles. `/equipo`: AboutPage. Todo parsea | passed |
+| 73 | Previews de Vercel no indexables | documentación de Vercel | Los deploys que no son producción salen con `X-Robots-Tag: noindex` | Vercel agrega `X-Robots-Tag: noindex` por defecto a los deploys de preview y a los de producción viejos; no a un dominio propio asignado a una rama de preview (vercel.com/kb/guide/are-vercel-preview-deployment-indexed-by-search-engines, leído 2026-10-23) | passed (documental, sin request real) |
+
+Observaciones (no son fallas: ningún requisito las fija):
+- La salida es `equipo/index.html` y no `equipo.html`, aunque la config dice `build.format: file` (el adapter de Vercel parece imponer el formato directorio; sin confirmar). El canonical sale igual sin barra. Falta ver en producción que `/equipo` responda 200 sin redirigir a `/equipo/`.
+- La description de `/terminos` mide unos 175 caracteres. Google suele cortar alrededor de 155–160, así que se verá truncada.
+- `/404` lleva canonical a `/404`. Es inofensivo con `noindex`, pero sobra.
+- No hay meta de verificación de Search Console (u74).
+
+Después de esta ejecución cambiaron cosas (u74, u83, u84): el dominio pasó a `https://tambo360.vercel.app`, `/404` y `/gracias` ya no llevan canonical, cambió la description de `/terminos` y se sumó la meta de Search Console con una variable de entorno. La evidencia `evidence/2026-10-23-seo/` tiene el dominio anterior. Falta volver a correr 67–71 con el dominio nuevo, en el deploy de producción. Ahí también hay que ver que `/equipo` responda 200 sin redirigir.
