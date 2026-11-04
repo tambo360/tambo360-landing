@@ -26,5 +26,5 @@ export const team: TeamMember[] = [
   { name: 'Nicolás Pavón', photo: nicolaspavon },
   { name: 'Ornella Meolans', photo: ornellameolans },
   { name: 'Tatiana Tablada', photo: tatianatablada },
-  { name: 'Vero', photo: vero },
+  { name: 'Veronica Mariela Stanislavsky', photo: vero },
 ];
