@@ -34,7 +34,7 @@ componente: tambo360-landing · área: frontend
 - `src/pages/`: una ruta por archivo; `src/pages/api/` solo endpoints.
 - `src/content/` y `src/data/`: textos y datos (FAQ, módulos, equipo) separados de la maquetación.
 - `src/config/site.ts`: WhatsApp, email, redes, URL del registro en la app (vacía = sin botones "Registrarme"), fecha de lanzamiento. El dominio está en `src/config/site-url.mjs` (lo importa también `astro.config.mjs`). Nada de esto se repite en otro lugar.
-- Variables de entorno: `PUBLIC_GOOGLE_SITE_VERIFICATION` (QT-25), opcional, solo en Production; se lee en el build. `RESEND_API_KEY` (QT-29, QT-36): secreto de servidor declarado en `env.schema` de `astro.config.mjs`, opcional, leído en cada pedido desde `astro:env/server`; si falta, el form responde `error`. Remitente `onboarding@resend.dev` fijo en el endpoint y destinatario `site.email` (QT-36).
+- Variables de entorno: `PUBLIC_GOOGLE_SITE_VERIFICATION` (QT-25), opcional, solo en Production; se lee en el build. `RESEND_API_KEY` (QT-29, QT-36): secreto de servidor declarado en `env.schema` de `astro.config.mjs`, opcional, leído en cada pedido desde `astro:env/server`; si falta, el form responde `error`. Remitente `onboarding@resend.dev` fijo en el endpoint; destinatario `WAITLIST_TO` (secreto de servidor opcional), o `site.email` si falta (QT-36, QT-37). Las dos se cargan en Vercel (Production y Preview) y cambiarlas no requiere rebuild.
 - `src/lib/`: lógica sin UI (validación de la inscripción, mail a Resend), con sus tests `*.test.ts` al lado.
 - Imágenes de contenido en `src/assets/` (las optimiza el build); en `public/` solo favicon y OG. `robots.txt` lo genera `src/pages/robots.txt.ts` con el dominio de la config.
 

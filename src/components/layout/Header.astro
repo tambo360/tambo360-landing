@@ -10,7 +10,7 @@ const currentPath = Astro.url.pathname.replace(/\.html$/, '');
 const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
 ---
 
-<header class="sticky top-0 z-40 border-b border-borde-verde/70 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+<header class="sticky top-0 z-40 border-b border-[#e4dccb] bg-papel/96 backdrop-blur supports-[backdrop-filter]:bg-papel/90">
   <Container class="flex h-18 items-center justify-between gap-2 sm:gap-4">
     <a href="/" class="flex shrink-0 items-center rounded-md" title="Ir al inicio">
       <Brand />
@@ -60,7 +60,7 @@ const isCurrent = (href: string) => !href.includes('#') && currentPath === href;
     </div>
   </Container>
 
-  <nav id="menu-movil" aria-label="Menú" class="hidden border-t border-borde-verde bg-white lg:hidden" data-menu>
+  <nav id="menu-movil" aria-label="Menú" class="hidden border-t border-[#e4dccb] bg-papel lg:hidden" data-menu>
     <Container>
       <ul class="flex flex-col py-3">
         {

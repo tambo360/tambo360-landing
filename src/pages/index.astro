@@ -1,8 +1,8 @@
 ---
 import ClosingCta from "../components/sections/ClosingCta.astro";
 import FaqPreview from "../components/sections/home/FaqPreview.astro";
+import AppInstall from "../components/sections/home/AppInstall.astro";
 import Hero from "../components/sections/home/Hero.astro";
-import HowItWorks from "../components/sections/home/HowItWorks.astro";
 import Modules from "../components/sections/home/Modules.astro";
 import Offline from "../components/sections/home/Offline.astro";
 import Pilot from "../components/sections/home/Pilot.astro";
@@ -35,10 +35,10 @@ const jsonLd = [
 <BaseLayout title={site.name} jsonLd={jsonLd}>
     <Hero />
     <Problems />
-    <Story />
-    <HowItWorks />
     <Modules />
     <Offline />
+    <AppInstall />
+    <Story />
     <LaunchSwitch>
         <Fragment slot="before"><Pilot /></Fragment>
     </LaunchSwitch>

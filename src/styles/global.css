@@ -42,6 +42,12 @@
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  /* B2 (DESIGN.md, Shapes): preguntas 14 px, tarjetas de pasos, mosaico y fotos del equipo 20 px. */
+  --radius-pregunta: 14px;
+  --radius-tarjeta: 20px;
+
+  /* The phone in the hero stands in front of the laptop; with the WhatsApp button, the only shadows (B2). */
+  --shadow-dispositivo: 0 30px 60px rgb(28 42 28 / 0.25);
 
   --text-display-xl: 2.75rem;
   --text-display-xl--line-height: 1.12;
@@ -96,6 +102,11 @@
 
   .sobre-oscuro :focus-visible {
     outline-color: var(--color-verde-cta);
+  }
+
+  /* verde-enlace on verde-cta is under 3:1; verde-900 gives 6.23:1. */
+  .sobre-marca :focus-visible {
+    outline-color: var(--color-verde-900);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -159,9 +170,9 @@ html:not([data-launched]) [data-postlaunch] {
   display: none !important;
 }
 
-/* Notebook sheet: rules every 2rem (text on it uses leading-8 to sit on them) and a margin line. */
-.renglones {
-  background-image:
-    linear-gradient(to right, transparent calc(2.5rem - 1px), rgb(35 99 66 / 0.35) calc(2.5rem - 1px), rgb(35 99 66 / 0.35) 2.5rem, transparent 2.5rem),
-    repeating-linear-gradient(to bottom, transparent 0, transparent calc(2rem - 1px), var(--color-borde-neutro) calc(2rem - 1px), var(--color-borde-neutro) 2rem);
+/* Key words of the home H1: a thick verde-cta band behind the text, tinta on top (7.36:1). */
+.subrayado-cta {
+  background-image: linear-gradient(transparent 62%, var(--color-verde-cta) 62%, var(--color-verde-cta) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }

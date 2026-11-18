@@ -1,6 +1,8 @@
 import type { IconName } from '../components/ui/Icon.astro';
 
 type Item = { icon: IconName; title: string; body: string };
+/** figure: the short number shown in the benefit's badge (B2). */
+type Benefit = Item & { figure: string };
 
 export const problems: Item[] = [
   {
@@ -71,20 +73,23 @@ export const modules: Item[] = [
   },
 ];
 
-export const pilotBenefits: Item[] = [
+export const pilotBenefits: Benefit[] = [
   {
     icon: 'gift',
     title: '3 meses gratis',
+    figure: '3 meses',
     body: 'Usás Tambo360 completo durante el piloto, sin pagar nada y sin poner tarjeta.',
   },
   {
     icon: 'brand-whatsapp',
     title: 'Te acompañamos 1 a 1',
+    figure: '1 a 1',
     body: 'Por WhatsApp te ayudamos a configurar tu tambo y a sacarle provecho desde el primer día.',
   },
   {
     icon: 'users',
     title: 'Tu opinión cambia la app',
+    figure: '3 tambos',
     body: 'Buscamos 3 tambos fundadores. Lo que nos cuentes en el piloto define cómo sigue Tambo360.',
   },
 ];

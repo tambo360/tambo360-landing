@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-23T13:59:12.768Z",
+  "generatedAt": "2026-11-04T21:30:00.000Z",
   "title": "Design System: Tambo360 · landing",
   "extensions": {
     "colorMeta": {
@@ -105,6 +105,11 @@
         "name": "flotante",
         "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
         "purpose": "Solo el botón flotante de WhatsApp (píldora verde-900, Q-55)."
+      },
+      {
+        "name": "dispositivo",
+        "value": "0 30px 60px rgb(28 42 28 / 0.25)",
+        "purpose": "Solo el celular del hero, delante de la computadora (B2, Q-63)."
       }
     ],
     "motion": [
@@ -181,9 +186,9 @@
   ],
   "narrative": {
     "northStar": "Del cuaderno al bolsillo",
-    "overview": "La landing muestra un cambio concreto: lo que hoy se anota en un cuaderno mojado pasa al celular, ordenado. El\ndiseño se pone al servicio de esa claridad práctica. El campo real va de fondo (fotos de tambo a sangre, verdes\nde pasto, el verde casi negro del galpón) y adelante va lo que el productor hace y obtiene, dicho en grande y sin\nvueltas.\n\nLa densidad es baja y el ritmo, de corte: secciones anchas que alternan blanco, verde muy claro y verde oscuro,\ncon mucho aire entre bloques. La audacia se gasta en un solo lugar por página (en la home, la franja oscura de\nla historia con la cifra de los 40 litros); el resto es sobrio y respira. Todo tiene que leerse en un celular de\ngama media al sol de la fosa.\n\nRechazos confirmados: nada de fondos de \"startup\" (degradados violetas, glassmorphism, ilustraciones 3D), nada\nde etiquetas en mayúsculas encima de cada titular, nada que se esconda esperando el scroll.",
+    "overview": "La landing muestra un cambio concreto: lo que hoy se anota en un cuaderno mojado pasa al celular, ordenado. El\ndiseño se pone al servicio de esa claridad práctica. La página abre con la app en la mano (pantallas reales en\nuna computadora y un celular) y adelante va lo que el productor hace y obtiene, dicho en grande y sin vueltas; el\ncampo real queda en la foto de la historia.\n\nLa densidad es baja y el ritmo, de corte: secciones anchas que alternan blanco, papel y una franja verde oscuro,\ncon mucho aire entre bloques, y el cierre en el verde de marca. La audacia se gasta en un solo lugar por página\n(en la home, el hero con las pantallas de la app); el resto es sobrio y respira. Todo tiene que leerse en un\ncelular de gama media al sol de la fosa.\n\nRechazos confirmados: nada de fondos de \"startup\" (degradados violetas, glassmorphism, ilustraciones 3D), nada\nde etiquetas en mayúsculas encima de cada titular, nada que se esconda esperando el scroll.",
     "keyCharacteristics": [
-      "Fotos reales de tambo, nunca ilustraciones ni ganado de carne.",
+      "Pantallas reales de la app (`src/assets/app/`) y fotos reales de tambo, nunca ilustraciones ni ganado de carne.",
       "Cortes de color entre secciones en lugar de sombras o adornos.",
       "Un solo verde de acción (verde-cta) con texto verde-900 encima.",
       "Tipografía redondeada y gruesa en los titulares, cómoda en el cuerpo.",
@@ -192,7 +197,7 @@
     "rules": [
       {
         "name": "La Regla del Verde Único",
-        "body": "verde-cta es la acción principal: aparece en un solo botón por bloque visual y, sobre oscuro, en una sola cifra o palabra por bloque. Si dos cosas son verde-cta, una sobra.",
+        "body": "verde-cta es la acción principal: aparece en un solo botón por bloque visual. Como superficie, solo en el cierre, y ahí el botón pasa a verde-900. Si dos botones verde-cta compiten, uno sobra.",
         "section": "colors"
       },
       {
@@ -202,12 +207,12 @@
       },
       {
         "name": "La Regla del Corte",
-        "body": "Dos secciones blancas seguidas se separan con un borde de 1 px borde-verde; verde-900 en una o dos secciones por página. La última sección antes del footer (verde-950) nunca es oscura (u38).",
+        "body": "Blanco y papel se alternan: nunca dos secciones seguidas con el mismo fondo, y sin borde entre secciones. verde-900 en una sola franja por página. La última sección antes del footer (verde-950) es el cierre verde-cta, nunca oscura (u38).",
         "section": "colors"
       },
       {
         "name": "La Regla de la Cifra",
-        "body": "Los números van en cifra (\"40 litros\", \"3 pasos\") y, cuando son el punto, en display sobre oscuro en verde-cta. Sin emoji.",
+        "body": "Los números van en cifra (\"40 litros\", \"3 pasos\") y, cuando son el punto, en grande (la cita de los 40 litros, con \"Hasta 40 litros\" en verde-enlace). Sin emoji.",
         "section": "typography"
       },
       {

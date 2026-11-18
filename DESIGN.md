@@ -125,28 +125,60 @@ un valor, se cambia en los dos. Los pares de contraste calculados y la forma de 
 **Creative North Star: "Del cuaderno al bolsillo"**
 
 La landing muestra un cambio concreto: lo que hoy se anota en un cuaderno mojado pasa al celular, ordenado. El
-diseño se pone al servicio de esa claridad práctica. El campo real va de fondo (fotos de tambo a sangre, verdes
-de pasto, el verde casi negro del galpón) y adelante va lo que el productor hace y obtiene, dicho en grande y sin
-vueltas.
+diseño se pone al servicio de esa claridad práctica. La página abre con la app en la mano (pantallas reales en
+una computadora y un celular) y adelante va lo que el productor hace y obtiene, dicho en grande y sin vueltas; el
+campo real queda en la foto de la historia.
 
-La densidad es baja y el ritmo, de corte: secciones anchas que alternan blanco, papel y verde oscuro,
-con mucho aire entre bloques. La audacia se gasta en un solo lugar por página (en la home, la franja oscura de
-la historia con la cifra de los 40 litros); el resto es sobrio y respira. Todo tiene que leerse en un celular de
-gama media al sol de la fosa.
+La densidad es baja y el ritmo, de corte: secciones anchas que alternan blanco, papel y una franja verde oscuro,
+con mucho aire entre bloques, y el cierre en el verde de marca. La audacia se gasta en un solo lugar por página
+(en la home, el hero con las pantallas de la app); el resto es sobrio y respira. Todo tiene que leerse en un
+celular de gama media al sol de la fosa.
 
 Rechazos confirmados: nada de fondos de "startup" (degradados violetas, glassmorphism, ilustraciones 3D), nada
 de etiquetas en mayúsculas encima de cada titular, nada que se esconda esperando el scroll.
 
 **Key Characteristics:**
-- Fotos reales de tambo, nunca ilustraciones ni ganado de carne.
+- Pantallas reales de la app (`src/assets/app/`) y fotos reales de tambo, nunca ilustraciones ni ganado de carne.
 - Cortes de color entre secciones en lugar de sombras o adornos.
 - Un solo verde de acción (verde-cta) con texto verde-900 encima.
 - Tipografía redondeada y gruesa en los titulares, cómoda en el cuerpo.
 - Objetivos táctiles grandes: se usa con guantes o con las manos mojadas.
 
-## Dirección "Libreta de tambo" (u66, 23/10/2026 · Q-55, Q-56, Q-57)
+## Dirección B2 "La app en la mano" (u85-u88, 04/11/2026 · Q-63, Q-64, Q-65)
 
-Aprobada por el usuario y aplicada en u67-u71 (home, `/equipo`, `/preguntas-frecuentes`); las reglas de abajo ya la reflejan.
+Aprobada por el usuario el 04/11/2026 entre tres direcciones (A Campo abierto, B La app en la mano, C Libreta en
+grande); mockups en https://claude.ai/artifact/LvgF4EcpPygSqS33h2Lg9T (B2 escritorio y celular, `/equipo`,
+`/preguntas-frecuentes`). Mismos textos y mismo verde-cta; cambian el orden, las superficies y las imágenes.
+Reemplaza la tabla de superficies de "Libreta de tambo" (abajo, que queda como historia).
+
+**Por qué:** la landing vende una app y no la mostraba: el hero era una foto de un productor con una tablet. B pone
+las pantallas reales primero, enfrenta cada problema con lo que cambia y deja la historia de los 40 litros como
+razón de ser, después del producto.
+
+| Sección (home, en orden) | Fondo | Forma |
+|---|---|---|
+| Hero | verde-900 con foto | volvió el hero anterior a B2 (Q-66, 18/11/2026): `hero.webp` a todo el ancho con gradiente verde oscuro de izquierda a derecha en escritorio y de abajo hacia arriba en celular; titular blanco con "ordeñe, rodeo y costos" en verde-cta |
+| ¿Te suena? / Cómo funciona | papel | una sola sección (Q-66): filas "Hoy" / "Con Tambo360"; a la izquierda el problema, a la derecha su paso en tarjeta blanca con número en círculo verde-900 y fragmento ilustrativo de pantalla (`aria-hidden`); en celular una columna |
+| Qué podés hacer | blanco | mosaico de 6 tarjetas, título y descripción (Q-64); arriba Gastos, Rodeo y Avisos con su pantalla (`costos-mobile.png`, `catalogo-mobile.png`, `tambo-engine.webp`); abajo Producción, Mermas y Tablero solo con texto |
+| Sin señal | verde-900 | titular y bajada en dos columnas; los 3 ítems con ícono verde-cta y solo su título, separados por divisores; sin foto |
+| Instalar la app | blanco | lo que era el hero B2 (Q-66): texto a la izquierda con "en el celular de la fosa" subrayado en verde-cta; a la derecha computadora con el tablero y celular con "crear lote"; "Pantallas reales de Tambo360." debajo |
+| La historia | papel | foto de la vaca a la izquierda; titular de H2 normal, relato y la cifra como cita con barra verde-cta, sin caja |
+| Piloto | blanco | beneficios en tarjetas papel con su cifra en una insignia verde-cta ("3 meses", "1 a 1", "3 tambos"); formulario en caja blanca con borde |
+| Dudas frecuentes | papel | columna angosta centrada; titular con "Ver todas las preguntas" a la derecha; preguntas en tarjetas blancas con borde |
+| Cierre | verde-cta | titular y bajada a la izquierda, botón verde-900 a la derecha; texto verde-900 (6.23:1) |
+| Footer | verde-950 | sin cambio |
+
+Páginas internas: intro en papel con H1 grande, contenido en blanco y el mismo cierre verde-cta. `/equipo`
+(oculta, Q-65): grilla de 4 columnas (2 en celular) con fotos cuadradas en blanco y negro; "Lo que escuchamos en los
+tambos" como la franja verde-900 de "Sin señal". `/preguntas-frecuentes`: columna de 880 px con las preguntas en
+tarjetas con borde; la abierta pasa a borde verde.
+
+Se van: los renglones de cuaderno, la foto a sangre del hero y la del potrero.
+
+## Dirección "Libreta de tambo" (u66, 23/10/2026 · Q-55, Q-56, Q-57) — reemplazada por B2
+
+Aprobada por el usuario y aplicada en u67-u71 (home, `/equipo`, `/preguntas-frecuentes`). Desde B2 siguen vigentes
+el papel, el WhatsApp y el lima con un solo rol; la tabla de superficies y los renglones quedan reemplazados.
 
 **Por qué:** crítica del 23/10 sobre la home en 1366 px. 7 secciones blancas seguidas (ritmo plano, sev. 3),
 WhatsApp `#25d366` junto al lima (sev. 2), el mismo molde de ícono en caja + título + texto repetido 4 veces
@@ -220,16 +252,17 @@ Consecuencias (aplicadas en u53):
 - Decisión del usuario (15/10/2026): fondos claros en blanco como en la app y un solo verde, sin acento aparte.
 
 ### Primary
-- **Verde Pasto Nuevo** (verde-cta): la acción principal y nada más. Fondo de botones principales, y sobre
-  verde-900 las cifras y palabras clave. Siempre con texto verde-900 encima, nunca blanco.
+- **Verde Pasto Nuevo** (verde-cta): la acción principal. Fondo de botones principales, superficie del cierre
+  (B2), subrayado de la palabra clave del H1, barra de la cita y, sobre verde-900, íconos. Siempre con texto
+  verde-900 o tinta encima, nunca blanco.
 - **Verde Brote** (verde-check): el hover del botón principal.
 - **Verde Lote** (verde-enlace): todo texto de enlace sobre fondo claro, el anillo de foco y la marca de sección
   activa del nav.
 - **Verde Potrero** (verde-nav): reservado a la marca; no se usa para texto sobre claro.
 
 ### Secondary
-- **Verde Galpón** (verde-900): las superficies de corte con texto blanco encima. En la home: hero y la
-  historia. El cierre va en blanco para que no se funda con el footer.
+- **Verde Galpón** (verde-900): la franja de corte con texto blanco encima (en la home, "Sin señal"; en `/equipo`,
+  "Lo que escuchamos"), el botón sobre el cierre verde-cta y los números de los pasos.
 - **Verde Noche** (verde-950): el footer, un paso más profundo que el galpón.
 
 ### Neutral
@@ -243,13 +276,14 @@ Consecuencias (aplicadas en u53):
 - **Papel de Libreta** (papel): superficie clara que alterna con el blanco (Q-56).
 
 ### Named Rules
-**La Regla del Verde Único.** verde-cta es la acción principal: aparece en un solo botón por bloque visual y,
-sobre oscuro, en una sola cifra o palabra por bloque. Si dos cosas son verde-cta, una sobra.
+**La Regla del Verde Único.** verde-cta es la acción principal: aparece en un solo botón por bloque visual. Como
+superficie, solo en el cierre, y ahí el botón pasa a verde-900. Si dos botones verde-cta compiten, uno sobra.
 
 **La Regla del Texto Oscuro.** Sobre verde-cta y verde-check va texto verde-900 (6.23:1 y 7.46:1), nunca blanco (2.41:1). Q-53.
 
 **La Regla del Corte.** Blanco y papel se alternan: nunca dos secciones seguidas con el mismo fondo, y sin borde
-entre secciones. verde-900 en una o dos secciones por página. La última sección antes del footer (verde-950) nunca es oscura (u38).
+entre secciones. verde-900 en una sola franja por página. La última sección antes del footer (verde-950) es el
+cierre verde-cta, nunca oscura (u38).
 
 ## Typography
 
@@ -270,16 +304,16 @@ se lea de un vistazo; abierta y cómoda en el cuerpo para leer al sol.
 
 ### Named Rules
 **La Regla de la Cifra.** Los números van en cifra ("40 litros", "3 pasos") y, cuando son el punto, en
-display sobre oscuro en verde-cta. Sin emoji.
+grande (la cita de los 40 litros, con "Hasta 40 litros" en verde-enlace). Sin emoji.
 
 ## Layout
 
 Columna central de 72 rem como máximo (48 rem para lectura), con márgenes laterales de 16, 24 y 32 px según el
 ancho. Las secciones tienen 64 px de aire arriba y abajo en celular, 80 px desde 640 px y 96 px desde 1024 px.
 Desde 1024 px las secciones de contenido pasan a dos columnas (texto y foto, o título a la izquierda y lista a
-la derecha); en celular todo va a una columna, el texto primero. Encabezados a la izquierda; centrado solo en el
-cierre. El hero es la única foto a sangre con el texto encima, siempre detrás de un velo oscuro que nace a la
-izquierda.
+la derecha); en celular todo va a una columna, el texto primero. Encabezados a la izquierda, también en el cierre
+(B2), con el botón a la derecha. El hero no lleva foto: texto a la izquierda y las pantallas de la app a la
+derecha; en celular, las pantallas debajo del texto.
 
 ### Named Rules
 **La Regla de la Pantalla Completa.** Nada se oculta esperando el scroll: una captura de la página entera tiene
@@ -289,16 +323,19 @@ que mostrar todo. El único movimiento es la entrada del texto del hero y los ho
 ## Elevation & Depth
 
 Plano por defecto. La profundidad sale del color de fondo (tarjetas blancas con borde, bloques verde-900
-entre secciones claras) y de bordes de 1 px, no de sombras. La única sombra es la del botón flotante de
-WhatsApp, que tiene que despegarse de cualquier fondo.
+entre secciones claras) y de bordes de 1 px, no de sombras. Hay dos sombras: la del botón flotante de
+WhatsApp, que tiene que despegarse de cualquier fondo, y la del celular del hero, que es un objeto delante de la
+computadora (B2).
 
 ### Named Rules
 **La Regla del Alambrado.** Para separar, un borde de 1 px o un cambio de fondo; una sombra nunca.
 
 ## Shapes
 
-Esquinas suavemente redondeadas: 8 px en botones, campos e íconos en caja; 16 px en tarjetas; 24 px en fotos y
-en la caja del formulario; píldora completa en insignias, botón flotante y botones de ícono. Las citas del
+Esquinas suavemente redondeadas: 8 px en botones, campos e íconos en caja; 14 px en las preguntas; 16 px en los
+beneficios; 20 px en tarjetas (pasos, mosaico) y fotos del equipo; 24 px en fotos y en la caja del formulario;
+píldora completa en insignias, botón flotante y botones de ícono. Los marcos de dispositivo del hero son
+verde-900 (computadora) y negro (celular). Las citas del
 tambero llevan una barra verde-cta de 4 px a la izquierda, como marca de cita, no como tarjeta.
 
 ## Components
@@ -333,15 +370,16 @@ Firmes y francos: grandes, fáciles de tocar, sin sombras ni efectos.
 - **Error:** borde rojo alerta con halo, mensaje con ícono debajo del campo; obligatorios con asterisco rojo.
 
 ### Navigation
-- **Header:** blanco al 95 % con desenfoque, borde inferior borde-verde, 72 px de alto, fijo arriba. Enlaces en
+- **Header:** papel al 96 % con desenfoque (B2), borde inferior papel oscurecido, 72 px de alto, fijo arriba. Enlaces en
   tinta, 15 px, 500 de peso; hover con fondo verde-050 y texto verde-enlace; la página o sección actual en
   verde-enlace con una barra de 2 px debajo. A la derecha, la acción secundaria y la principal.
 - **Celular:** menú desplegable debajo del header, enlaces de 48 px de alto, actual con barra de 3 px a la
   izquierda; la acción principal queda siempre visible al lado del botón del menú.
 
 ### Preguntas desplegables (Accordion)
-Pregunta en title con un círculo verde-050 que gira su flecha al abrir; separadas por un borde de 1 px. Se
-abren solas cuando se llega con `#id`.
+Pregunta en title con un círculo verde-050 que gira su flecha al abrir; cada pregunta es una tarjeta blanca con
+borde de 1 px y esquinas de 14 px, separadas 12 px (B2); la abierta pasa a borde verde. Se abren solas cuando se
+llega con `#id`.
 
 ## Do's and Don'ts
 
@@ -357,6 +395,7 @@ abren solas cuando se llega con `#id`.
 - **Don't** poner texto blanco sobre verde-cta ni sobre verde-check.
 - **Don't** usar sombras para separar tarjetas o secciones.
 - **Don't** usar degradados violetas, glassmorphism ni ilustraciones 3D.
-- **Don't** poner etiquetas en mayúsculas encima de los titulares (solo hero y franja oscura).
+- **Don't** poner etiquetas en mayúsculas encima de los titulares.
 - **Don't** usar fotos de ganado de carne.
-- **Don't** usar texto sobre la foto del hero sin el velo oscuro.
+- **Don't** mostrar pantallas inventadas como si fueran la app: las capturas son reales; los fragmentos de los
+  pasos son ilustrativos y van `aria-hidden`.

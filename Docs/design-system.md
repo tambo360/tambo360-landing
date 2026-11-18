@@ -14,9 +14,10 @@ decisión.
 
 ## Dirección visual
 - **Referencia del contenido:** Mercado Pago (Q-27). Primero lo que el productor hace y obtiene; la tecnología no se nombra.
-- **Anclada en el tambo:** fotos reales de vacas y campo a sangre, verdes de pasto, fondo oscuro verde-900 para los momentos que tienen que pegar (la historia de los 40 litros). Nada de fondos de "startup": ni degradados violetas, ni glassmorphism, ni ilustraciones 3D.
-- **La audacia se gasta en un solo lugar:** la franja oscura de la historia, con la cifra "40 litros" grande en verde-cta. El resto es sobrio y respira.
-- **Vida sin decoración gratuita:** la vida la ponen las fotos, los cortes de color entre secciones (blanco con bordes de 1 px → verde-900) y textos en primera persona del tambero. Decoración descartada antes de presentar: la etiqueta en mayúsculas sobre cada titular (queda solo en el hero y en la franja oscura).
+- **Dirección B2, "La app en la mano"** (Q-63, 04/11/2026; detalle por sección en `DESIGN.md`): la página abre con pantallas reales de la app en una computadora y un celular; cada problema se muestra frente a lo que cambia; la historia de los 40 litros va después del producto. Rechazadas: A "Campo abierto" (fotos a sangre: no mostraba la app) y C "Libreta en grande" (tipográfica, una sola foto: la app quedaba lejos).
+- **Anclada en el tambo:** pantallas reales de la app (`src/assets/app/`), fotos reales de vacas, verdes de pasto. Nada de fondos de "startup": ni degradados violetas, ni glassmorphism, ni ilustraciones 3D.
+- **La audacia se gasta en un solo lugar:** el hero con las pantallas de la app. El resto es sobrio y respira.
+- **Vida sin decoración gratuita:** la vida la ponen las pantallas, las fotos, los cortes de color entre secciones (blanco, papel, una franja verde-900 y el cierre verde-cta) y textos en primera persona del tambero. Sin etiquetas en mayúsculas sobre los titulares.
 - **Tipografía:** Figtree (variable, autoalojada, solo subconjunto latino). Redondeada y muy legible en pantallas chicas al sol. Decisión del agente: el design system declara fuentes del sistema y pide reemplazarlas por la real, que está en Figma y no es accesible desde acá. Si la de Figma es otra, se cambia en un solo lugar.
 - **Íconos:** línea de trazo uniforme, 24 px, estilo Lucide, en SVG inline (sin librería en el cliente).
 - **Sin sombras:** las tarjetas se separan por borde de 1 px y por su fondo (design system, "elevation").
@@ -24,11 +25,13 @@ decisión.
 ## Roles de color
 | Rol | Cuándo se usa | Su límite |
 |---|---|---|
-| Acción principal | Anotarse al piloto. Fondo verde-cta (#80B718) con texto verde-900 (6.23:1); hover verde-check (#99C545, 7.46:1) | Una sola acción principal por página; puede repetirse en el header y al final |
+| Acción principal | Anotarse al piloto. Fondo verde-cta (#80B718) con texto verde-900 (6.23:1); hover verde-check (#99C545, 7.46:1). Sobre el cierre verde-cta, el botón va en verde-900 con texto blanco (15:1; contra el fondo, 6.23:1) | Una sola acción principal por página; puede repetirse en el header y al final |
 | Acción secundaria | Reintentar, WhatsApp, ver preguntas: fondo lima-050 (#E9FACA) con texto lima-texto (#4D7A10, 4.62:1); hover lima-100 (#CFEDBA) con texto #436B0D (4.92:1). Q-54 | Solo en el botón secundario |
 | Texto de enlace | Enlaces sobre fondo claro: verde-enlace (7.16:1 sobre blanco, 6.36:1 sobre verde-050) | No usar verde-cta ni verde-nav para texto sobre claro |
-| Acento sobre oscuro | Cifras y palabras clave grandes sobre verde-900: verde-cta (6.23:1) | Una por bloque; texto chico sobre oscuro va en blanco |
-| Superficie de corte | verde-900 con texto blanco (15:1) | Una o dos secciones por página |
+| Acento sobre oscuro | Íconos sobre verde-900: verde-cta (6.23:1) | Texto chico sobre oscuro va en blanco o blanco al 86 % (11.43:1) |
+| Superficie de corte | verde-900 con texto blanco (15:1) | Una franja por página ("Sin señal"; en `/equipo`, "Lo que escuchamos") |
+| Superficie de marca | El cierre: verde-cta con texto verde-900 (6.23:1) | Solo el cierre, la última sección antes del footer |
+| Subrayado de la palabra clave | Banda verde-cta detrás de "ordeñe, rodeo y costos" en el H1, texto tinta encima (7.36:1) | Solo el H1 de la home |
 | Superficie clara | blanco y papel (#F5F1E6: tinta 15.72:1, texto 6.71:1, verde-enlace 6.34:1) alternados, Q-56 | Nunca dos secciones del mismo fondo seguidas; sin fondos verdes de sección |
 | Texto | tinta para titulares, texto (#475569) para párrafos | texto-suave y texto-tenue no se usan: no cumplen contraste |
 
@@ -36,9 +39,10 @@ Paleta de la app (Q-52, 15/10/2026; reemplaza Q-28): los verdes son los de `tamb
 
 ## Convenciones
 - **Marca:** logo oficial completo (isotipo de la vaca + "Tambo360") de `assets/logos/tambo-logo-360.png`: negro sobre fondos claros, blanco (`logo-tambo360-blanco.png`, mismo dibujo recoloreado) sobre fondos oscuros. Imagen con texto alternativo "Tambo360" (Q-44). No usar verde-cta para texto que no sea la marca.
-- **Header:** marca a la izquierda; enlaces a secciones de la home y a preguntas frecuentes; "Anotarme" (principal; desde el lanzamiento, "Registrarme"). Sin "Ver demo" (Q-59). En celular, menú desplegable con los mismos enlaces; el botón queda visible. El enlace de la página actual (`aria-current="page"`) y, en la home, el de la sección del nav que está en pantalla (`aria-current="true"`) se marcan en verde-enlace con una barra: debajo del texto en desktop, a la izquierda en el menú del celular. Entre secciones que no están en el nav no se marca ninguna; con el menú del celular abierto la marca no cambia.
-- **Hero:** foto a sangre con velo oscuro desde la izquierda (design system); el texto nunca va sobre la foto sin velo.
-- **Sección:** titular en oración, sin punto final, dos líneas como máximo; bajada de una sola idea. Encabezado a la izquierda; centrado solo en el cierre.
+- **Header:** papel al 96 % (B2); marca a la izquierda; enlaces a secciones de la home, a "Quiénes somos" (solo mientras `/equipo` se publica, Q-65) y a preguntas frecuentes; "Anotarme" (principal; desde el lanzamiento, "Registrarme"). Sin "Ver demo" (Q-59). En celular, menú desplegable con los mismos enlaces; el botón queda visible. El enlace de la página actual (`aria-current="page"`) y, en la home, el de la sección del nav que está en pantalla (`aria-current="true"`) se marcan en verde-enlace con una barra: debajo del texto en desktop, a la izquierda en el menú del celular. Entre secciones que no están en el nav no se marca ninguna; con el menú del celular abierto la marca no cambia.
+- **Hero:** papel, texto a la izquierda y pantallas reales de la app a la derecha (computadora con el tablero, celular con "crear lote"), con "Pantallas reales de Tambo360." debajo. En celular, las pantallas van debajo del texto y nunca generan scroll horizontal.
+- **Pantallas de la app:** solo capturas reales de `src/assets/app/` (o `tambo-engine.webp`), con `alt` que dice qué pantalla es y qué muestra. Un fragmento dibujado (los pasos de "Cómo funciona") es ilustrativo y va `aria-hidden`.
+- **Sección:** titular en oración, sin punto final, dos líneas como máximo; bajada de una sola idea. Encabezado a la izquierda, también en el cierre.
 - **Imágenes:** toda foto lleva `alt` que describe lo que se ve; las decorativas llevan `alt=""`. Ancho y alto declarados para que no salte el contenido. Solo la foto del hero carga con prioridad; el resto, diferida.
 - **Formulario:** etiqueta visible arriba de cada campo; el error va junto al campo y se resume arriba del botón; un formulario que falló conserva lo escrito; el botón muestra "Enviando…" y no se puede tocar dos veces.
 - **Botón flotante de WhatsApp:** abajo a la derecha, píldora verde-900 con texto blanco (15:1) e ícono verde WhatsApp (7.58:1), Q-55; nunca tapa el botón de envío del formulario en celular.

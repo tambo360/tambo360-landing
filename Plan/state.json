@@ -1,237 +1,113 @@
 {
   "version": 1,
-  "updated": "2026-10-23T21:25:00Z",
-  "goal": "Cerrar pendientes de la landing y dejar SEO/sitemap verificados antes de publicar",
+  "updated": "2026-11-18T12:00:00Z",
+  "goal": "Rediseño visual de la landing en la dirección B2 (aprobada): docs de diseño, código de home, /preguntas-frecuentes y /equipo, verificación; mismos textos y verde #80b718",
   "phases": [
     {
-      "name": "ux",
+      "name": "design",
       "status": "done",
       "units": [
         {
-          "id": 66,
-          "do": "Critique global + dirección visual nueva (superficies con color, carácter por sección, WhatsApp); DESIGN.md Q-55+",
+          "id": 85,
+          "do": "Mockups de la home: 3 direcciones visuales (desktop y celular) con los textos actuales y verde-cta #80b718, publicadas en una página para comparar",
           "status": "done",
-          "detail": "Q-55 WhatsApp verde-900, Q-56 blanco/papel #F5F1E6, Q-57 libreta con medida; DESIGN.md § Dirección con mapa por sección y contrastes"
+          "detail": "3 direcciones en lienzo https://claude.ai/artifact/LvgF4EcpPygSqS33h2Lg9T (A Campo abierto, B La app en la mano, C Libreta en grande; escritorio+celular); medidas 1440/390/320 sin scroll horizontal; contrastes ok; Q-63 pendiente"
+        },
+        {
+          "id": 86,
+          "do": "Mockup B2 de la home: B con pantallas reales (tablero en la tablet, crear lote en el celular, costos/catálogo/avisos en Qué podés hacer)",
+          "status": "done",
+          "detail": "B2 en el lienzo: PC 464 px con app-dashboard-md (ancho del usuario), crear lote en el celular; costos/catálogo/avisos en Qué podés hacer; Sin señal = franja oscura con 3 íconos y solo títulos, sin foto (comentario del usuario); 1440/390/320 sin scroll horizontal; Historia sin caja: H2 normal, 40 litros como cita con barra verde-cta (comentario del usuario); APROBADO por el usuario 04/11"
+        },
+        {
+          "id": 88,
+          "do": "Mockup de /equipo y /preguntas-frecuentes en la dirección B",
+          "status": "done",
+          "detail": "lienzo, fila 2: B2-Equipo (oculta, Q-65) y B2-Preguntas, escritorio+celular; mismos textos; fotos del equipo cuadradas en B/N; \"Lo que escuchamos\" como franja oscura de B2; cierres en verde de marca; 1440/390/320 sin scroll horizontal; APROBADO por el usuario 04/11"
+        },
+        {
+          "id": 87,
+          "do": "DESIGN.md, Docs/design-system.md y .impeccable/design.json con la dirección nueva: orden de secciones, superficies, fotos, componentes, contrastes",
+          "status": "done",
+          "detail": "DESIGN.md (sección Dirección B2 con tabla por sección, roles, formas, sombras, header, preguntas), Docs/design-system.md (roles y contrastes nuevos: tinta/cta 7.36, blanco 86%/verde-900 11.43), pages.md (orden B2, fotos y pantallas; 'Sin vueltas' ya no estaba en la home), design.json sincronizado"
         }
       ]
     },
     {
       "name": "build",
-      "status": "done",
+      "status": "doing",
       "units": [
         {
-          "id": 67,
-          "do": "Token papel en global.css + DESIGN.md/design.json + WhatsApp flotante verde-900 (Q-55)",
+          "id": 89,
+          "do": "Base B2: tokens y superficies en global.css, marcos de PC y celular con las capturas de src/assets/app",
           "status": "done",
-          "detail": "--color-papel #f5f1e6; WhatsAppButton bg-verde-900 + ícono text-whatsapp; DESIGN.md/design.json/design-system.md; check 0 err, 18 tests; captura ok"
+          "detail": "global.css: radios pregunta 14/tarjeta 20, sombra dispositivo, .subrayado-cta, foco .sobre-marca; Section tone brand; Button variant dark; DeviceFrame (laptop, phone, phone-cut); ui-components.md; astro check 0 errores"
         },
         {
-          "id": 68,
-          "do": "Problems + Story con la dirección nueva (sin molde tarjeta+ícono)",
+          "id": 90,
+          "do": "Home B2, parte 1: Hero con la app, problemas frente a la solución, Historia con la cita de los 40 litros",
           "status": "done",
-          "detail": "Section tone paper; .renglones en global.css; Problems como hoja numerada sin cajas; Story sin cambios (mapa); ui-components.md; capturas 1366/390 ok (390 vía iframe: headless Edge tiene ancho mínimo)"
+          "detail": "Hero en papel con DeviceFrame (tablero en la PC, crear lote en el celular) y subrayado-cta; Problems Hoy/Con Tambo360 (problems[i] frente a steps[i]); Story en papel con cita; orden de index.astro B2; capturas 1440/390/320 sin scroll horizontal"
         },
         {
-          "id": 69,
-          "do": "HowItWorks + Modules con la dirección nueva (pasos sin círculos 1-2-3)",
+          "id": 91,
+          "do": "Home B2, parte 2: Cómo funciona, Qué podés hacer con descripción y pantallas, Sin señal en franja oscura",
           "status": "done",
-          "detail": "HowItWorks: números grandes verde-enlace sobre línea, sin círculos lima ni íconos, sin border-t; Modules tone paper, borde-neutro, sin código comentado; captura 1366 ok"
+          "detail": "HowItWorks en papel con 3 tarjetas y fragmentos aria-hidden; Modules en blanco: mosaico 3 columnas con título y descripción (Q-64), Gastos/Rodeo con celular cortado y Avisos con tambo-engine; Offline como franja verde-900 con 3 íconos y solo títulos, sin foto; 1440/390 sin scroll horizontal"
         },
         {
-          "id": 70,
-          "do": "Offline + Pilot/form con la dirección nueva",
+          "id": 92,
+          "do": "Home B2, parte 3: Sin vueltas, Piloto, Dudas frecuentes, cierre en verde de marca, header y pie",
           "status": "done",
-          "detail": "Offline: dl título/texto con divisores, sin íconos ni borde inferior; Pilot tone paper + hoja .renglones con tildes; captura 1366 ok, 390 en u72"
+          "detail": "Pilot en blanco con tarjetas papel e insignia de cifra (data figure); FaqPreview en papel, columna angosta, preguntas en tarjeta (Accordion global); cierre tone brand con botón dark; header en papel; .renglones eliminado; 1440/390/320 sin scroll horizontal"
         },
         {
-          "id": 71,
-          "do": "FaqPreview, ClosingCta, footer, /equipo y /preguntas-frecuentes coherentes",
+          "id": 93,
+          "do": "/preguntas-frecuentes en B2",
           "status": "done",
-          "detail": "ClosingCta tone paper sin borde; intro de /equipo y /preguntas-frecuentes en papel; FAQ preview y footer sin cambios; DESIGN.md reglas Corte/Do, pages.md; check+tests ok"
+          "detail": "intro papel con H1 58px, preguntas como tarjetas en columna de 880px, cierre verde-cta (ClosingCta); 1440/390/320 sin scroll horizontal"
+        },
+        {
+          "id": 94,
+          "do": "/equipo (oculta) en B2 y enlace Quiénes somos sin destino roto mientras siga oculta (Q-65)",
+          "status": "done",
+          "detail": "_equipo.astro en B2 (intro grande, fotos cuadradas B/N radio 20, franja oscura, cierre verde-cta); nav sin 'Quiénes somos' mientras no exista src/pages/equipo.astro (import.meta.glob en site.ts), anotado en Q-65; vista previa por ruta temporal ya borrada; 1440/390/320 sin scroll horizontal"
+        },
+        {
+          "id": 79,
+          "do": "Run anterior: docs del form con Resend (privacidad, spec RN, README, testing)",
+          "status": "todo",
+          "detail": "pendiente de la run form-resend; QT-34/35/36 en architecture-decisions"
         }
       ]
     },
     {
       "name": "verify",
-      "status": "done",
-      "units": [
-        {
-          "id": 72,
-          "do": "build/check/tests, contraste de pares nuevos, capturas 390/1366; testing/landing.md",
-          "status": "done",
-          "detail": "testing filas 61-66: 4 passed, 61 blocked (build local Windows), 63 failed BUG-001 /equipo (bloque u49); evidence/2026-10-23"
-        }
-      ]
-    },
-    {
-      "name": "ajustes",
-      "status": "done",
-      "units": [
-        {
-          "id": 81,
-          "do": "Lanzamiento al 16/11/2026 (launchDate) y lead del piloto sin fecha; sacar launchDateLabel; spec/README/analysis",
-          "status": "done",
-          "detail": "launchDate 2026-11-16T00:00-03:00 (launchTime 1794798000000 en el build); lead piloto sin fecha; launchDateLabel borrado; Q-58; spec/PRODUCT/README/pages.md; check 0 err, 18 tests"
-        },
-        {
-          "id": 82,
-          "do": "Sacar \"Ver demo\" del nav (desktop y menú móvil) y, según QT-21, del hero; demoUrl fuera si queda sin uso",
-          "status": "done",
-          "detail": "Ver demo fuera de header (desktop+móvil) y hero; demoUrl y variante ghost-dark borrados; Q-59; spec/PRODUCT/DESIGN/design.json/design-system/pages.md; check 0 err, 18 tests, build sin iniciar-sesion; visual sin captura"
-        },
-        {
-          "id": 83,
-          "do": "Dominio: site-url.mjs a tambo360.vercel.app; registerUrl vacío y botones Registrarme ocultos sin URL (QT-23); spec/README/Q-60",
-          "status": "done",
-          "detail": "SITE_URL tambo360.vercel.app; registerUrl vacío oculta Registrarme en header/hero/cierre/footer (li del footer no queda vacío); builds pre y post lanzamiento ok; QT-11/Q-60/spec/PRODUCT/README"
-        }
-      ]
-    },
-    {
-      "name": "seo",
-      "status": "done",
-      "units": [
-        {
-          "id": 73,
-          "do": "Verificar lo que emite el build: sitemap-index/sitemap-0 (URLs = canonical, sin /gracias ni /404), robots, meta y JSON-LD por página",
-          "status": "done",
-          "detail": "testing filas 67-73: todo passed; /gracias noindex solo en código (on-demand); obs: salida equipo/index.html pese a format file, description /terminos ~175, canonical en /404"
-        },
-        {
-          "id": 74,
-          "do": "Corregir lo que salió de u73: canonical fuera de páginas noindex, description /terminos (QT-24)",
-          "status": "done",
-          "detail": "SEO.astro sin canonical con noindex (/404 y /gracias); /terminos 140 caracteres (Q-61); ui-components.md; check 0 err, 18 tests, build ok"
-        },
-        {
-          "id": 84,
-          "do": "Meta de verificación de Google Search Console por PUBLIC_GOOGLE_SITE_VERIFICATION (QT-25)",
-          "status": "done",
-          "detail": "SEO.astro lee PUBLIC_GOOGLE_SITE_VERIFICATION; build sin var = sin meta, con var = meta en todas las páginas; QT-25 en architecture-decisions; README"
-        },
-        {
-          "id": 75,
-          "do": "Docs SEO al día: frontend-stack, README, testing/landing.md",
-          "status": "done",
-          "detail": "frontend-stack: config/robots/sitemap/env/medición Windows; README registerUrl antes del 16/11; testing: re-correr 67-71 en producción con dominio nuevo"
-        },
-        {
-          "id": 76,
-          "do": "BUG-001 + u49: bloque \"Lo que escuchamos en los tambos\" en /equipo con fondo papel y sin ícono en caja; texto aprobado (QT-19); pages.md+testing",
-          "status": "done",
-          "detail": "campo en verde-900 (QT-26, papel chocaba con el cierre), lista con divisores sin íconos; BUG-001 fixed pending verification; Q-62, pages.md; check 0 err; capturas u76-equipo-1366 y u82-home-hero-1366"
-        }
-      ]
-    },
-    {
-      "name": "form-resend",
-      "status": "doing",
-      "units": [
-        {
-          "id": 77,
-          "do": "QT-20 Resend como destino del form en architecture-decisions.md: remitente, destinatario, contenido del mail, RESEND_API_KEY por env",
-          "status": "done",
-          "detail": "QT-20/27/28 + QT-29..35 en architecture-decisions; QT-34 usuario: el mail es el registro (cambia RN-repetida/guardada/falla)"
-        },
-        {
-          "id": 78,
-          "do": "Endpoint /api/inscripcion envía con Resend (RESEND_API_KEY) + tests con fetch/cliente simulado",
-          "status": "done",
-          "detail": "src/lib/waitlist-mail.ts + 9 tests (fetch simulado); env.schema RESEND_* en astro.config; sin estado repetido, waitlist-repository ni migrations; stack doc; check 0 err, 26 tests, build ok, dev sin env=503; QT-36: solo RESEND_API_KEY (from fijo, to=site.email)"
-        },
-        {
-          "id": 79,
-          "do": "Docs: privacidad (Resend como encargado), spec RN del form, stack doc, README (variables en Vercel)",
-          "status": "todo",
-          "detail": "spec: reescribir RN-inscripcion-repetida/guardada/falla + Q nueva (QT-34); privacidad: Resend encargado, datos en EEUU (QT-35); README: RESEND_API_KEY en Vercel, from/to en código (QT-36); testing/landing.md filas del form repetido"
-        },
-        {
-          "id": 80,
-          "do": "Verificación: check/tests, envío real en preview de Vercel, Lighthouse; testing/landing.md",
-          "status": "todo",
-          "detail": "propuesto"
-        }
-      ]
-    },
-    {
-      "name": "pendientes-run-anterior",
       "status": "todo",
       "units": [
         {
-          "id": 14,
-          "do": "Dominio definitivo en site-url.mjs y rebuild (QT-14)",
-          "status": "dropped",
-          "detail": "sigue en u83"
+          "id": 95,
+          "do": "Verificar B2: astro check y tests, capturas 320/390/1366/1440, scroll horizontal, contraste, Lighthouse local",
+          "status": "done",
+          "detail": "testing/landing.md escenarios 74-82 passed (check 0 errores, 26 tests, Lighthouse home 99/100/100/100 y FAQ 100x4, 0 px de desborde en 10 vistas, contraste calculado, sin href a /equipo); adapter de Vercel bloqueado en Windows (EPERM, conocido); BUG-001 cerrado; evidencia en evidence/2026-11-04-b2"
         },
         {
-          "id": 41,
-          "do": "/impeccable polish: figura de 'Cómo funciona' con captura nueva de la app (>=1400px, sin 'Dashboard')",
+          "id": 80,
+          "do": "Run anterior: check/tests, envío real en preview de Vercel, Lighthouse; testing/landing.md",
           "status": "todo",
-          "detail": "bloqueada: la captura la provee el equipo"
-        },
-        {
-          "id": 42,
-          "do": "/impeccable polish final + re-critique (base 26/36)",
-          "status": "todo",
-          "detail": "propuesto"
-        },
-        {
-          "id": 46,
-          "do": "Hero pre-lanzamiento: nota de qué es el piloto (fecha/cupo) + pages.md fila 1 + sacar Badge sin uso",
-          "status": "todo",
-          "detail": "elegido tras u44; contenido de la nota a definir con el usuario"
-        },
-        {
-          "id": 49,
-          "do": "/equipo: bloque que prueba el trabajo de campo con material existente (Q-13), sin roles (Q-51)",
-          "status": "dropped",
-          "detail": "sigue en u76 (QT-19: texto aprobado, corregir fondo e íconos)"
-        },
-        {
-          "id": 58,
-          "do": "Elegir base para el form en Vercel (Turso, D1 por HTTP, Neon) y conectarla",
-          "status": "dropped",
-          "detail": "QT-20: el form usa Resend (u77-u80)"
-        },
-        {
-          "id": 59,
-          "do": "Decisión QT-16: HubSpot como destino del form (mapeo de campos, contacto sin email, región, consentimiento) en architecture-decisions.md",
-          "status": "dropped",
-          "detail": "QT-20: el form usa Resend (u77-u80)"
-        },
-        {
-          "id": 60,
-          "do": "Endpoint /api/inscripcion envía a HubSpot Forms API v3 (env HUBSPOT_PORTAL_ID/FORM_GUID, hutk, pageUri) + tests con fetch simulado",
-          "status": "dropped",
-          "detail": "QT-20: el form usa Resend (u77-u80)"
-        },
-        {
-          "id": 61,
-          "do": "Código de seguimiento de HubSpot (js.hs-scripts.com/52179962.js) en BaseLayout antes de </body>",
-          "status": "dropped",
-          "detail": "QT-20: el form usa Resend (u77-u80)"
-        },
-        {
-          "id": 62,
-          "do": "Docs: privacidad (HubSpot como encargado, cookies), spec RN del form, stack doc, README (variables en Vercel)",
-          "status": "dropped",
-          "detail": "QT-20: el form usa Resend (u77-u80)"
-        },
-        {
-          "id": 63,
-          "do": "Verificación: check/tests/build, envío real a HubSpot en preview de Vercel, Lighthouse con el script; testing/landing.md",
-          "status": "dropped",
-          "detail": "QT-20: el form usa Resend (u77-u80)"
+          "detail": "pendiente de la run form-resend"
         }
       ]
     }
   ],
   "approved": true,
   "autonomy": {},
-  "waiting_on": "u79 lista; RESEND_API_KEY ya cargada en Vercel (usuario); falta PUBLIC_GOOGLE_SITE_VERIFICATION y URL del registro antes del 16/11",
+  "waiting_on": "PR de feature/landing-b2 → main: abrirlo, cargar RESEND_API_KEY y WAITLIST_TO en Vercel, probar el form y revisar la preview; aceptación del usuario de B2 + Q-66",
   "notes": [
-    "u1-u72: ver git history; QT-16..19, 21..24, 26 respondidas en chat pero sin entrada en architecture-decisions (solo citadas en analysis)",
-    "Antes de publicar: Resend en el form, URL del registro de la app (registerUrl vacío), revisión legal; build local Windows: usar config temporal sin hook astro:build:done del adapter",
-    "Capturas: Playwright MCP sin Chrome; usar scratchpad cdp.mjs (Edge CDP, viewport emulado) — no --window-size<500"
+    "Run anterior (u1-u84) en git history; quedan abiertas u41, u42, u46",
+    "B2 implementado sin commit (04/11); /equipo sigue oculta como _equipo.astro y el nav la muestra solo si existe src/pages/equipo.astro",
+    "Capturas: Playwright sobre msedge (playwright-core del cache de npx), scroll instantáneo; build local falla en el hook de Vercel (EPERM)",
+    "18/11 (Q-66, cambio directo pedido por el usuario): vuelve el hero con foto y gradiente; el hero B2 pasa a AppInstall (#instalar); Problems + HowItWorks unificados en #como-funciona (HowItWorks.astro borrado); launchDate 2027-01-20; docs actualizados; check 0 errores, 1440/390/320 sin scroll horizontal",
+    "18/11: commits 116e4f5 (WAITLIST_TO, QT-37) y 831c50b (B2 + Q-66) en la rama feature/landing-b2, subida a origin; PR sin abrir (no hay gh): el usuario lo abre desde GitHub"
   ]
 }

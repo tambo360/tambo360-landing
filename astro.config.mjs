@@ -20,6 +20,8 @@ export default defineConfig({
     env: {
         schema: {
             RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+            // Where sign-ups are mailed. Kept out of the repo: it is a personal inbox. Empty falls back to site.email.
+            WAITLIST_TO: envField.string({ context: 'server', access: 'secret', optional: true }),
         },
     },
     integrations: [

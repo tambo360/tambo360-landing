@@ -24,12 +24,12 @@ Todo lo que cambia entre entornos o se define más adelante está en un solo lug
 
 ## Lanzamiento
 
-Desde `site.launchDate` (16/11/2026 00:00, hora de Argentina) el sitio deja el piloto y lleva a `site.registerUrl`.
+Desde `site.launchDate` (20/01/2027 00:00, hora de Argentina) el sitio deja el piloto y lleva a `site.registerUrl`.
 Antes de esa fecha hay que cargar `registerUrl` con el dominio nuevo de la app: vacío, los botones "Registrarme" no se muestran.
 El sitio es estático, así que `src/components/ui/LaunchSwitch.astro` mete las dos versiones en el HTML y un script
 en el `<head>` (BaseLayout) muestra la que corresponde según la fecha de quien visita; sin JavaScript se ve la del piloto.
 
-**Hay que volver a hacer build y deploy el 16/11 o después.** La meta descripción, el texto alternativo de la imagen
+**Hay que volver a hacer build y deploy el 20/01/2027 o después.** La meta descripción, el texto alternativo de la imagen
 para redes y el JSON-LD de preguntas frecuentes se fijan en el build, y un build posterior a la fecha ya no lleva la
 versión del piloto ni el script.
 
