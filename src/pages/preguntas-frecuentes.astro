@@ -29,23 +29,28 @@ const whatsapp = whatsappUrl('Hola, tengo una pregunta sobre Tambo360.');
   description="Si funciona sin señal, cuánto tiempo lleva por día, cuánto cuesta y quién ve los datos de tu tambo: las respuestas a lo que más nos preguntan los productores."
   jsonLd={jsonLd}
 >
-  <section class="bg-papel py-14 sm:py-20" aria-labelledby="faq-titulo">
-    <Container size="md">
-      <h1 id="faq-titulo" class="text-4xl font-extrabold tracking-tight sm:text-display-xl">Preguntas frecuentes</h1>
-      <p class="mt-5 max-w-2xl text-lg">
-        Lo que más nos preguntan los productores antes de{' '}
-        <LaunchSwitch as="span">
-          <Fragment slot="before">anotarse al piloto</Fragment>
-          <Fragment slot="after">empezar</Fragment>
-        </LaunchSwitch>. Si tu duda no está,{' '}
-        {whatsapp ? <a href={whatsapp} target="_blank" rel="noopener noreferrer" class="font-semibold text-verde-enlace underline underline-offset-2">escribinos por WhatsApp</a> : <a href={`mailto:${site.email}`} class="font-semibold text-verde-enlace underline underline-offset-2">escribinos a {site.email}</a>}.
-      </p>
+  <!-- B2: paper intro with a large H1, the questions as cards in an 880 px column, the brand-green closing. -->
+  <section class="bg-papel py-14 sm:py-20 lg:pt-24" aria-labelledby="faq-titulo">
+    <Container>
+      <div class="mx-auto max-w-[55rem]">
+        <h1 id="faq-titulo" class="text-4xl leading-[1.04] font-extrabold tracking-tight sm:text-display-xl lg:text-[3.625rem]">Preguntas frecuentes</h1>
+        <p class="mt-6 max-w-2xl text-lg lg:text-xl">
+          Lo que más nos preguntan los productores antes de{' '}
+          <LaunchSwitch as="span">
+            <Fragment slot="before">anotarse al piloto</Fragment>
+            <Fragment slot="after">empezar</Fragment>
+          </LaunchSwitch>. Si tu duda no está,{' '}
+          {whatsapp ? <a href={whatsapp} target="_blank" rel="noopener noreferrer" class="font-semibold text-verde-enlace underline underline-offset-2">escribinos por WhatsApp</a> : <a href={`mailto:${site.email}`} class="font-semibold text-verde-enlace underline underline-offset-2">escribinos a {site.email}</a>}.
+        </p>
+      </div>
     </Container>
   </section>
 
-  <section class="py-12 sm:py-16" aria-label="Respuestas">
-    <Container size="md">
-      {faqs.map((faq) => <Accordion id={faq.id} question={faq.question} answer={faq.answer} launchedAnswer={faq.launchedAnswer} headingLevel="h2" />)}
+  <section class="pt-9 pb-18 sm:pt-15 sm:pb-24" aria-label="Respuestas">
+    <Container>
+      <div class="mx-auto max-w-[55rem]">
+        {faqs.map((faq) => <Accordion id={faq.id} question={faq.question} answer={faq.answer} launchedAnswer={faq.launchedAnswer} headingLevel="h2" />)}
+      </div>
     </Container>
   </section>
 

@@ -4,7 +4,7 @@
 El dueño o administrador de un tambo chico o mediano llega desde redes sociales o un mensaje
 directo y no sabe qué es Tambo360 ni si es para él. La página tiene que hacerle sentir que
 entendemos su día (el cuaderno que no alcanza, la leche que se tira y nadie anota, enterarse
-tarde) y llevarlo a anotarse en el piloto gratuito antes del lanzamiento del 16/11/2026; desde
+tarde) y llevarlo a anotarse en el piloto gratuito antes del lanzamiento del 20/01/2027; desde
 el lanzamiento, a registrarse en la app (RN-desde-lanzamiento).
 
 ## Alcance
@@ -33,7 +33,7 @@ el lanzamiento, a registrarse en la app (RN-desde-lanzamiento).
 La acción principal de cada página es anotarse en el piloto hasta el lanzamiento y registrarse en la app desde el lanzamiento (RN-desde-lanzamiento); WhatsApp es la acción secundaria.
 
 ### RN-desde-lanzamiento · origin: Q-46
-Desde el 16/11/2026 a las 00:00 hora de Argentina (`site.launchDate`, Q-58) ninguna página muestra el piloto: no hay formulario, ni sección del piloto, ni "Anotarme", ni textos sobre el piloto, y los botones de acción llevan al registro de la app (`site.registerUrl`); mientras no tenga URL, esos botones no se muestran (Q-60). Antes de esa fecha el sitio no cambia. RN-beneficio-piloto, RN-tres-fundadores y las RN-inscripcion-* rigen solo hasta el lanzamiento.
+Desde el 20/01/2027 a las 00:00 hora de Argentina (`site.launchDate`, Q-58) ninguna página muestra el piloto: no hay formulario, ni sección del piloto, ni "Anotarme", ni textos sobre el piloto, y los botones de acción llevan al registro de la app (`site.registerUrl`); mientras no tenga URL, esos botones no se muestran (Q-60). Antes de esa fecha el sitio no cambia. RN-beneficio-piloto, RN-tres-fundadores y las RN-inscripcion-* rigen solo hasta el lanzamiento.
 
 ### RN-beneficio-piloto · origin: Q-03
 Quien se anota recibe acceso gratuito al piloto de 3 meses y acompañamiento 1 a 1 por WhatsApp para configurar su tambo.

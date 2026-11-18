@@ -5,8 +5,8 @@ import Icon from "../ui/Icon.astro";
 import LaunchSwitch from "../ui/LaunchSwitch.astro";
 import Section from "../ui/Section.astro";
 
-// Light surface on purpose: the dark footer follows, and a dark closing merged with it (u38). Paper, so it
-// never sits on the same tone as the white section before it.
+// B2: the brand green surface, never dark, so it does not merge with the dark footer that follows (u38).
+// Heading on the left, the action on the right; the button goes verde-900 on the green.
 // title/lead are the pre-launch copy; launchedTitle/launchedLead replace them from the launch date.
 type Props = {
     title?: string;
@@ -23,47 +23,46 @@ const {
 } = Astro.props;
 ---
 
-<Section
-    tone="paper"
-    containerSize="md"
-    aria-labelledby="cierre-titulo"
-    class="text-center"
->
-    <h2
-        id="cierre-titulo"
-        class="text-3xl leading-tight font-extrabold tracking-tight text-tinta sm:text-display-lg"
-    >
-        {
-            title === launchedTitle ? (
-                title
-            ) : (
+<Section tone="brand" aria-labelledby="cierre-titulo">
+    <div class="grid items-center gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-12">
+        <div>
+            <h2
+                id="cierre-titulo"
+                class="text-3xl leading-tight font-extrabold tracking-tight text-verde-900 sm:text-display-lg"
+            >
+                {
+                    title === launchedTitle ? (
+                        title
+                    ) : (
+                        <LaunchSwitch as="span">
+                            <Fragment slot="before">{title}</Fragment>
+                            <Fragment slot="after">{launchedTitle}</Fragment>
+                        </LaunchSwitch>
+                    )
+                }
+            </h2>
+            <p class="mt-4 max-w-xl text-lg">
                 <LaunchSwitch as="span">
-                    <Fragment slot="before">{title}</Fragment>
-                    <Fragment slot="after">{launchedTitle}</Fragment>
+                    <Fragment slot="before">{lead}</Fragment>
+                    <Fragment slot="after">{launchedLead}</Fragment>
                 </LaunchSwitch>
-            )
-        }
-    </h2>
-    <p class="mx-auto mt-5 max-w-xl text-lg">
-        <LaunchSwitch as="span">
-            <Fragment slot="before">{lead}</Fragment>
-            <Fragment slot="after">{launchedLead}</Fragment>
-        </LaunchSwitch>
-    </p>
-    <div class="mt-8 flex justify-center">
-        <LaunchSwitch>
-            <Button slot="before" href="/#sumate" size="lg">
-                Sumarme al piloto gratis
-                <Icon name="arrow-right" size={20} />
-            </Button>
-            {
-                site.registerUrl && (
-                    <Button slot="after" href={site.registerUrl} size="lg" external>
-                        Registrarme gratis
-                        <Icon name="arrow-right" size={20} />
-                    </Button>
-                )
-            }
-        </LaunchSwitch>
+            </p>
+        </div>
+        <div class="flex lg:justify-end">
+            <LaunchSwitch>
+                <Button slot="before" href="/#sumate" size="lg" variant="dark">
+                    Sumarme al piloto gratis
+                    <Icon name="arrow-right" size={20} />
+                </Button>
+                {
+                    site.registerUrl && (
+                        <Button slot="after" href={site.registerUrl} size="lg" variant="dark" external>
+                            Registrarme gratis
+                            <Icon name="arrow-right" size={20} />
+                        </Button>
+                    )
+                }
+            </LaunchSwitch>
+        </div>
     </div>
 </Section>

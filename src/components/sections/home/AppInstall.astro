@@ -1,0 +1,79 @@
+---
+import dashboard from "../../../assets/app/app-dashboard-md.png";
+import nuevoLote from "../../../assets/app/nuevo-lote-mobile.png";
+import { site } from "../../../config/site";
+import Button from "../../ui/Button.astro";
+import Container from "../../ui/Container.astro";
+import DeviceFrame from "../../ui/DeviceFrame.astro";
+import Icon from "../../ui/Icon.astro";
+import LaunchSwitch from "../../ui/LaunchSwitch.astro";
+
+// Was the B2 hero. Tambo360 is a web app: it installs from the browser, never from Play Store (spec: no store promise).
+---
+
+<section id="instalar" class="overflow-hidden bg-white" aria-labelledby="instalar-titulo">
+    <Container class="py-16 sm:py-20 lg:py-24">
+        <div class="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
+            <div>
+                <h2
+                    id="instalar-titulo"
+                    class="text-3xl leading-[1.1] font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]"
+                >
+                    En la PC de la oficina y <span class="subrayado-cta">en el celular de la fosa</span>
+                </h2>
+                <p class="mt-6 max-w-lg text-lg leading-relaxed">
+                    Entrás desde el navegador de la computadora y la instalás en el celular o la tablet
+                    en un toque. No hace falta bajarla de Play Store.
+                </p>
+                <ul class="mt-6 grid gap-2 text-[15px] font-semibold text-tinta">
+                    <li class="flex items-center gap-2">
+                        <Icon name="device-mobile" size={18} class="text-verde-enlace" />Se instala desde el navegador
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <Icon name="refresh" size={18} class="text-verde-enlace" />Lo que anotás en el celular aparece en la PC
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <Icon name="credit-card-off" size={18} class="text-verde-enlace" />Sin tarjeta
+                    </li>
+                </ul>
+                <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
+                    <LaunchSwitch>
+                        <Button slot="before" href="#sumate" size="lg">
+                            Sumarme al piloto gratis
+                            <Icon name="arrow-right" size={20} />
+                        </Button>
+                        {
+                            site.registerUrl && (
+                                <Button slot="after" href={site.registerUrl} size="lg" external>
+                                    Registrarme gratis
+                                    <Icon name="arrow-right" size={20} />
+                                </Button>
+                            )
+                        }
+                    </LaunchSwitch>
+                </div>
+            </div>
+
+            <!-- The phone defines the height of the scene; the laptop sits behind it, to the right. -->
+            <div class="relative mx-auto aspect-[10/7.4] w-full max-w-[38rem]">
+                <DeviceFrame
+                    kind="laptop"
+                    src={dashboard}
+                    alt="Pantalla principal de Tambo360 en la computadora: litros, mermas, costos, precio de mercado y alertas"
+                    sizes="(min-width: 1024px) 464px, 80vw"
+                    widths={[480, 960, 1358]}
+                    class="absolute top-[12%] right-[3%] w-[81%]"
+                />
+                <DeviceFrame
+                    kind="phone"
+                    src={nuevoLote}
+                    alt="Tambo360 en el celular: formulario para crear un lote con fecha, vacas, litros y destino"
+                    sizes="(min-width: 1024px) 180px, 34vw"
+                    widths={[240, 412]}
+                    class="absolute bottom-0 left-0 w-[34%] lg:w-[30%]"
+                />
+            </div>
+        </div>
+        <p class="mt-8 text-[13px] lg:mt-12">Pantallas reales de Tambo360.</p>
+    </Container>
+</section>

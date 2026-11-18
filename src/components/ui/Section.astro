@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 import Container from './Container.astro';
 
-type Tone = 'white' | 'paper' | 'dark';
+type Tone = 'white' | 'paper' | 'dark' | 'brand';
 type Props = HTMLAttributes<'section'> & { tone?: Tone; containerSize?: 'md' | 'lg' };
 
 const { tone = 'white', containerSize = 'lg', class: className, ...rest } = Astro.props;
@@ -11,6 +11,8 @@ const tones: Record<Tone, string> = {
   white: 'bg-white',
   paper: 'bg-papel',
   dark: 'sobre-oscuro bg-verde-900 text-white/85',
+  // Brand green surface: only the closing section (B2), with verde-900 text (6.23:1).
+  brand: 'sobre-marca bg-verde-cta text-verde-900',
 };
 ---
 

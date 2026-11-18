@@ -199,3 +199,21 @@ Observaciones (no son fallas: ningún requisito las fija):
 - No hay meta de verificación de Search Console (u74).
 
 Después de esta ejecución cambiaron cosas (u74, u83, u84): el dominio pasó a `https://tambo360.vercel.app`, `/404` y `/gracias` ya no llevan canonical, cambió la description de `/terminos` y se sumó la meta de Search Console con una variable de entorno. La evidencia `evidence/2026-10-23-seo/` tiene el dominio anterior. Falta volver a correr 67–71 con el dominio nuevo, en el deploy de producción. Ahí también hay que ver que `/equipo` responda 200 sin redirigir.
+
+## Ejecución 2026-11-04 — Rediseño B2 "La app en la mano" (u87-u94, Q-63, Q-64, Q-65)
+
+Objetivo: el build de producción (`dist/client`, servido estático en 127.0.0.1:4400) para la home y `/preguntas-frecuentes`; `/equipo` está oculta (`_equipo.astro`, Q-65), así que se vio en `astro dev` con una copia temporal en otra ruta, borrada después. Playwright sobre Edge headless con el viewport exacto; la captura baja por la página (sin scroll suave) para que carguen las imágenes diferidas. Lo esperado sale de los mockups B2 aprobados y de `DESIGN.md` § Dirección B2. Sin datos de prueba: solo lectura. Evidencia en `evidence/2026-11-04-b2/`.
+
+| # | Escenario | Objetivo | Esperado | Resultado | Estado |
+|---|---|---|---|---|---|
+| 74 | Check, tests y build | repo | check 0 errores, tests verdes, build ok | check 0 errores, 0 avisos, 0 sugerencias; 26 tests passed; `astro build` arma las páginas en `dist/client` y falla en el hook del adapter de Vercel (EPERM symlink en Windows, como en 61) | passed (check, tests, páginas); paso del adapter: blocked en Windows, lo confirma el deploy |
+| 75 | Orden y fondos de la home | `/` a 1366 y 390 | Hero papel, ¿Te suena? blanco, Cómo funciona papel, Qué podés hacer blanco, Sin señal verde-900, Historia papel, Piloto blanco, Dudas papel, Cierre verde-cta, footer verde-950 | Igual al esperado; ninguna sección seguida de otra con el mismo fondo (`home-1366.png`, `home-390.png`) | passed |
+| 76 | Pantallas reales | `/` a 1366, 390 y 320 | Tablero en la computadora y crear lote en el celular en el hero; costos, inventario y avisos en sus tarjetas; todas cargan | Las 5 capturas se ven; el celular del hero va delante de la computadora; en 390 y 320 las pantallas quedan debajo del texto | passed |
+| 77 | "Qué podés hacer" con descripción (Q-64) | `/` | 6 funciones con título y una línea | 6 tarjetas, título y descripción; las 3 con pantalla primero | passed |
+| 78 | Sin desborde horizontal | `/` a 320, 390, 1366, 1440; FAQ a 390, 1366, 1440; `/equipo` a 320, 390, 1440 | `scrollWidth` igual al viewport | 0 px de desborde en las 10 vistas | passed |
+| 79 | Contraste de los pares nuevos | pares de `Docs/design-system.md` | texto ≥ 4.5:1; foco ≥ 3:1 | Calculado (WCAG 2.x): tinta sobre verde-cta 7.36; verde-900 sobre verde-cta 6.23; blanco al 86 % sobre verde-900 11.43; verde-cta sobre verde-900 6.23; foco verde-900 sobre el cierre 6.23 (verde-enlace ahí daba 2.95, por eso se cambió). Lighthouse: auditoría de contraste sin fallas | passed |
+| 80 | Lighthouse móvil ≥ 95 | `/`, `/preguntas-frecuentes` (build) | ≥ 95 en las 4 categorías | home 99/100/100/100 (LCP 2,0 s, CLS 0, TBT 0 ms); FAQ 100/100/100/100 (LCP 1,6 s) | passed |
+| 81 | "Quiénes somos" sin destino roto (Q-65) | HTML de `/`, `/preguntas-frecuentes`, `/privacidad` | Ningún `href="/equipo"` mientras la página esté oculta | 0 enlaces en las 3 páginas; header y pie sin "Quiénes somos" | passed |
+| 82 | `/equipo` en B2 (BUG-001) | copia temporal a 1440, 390, 320 | Papel, blanco, verde-900, verde-cta: sin dos fondos iguales seguidos; fotos cuadradas en blanco y negro | Igual al esperado (`eq-1440.png`, `eq-390.png`) | passed |
+
+No ejecutado en esta corrida: Lighthouse de `/equipo` (oculta), Safari/Firefox, lectores de pantalla reales y recorrido completo con teclado. El sitemap no se regeneró: el build local se corta en el hook del adapter.

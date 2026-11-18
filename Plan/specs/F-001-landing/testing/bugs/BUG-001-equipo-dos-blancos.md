@@ -1,6 +1,6 @@
 # BUG-001 · /equipo: grilla y "Lo que escuchamos en los tambos" con el mismo fondo
 
-- **Estado:** fixed, pending verification (u76, 23/10/2026)
+- **Estado:** closed (verificado en el escenario 82, 04/11/2026; la página sigue oculta, Q-65)
 - **Severidad:** 1 (cosmético): el contenido se lee bien, pero la página no sigue la Regla del Corte (DESIGN.md, Q-56).
 - **Tipo:** contradice una convención del design system. El bloque es de u49, que sigue sin aprobar.
 - **Dónde:** `src/pages/equipo.astro`, sección `campo-titulo` después de la grilla "Integrantes del equipo".

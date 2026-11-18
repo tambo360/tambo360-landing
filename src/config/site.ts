@@ -13,8 +13,8 @@ export const site = {
     ogImage: '/og-image.jpg',
     // The app is moving to a domain not decided yet. Empty hides the "Registrarme" buttons from the launch date.
     registerUrl: '',
-    // Midnight in Argentina: a bare '2026-11-16' would be read as UTC, 21:00 of the day before here.
-    launchDate: '2026-11-16T00:00:00-03:00',
+    // Midnight in Argentina: a bare '2027-01-20' would be read as UTC, 21:00 of the day before here.
+    launchDate: '2027-01-20T00:00:00-03:00',
     email: 't360.arg@gmail.com',
     // wa.me format: digits only, 54 + 9 (Argentine mobile) + area code without 0 + number without 15. Empty hides the floating button.
     whatsappNumber: '5491168318568',
@@ -36,9 +36,13 @@ export function isLaunched(now: Date = new Date()): boolean {
     return now.getTime() >= new Date(site.launchDate).getTime();
 }
 
+// /equipo is hidden while its file is src/pages/_equipo.astro (Q-65): Astro does not publish it, so its link goes too.
+// Renaming the file back to equipo.astro brings the page and the link back together.
+const teamPagePublished = Object.keys(import.meta.glob('../pages/equipo.astro')).length > 0;
+
 export const nav = [
     { href: '/#como-funciona', label: 'Cómo funciona' },
     { href: '/#que-podes-hacer', label: 'Qué podés hacer' },
-    { href: '/equipo', label: 'Quiénes somos' },
+    ...(teamPagePublished ? [{ href: '/equipo', label: 'Quiénes somos' }] : []),
     { href: '/preguntas-frecuentes', label: 'Preguntas' },
-] as const;
+];

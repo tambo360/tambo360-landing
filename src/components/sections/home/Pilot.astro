@@ -1,30 +1,29 @@
 ---
 import { pilotBenefits } from '../../../data/home';
-import Icon from '../../ui/Icon.astro';
 import Section from '../../ui/Section.astro';
 import SectionHeading from '../../ui/SectionHeading.astro';
 import WaitlistForm from '../WaitlistForm.astro';
 ---
 
-<Section tone="paper" id="sumate" aria-labelledby="sumate-titulo">
-  <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr]">
+<Section id="sumate" aria-labelledby="sumate-titulo">
+  <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-18">
     <div>
       <SectionHeading
         id="sumate-titulo"
         title="Sumate al piloto: 3 meses gratis y te acompañamos"
         lead="Buscamos 3 tambos fundadores para arrancar el piloto; si llegás después, quedás primero en la lista de espera."
       />
-      <!-- Same notebook sheet as the problems, ticked instead of numbered. -->
-      <ul class="renglones mt-10 space-y-8 py-8">
+      <!-- B2: each benefit on a paper card, its number in a verde-cta badge (verde-900 text, 6.23:1). -->
+      <ul class="mt-10 grid gap-4">
         {
           pilotBenefits.map((benefit) => (
-            <li class="grid grid-cols-[2.5rem_1fr] leading-8">
-              <span class="flex h-8 items-center justify-end pr-3 text-verde-enlace" aria-hidden="true">
-                <Icon name="check" size={22} />
+            <li class="grid grid-cols-[auto_1fr] items-start gap-4 rounded-lg bg-papel p-5">
+              <span class="rounded-md bg-verde-cta px-2.5 py-1.5 text-[15px] font-extrabold whitespace-nowrap text-verde-900">
+                {benefit.figure}
               </span>
-              <div class="pl-4">
-                <h3 class="text-lg leading-8 font-bold">{benefit.title}</h3>
-                <p class="leading-8">{benefit.body}</p>
+              <div>
+                <h3 class="text-lg font-bold">{benefit.title}</h3>
+                <p class="mt-1 leading-relaxed">{benefit.body}</p>
               </div>
             </li>
           ))

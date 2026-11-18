@@ -1,48 +1,74 @@
 ---
-import vacas from "../../../assets/images/vacas-5.webp";
-import { problems } from "../../../data/home";
-import Picture from "../../ui/Picture.astro";
+import { problems, steps } from "../../../data/home";
+import Icon from "../../ui/Icon.astro";
 import Section from "../../ui/Section.astro";
 import SectionHeading from "../../ui/SectionHeading.astro";
+
+// Problems and "Cómo funciona" in one section: each problem faces its step (problems[i] ↔ steps[i]).
+// The id stays como-funciona so the nav link keeps working.
+const pairs = problems.map((problem, index) => ({ problem, step: steps[index] }));
 ---
 
-<Section tone="paper" aria-labelledby="problemas-titulo">
-    <div class="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-        <div>
-            <SectionHeading
-                id="problemas-titulo"
-                title="¿Te suena alguna de estas?"
-                lead="Cuando el tambo crece, el cuaderno ya no alcanza. Y lo que no se anota, no se puede arreglar."
-            />
-            <!-- A notebook page: every line of text is leading-8 so it sits on the 2rem rules. -->
-            <ol class="renglones mt-10 space-y-8 py-8">
-                {
-                    problems.map((problem, index) => (
-                        <li class="grid grid-cols-[2.5rem_1fr] leading-8">
-                            <span
-                                class="pr-3 text-right text-lg font-extrabold text-verde-enlace"
-                                aria-hidden="true"
-                            >
-                                {index + 1}.
-                            </span>
-                            <div class="pl-4">
-                                <h3 class="text-lg leading-8 font-bold">
-                                    {problem.title}
-                                </h3>
-                                <p class="leading-8">{problem.body}</p>
+<Section tone="paper" id="como-funciona" aria-labelledby="como-funciona-titulo">
+    <SectionHeading
+        id="como-funciona-titulo"
+        title="¿Te suena alguna de estas?"
+        lead="Cuando el tambo crece, el cuaderno ya no alcanza. Con Tambo360 anotás una vez en la fosa y lo ves ordenado en la oficina."
+    />
+    <div class="mt-12 border-t-2 border-tinta lg:mt-14">
+        <!-- Column headers only on wide screens; each block carries its own label for screen readers and phones. -->
+        <div
+            class="hidden grid-cols-2 gap-12 border-b border-borde-neutro py-4 text-sm font-bold lg:grid"
+            aria-hidden="true"
+        >
+            <span class="text-tinta">Hoy</span>
+            <span class="text-verde-enlace">Con Tambo360</span>
+        </div>
+        <ol>
+            {
+                pairs.map(({ problem, step }, index) => (
+                    <li class="grid items-start gap-5 border-b border-borde-neutro py-8 lg:grid-cols-2 lg:gap-12">
+                        <div>
+                            <p class="mb-1 text-[13px] font-bold lg:sr-only">Hoy</p>
+                            <h3 class="text-xl font-bold">{problem.title}</h3>
+                            <p class="mt-2 leading-relaxed">{problem.body}</p>
+                        </div>
+                        <div class="flex flex-col gap-3 rounded-tarjeta border border-[#e4dccb] bg-white p-6">
+                            <p class="text-[13px] font-bold text-verde-enlace lg:sr-only">Con Tambo360</p>
+                            <div class="flex items-center gap-3">
+                                <span class="grid size-8 shrink-0 place-items-center rounded-full bg-verde-900 text-sm font-extrabold text-white" aria-hidden="true">
+                                    {index + 1}
+                                </span>
+                                <h3 class="text-xl font-bold text-verde-enlace">{step.title}</h3>
                             </div>
-                        </li>
-                    ))
-                }
-            </ol>
-        </div>
-        <div class="relative">
-            <Picture
-                src={vacas}
-                alt="Vacas Holando comiendo en el comedero de un tambo"
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                class="aspect-4/5 w-full rounded-xl object-cover"
-            />
-        </div>
+                            <p class="leading-relaxed">{step.body}</p>
+                            <!-- Drawn fragment of the app: illustrative, hidden from screen readers. -->
+                            <div class="grid gap-2 rounded-lg bg-papel p-3 text-[13px] text-tinta" aria-hidden="true">
+                                {index === 0 && (
+                                    <>
+                                        <div class="flex justify-between rounded-md bg-white px-2.5 py-2"><span>Ordeñe mañana</span><b>Guardado</b></div>
+                                        <div class="flex justify-between rounded-md bg-white px-2.5 py-2"><span>Ordeñe tarde</span><b>Guardado</b></div>
+                                    </>
+                                )}
+                                {index === 1 &&
+                                    ["Producción", "Mermas", "Gastos"].map((row) => (
+                                        <div class="flex items-center justify-between rounded-md bg-white px-2.5 py-2">
+                                            <span>{row}</span>
+                                            <Icon name="check" size={16} class="text-verde-enlace" />
+                                        </div>
+                                    ))}
+                                {index === 2 && (
+                                    <div class="rounded-md border border-[#f0d58a] bg-white px-2.5 py-2">
+                                        <b>Merma superior al promedio histórico</b>
+                                        <br />
+                                        Lote 3 · Leche entera
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </li>
+                ))
+            }
+        </ol>
     </div>
 </Section>

@@ -28,12 +28,13 @@ const jsonLd = {
   description={`Las personas que hacen ${site.name}: un equipo de desarrollo dedicado al campo que recorrió tambos y escuchó a quienes los trabajan antes de escribir una línea.`}
   jsonLd={jsonLd}
 >
-  <section class="bg-papel py-14 sm:py-20" aria-labelledby="equipo-titulo">
+  <!-- B2: paper intro, square black-and-white photos, the dark band of "Sin señal", the brand-green closing. -->
+  <section class="bg-papel py-14 sm:py-20 lg:pt-24" aria-labelledby="equipo-titulo">
     <Container>
-      <h1 id="equipo-titulo" class="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-display-xl">
+      <h1 id="equipo-titulo" class="max-w-[52rem] text-4xl leading-[1.04] font-extrabold tracking-tight sm:text-display-xl lg:text-[3.625rem]">
         Conocé al equipo que conforma {site.name}
       </h1>
-      <p class="mt-5 max-w-2xl text-lg">
+      <p class="mt-6 max-w-2xl text-lg lg:text-xl">
         No venimos del tambo. Por eso fuimos a buscarlo. Somos un equipo de desarrollo dedicado al campo: antes de escribir una
         línea, recorrimos tambos y escuchamos a quienes los trabajan, para llevar algo simple a problemas reales.
       </p>
@@ -41,19 +42,19 @@ const jsonLd = {
   </section>
 
   <Section aria-label="Integrantes del equipo">
-    <ul class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+    <ul class="grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-3 sm:gap-x-7 sm:gap-y-10 lg:grid-cols-4">
       {
         team.map((member) => (
-          <li class="text-center">
+          <li>
             <Image
               src={member.photo}
               alt=""
-              width={200}
-              height={200}
+              width={280}
+              height={280}
               densities={[1, 2]}
-              class="mx-auto aspect-square w-full max-w-44 rounded-full object-cover ring-4 ring-verde-050 grayscale"
+              class="block aspect-square w-full rounded-tarjeta bg-gris-100 object-cover grayscale"
             />
-            <p class="mt-3 text-lg leading-tight font-semibold text-tinta">{member.name}</p>
+            <p class="mt-3 leading-tight font-bold text-tinta sm:text-lg">{member.name}</p>
           </li>
         ))
       }
@@ -61,7 +62,7 @@ const jsonLd = {
   </Section>
 
   <!-- Proof of the fieldwork (Q-51 a): only existing material, the story of Q-13 and the home problems.
-       Dark so the page alternates paper, white, dark and the paper closing (Regla del Corte). -->
+       Dark so the page alternates paper, white, dark and the brand-green closing (Regla del Corte). -->
   <Section tone="dark" aria-labelledby="campo-titulo">
     <div class="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
       <div>
@@ -77,10 +78,10 @@ const jsonLd = {
           <Icon name="arrow-right" size={18} />
         </a>
       </div>
-      <ul class="border-t border-white/20">
+      <ul class="border-t border-white/15">
         {
           problems.map((problem) => (
-            <li class="border-b border-white/20 py-6">
+            <li class="border-b border-white/15 py-5.5">
               <h3 class="text-lg font-bold text-white">{problem.title}</h3>
               <p class="mt-1 leading-relaxed">{problem.body}</p>
             </li>

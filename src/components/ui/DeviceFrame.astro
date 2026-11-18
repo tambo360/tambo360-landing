@@ -1,0 +1,44 @@
+---
+import type { ImageMetadata } from 'astro';
+import Picture from './Picture.astro';
+
+// A real app screen inside a device (DESIGN.md, Dirección B2). Only real captures from src/assets/app go here.
+// laptop: dark frame with a base. phone: black body, whole screen. phone-cut: the top of a phone, cut by its card.
+type Kind = 'laptop' | 'phone' | 'phone-cut';
+type Props = {
+  kind: Kind;
+  src: ImageMetadata;
+  alt: string;
+  sizes: string;
+  widths?: number[];
+  priority?: boolean;
+  class?: string;
+};
+
+const { kind, src, alt, sizes, widths, priority = false, class: className } = Astro.props;
+---
+
+{
+  kind === 'laptop' ? (
+    <div class:list={['w-full', className]}>
+      <div class="rounded-t-[18px] bg-[#1f2a22] p-2 pb-2.5 sm:p-3 sm:pb-3.5">
+        <Picture src={src} alt={alt} sizes={sizes} widths={widths} priority={priority} class="block h-auto w-full rounded-md" />
+      </div>
+      <div class="-mx-[5%] h-3 rounded-b-[18px] bg-[#2c3a30] sm:h-4.5" aria-hidden="true" />
+    </div>
+  ) : kind === 'phone' ? (
+    <div class:list={['rounded-[2.5rem] bg-[#111] p-2 shadow-dispositivo sm:p-2.5', className]}>
+      <Picture src={src} alt={alt} sizes={sizes} widths={widths} priority={priority} class="block h-auto w-full rounded-[2rem]" />
+    </div>
+  ) : (
+    <div class:list={['rounded-t-[2.125rem] bg-[#111] px-2 pt-2', className]}>
+      <Picture
+        src={src}
+        alt={alt}
+        sizes={sizes}
+        widths={widths}
+        class="block h-75 w-full rounded-t-[1.625rem] object-cover object-top sm:h-82"
+      />
+    </div>
+  )
+}

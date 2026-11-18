@@ -1,49 +1,48 @@
 ---
-import campo from "../../../assets/images/vacas-1.webp";
 import Container from "../../ui/Container.astro";
-import Picture from "../../ui/Picture.astro";
-import SectionHeading from "../../ui/SectionHeading.astro";
+import Icon from "../../ui/Icon.astro";
 
-const devices: { title: string; body: string }[] = [
-    {
-        title: "Podés usarlo desde cualquier dispositivo",
-        body: "La instalás y la llevás donde se trabaja.",
-    },
-    {
-        title: "No necesitás conexión a internet",
-        body: "Se guarda en el equipo y se sincroniza sola cuando vuelve la conexión.",
-    },
-    {
-        title: "Organizá tus papeles",
-        body: "Ves lo mismo que se anotó en el tambo, sin esperar la planilla.",
-    },
+// B2: the one dark band of the home. Only the titles of the three items, each with its icon (user's comment, 04/11).
+const devices: { icon: string; title: string }[] = [
+    { icon: "device-desktop", title: "Podés usarlo desde cualquier dispositivo" },
+    { icon: "wifi-off", title: "No necesitás conexión a internet" },
+    { icon: "clipboard-list", title: "Organizá tus papeles" },
 ];
 ---
 
-<!-- The photo opens the section; the paper surfaces before and after are what separate it. -->
-<section id="sin-senal" aria-labelledby="sin-senal-titulo" class="bg-white">
-    <Picture
-        src={campo}
-        alt="Vacas Holando pastando en un potrero abierto, lejos del galpón"
-        sizes="100vw"
-        widths={[480, 768, 1080, 1440, 1976]}
-        class="aspect-[2/1] w-full object-cover object-bottom sm:aspect-[3/1] lg:aspect-auto lg:h-[26rem]"
-    />
-    <Container class="pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pb-24">
-        <SectionHeading
-            id="sin-senal-titulo"
-            title="En la fosa no hay señal. Igual queda anotado"
-            lead="Tambo360 guarda todo en el celular y lo manda solo cuando vuelve la conexión."
-        />
-        <dl class="mt-12 border-t border-borde-neutro">
+<section
+    id="sin-senal"
+    aria-labelledby="sin-senal-titulo"
+    class="sobre-oscuro bg-verde-900 py-18 text-white/86 lg:py-24"
+>
+    <Container>
+        <div class="grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-18">
+            <h2
+                id="sin-senal-titulo"
+                class="text-3xl leading-tight font-extrabold tracking-tight text-white sm:text-display-lg"
+            >
+                En la fosa no hay señal. Igual queda anotado
+            </h2>
+            <p class="text-bajada leading-bajada">
+                Tambo360 guarda todo en el celular y lo manda solo cuando vuelve
+                la conexión.
+            </p>
+        </div>
+        <ul
+            class="mt-8 grid border-y border-white/15 lg:mt-14 lg:grid-cols-3"
+        >
             {
                 devices.map((device) => (
-                    <div class="grid gap-2 border-b border-borde-neutro py-6 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-10">
-                        <dt class="text-xl font-bold text-tinta">{device.title}</dt>
-                        <dd class="leading-relaxed sm:text-lg">{device.body}</dd>
-                    </div>
+                    <li class="flex items-center gap-4.5 py-5 not-first:border-t not-first:border-white/15 lg:px-7 lg:py-8 lg:first:pl-0 lg:not-first:border-t-0 lg:not-first:border-l">
+                        <span class="grid size-13 shrink-0 place-items-center rounded-[14px] bg-verde-cta/14 text-verde-cta">
+                            <Icon name={device.icon} size={28} />
+                        </span>
+                        <span class="text-lg leading-snug font-bold text-white">
+                            {device.title}
+                        </span>
+                    </li>
                 ))
             }
-        </dl>
+        </ul>
     </Container>
 </section>

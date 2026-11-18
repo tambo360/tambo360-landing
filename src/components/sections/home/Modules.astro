@@ -1,26 +1,80 @@
 ---
+import type { ImageMetadata } from "astro";
+import catalogo from "../../../assets/app/catalogo-mobile.png";
+import costos from "../../../assets/app/costos-mobile.png";
+import avisos from "../../../assets/images/tambo-engine.webp";
 import { modules } from "../../../data/home";
-import Icon from "../../ui/Icon.astro";
+import DeviceFrame from "../../ui/DeviceFrame.astro";
+import Picture from "../../ui/Picture.astro";
 import Section from "../../ui/Section.astro";
 import SectionHeading from "../../ui/SectionHeading.astro";
+
+// B2 (Q-64): title and description for every function. The three with a real screen go first.
+type Screen = { kind: "phone" | "desktop"; src: ImageMetadata; alt: string };
+const screens: Record<string, Screen> = {
+    "Gastos del tambo": {
+        kind: "phone",
+        src: costos,
+        alt: "Pantalla de costos generales de Tambo360 en el celular",
+    },
+    "Tu rodeo, al día": {
+        kind: "phone",
+        src: catalogo,
+        alt: "Pantalla de inventario por animal de Tambo360 en el celular, con altas y bajas",
+    },
+    "Avisos a tiempo": {
+        kind: "desktop",
+        src: avisos,
+        alt: "Pantalla de avisos de Tambo360: merma superior al promedio histórico y variación en la merma de un lote",
+    },
+};
+const withScreen = Object.keys(screens).flatMap((title) => modules.filter((module) => module.title === title));
+const tiles = [...withScreen, ...modules.filter((module) => !screens[module.title])].map((module) => ({
+    ...module,
+    screen: screens[module.title],
+}));
 ---
 
-<Section tone="paper" id="que-podes-hacer" aria-labelledby="modulos-titulo">
-    <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-        <SectionHeading
-            id="modulos-titulo"
-            title="Lo que podés hacer desde el primer día"
-            lead="Lo que hoy está repartido entre el cuaderno, la planilla y la cabeza del encargado, junto."
-        />
-        <ul class="grid border-t border-borde-neutro sm:grid-cols-2">
-            {
-                modules.map((module) => (
-                    <li class="flex items-center gap-4 border-b border-borde-neutro py-5 sm:pr-6">
-                        <Icon name={module.icon} size={28} class="text-verde-enlace" />
-                        <h3 class="text-lg font-bold">{module.title}</h3>
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
+<Section id="que-podes-hacer" aria-labelledby="modulos-titulo">
+    <SectionHeading
+        id="modulos-titulo"
+        title="Lo que podés hacer desde el primer día"
+        lead="Lo que hoy está repartido entre el cuaderno, la planilla y la cabeza del encargado, junto."
+    />
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+        {
+            tiles.map(({ title, body, screen }) => (
+                <li
+                    class:list={[
+                        "flex flex-col gap-2.5 overflow-hidden rounded-tarjeta border p-7",
+                        screen ? "border-[#e4dccb] bg-papel pb-0" : "border-borde-verde bg-white",
+                    ]}
+                >
+                    <h3 class="text-xl font-bold">{title}</h3>
+                    <p class="leading-relaxed">{body}</p>
+                    {screen?.kind === "phone" && (
+                        <DeviceFrame
+                            kind="phone-cut"
+                            src={screen.src}
+                            alt={screen.alt}
+                            sizes="230px"
+                            widths={[230, 411]}
+                            class="mx-auto mt-5 w-[230px] max-w-full"
+                        />
+                    )}
+                    {screen?.kind === "desktop" && (
+                        <div class="mt-auto -mr-7 overflow-hidden rounded-tl-xl border-t border-l border-borde-verde">
+                            <Picture
+                                src={screen.src}
+                                alt={screen.alt}
+                                sizes="(min-width: 1024px) 560px, 150vw"
+                                widths={[560, 1080]}
+                                class="block w-[150%] max-w-none"
+                            />
+                        </div>
+                    )}
+                </li>
+            ))
+        }
+    </ul>
 </Section>
