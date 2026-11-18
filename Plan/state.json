@@ -102,11 +102,12 @@
   ],
   "approved": true,
   "autonomy": {},
-  "waiting_on": "Aceptación del usuario de B2 con los cambios de Q-66 en el navegador; después siguen u79 y u80 de la run form-resend. Sin commit: el usuario no lo pidió",
+  "waiting_on": "PR de feature/landing-b2 → main: abrirlo, cargar RESEND_API_KEY y WAITLIST_TO en Vercel, probar el form y revisar la preview; aceptación del usuario de B2 + Q-66",
   "notes": [
     "Run anterior (u1-u84) en git history; quedan abiertas u41, u42, u46",
     "B2 implementado sin commit (04/11); /equipo sigue oculta como _equipo.astro y el nav la muestra solo si existe src/pages/equipo.astro",
     "Capturas: Playwright sobre msedge (playwright-core del cache de npx), scroll instantáneo; build local falla en el hook de Vercel (EPERM)",
-    "18/11 (Q-66, cambio directo pedido por el usuario): vuelve el hero con foto y gradiente; el hero B2 pasa a AppInstall (#instalar); Problems + HowItWorks unificados en #como-funciona (HowItWorks.astro borrado); launchDate 2027-01-20; docs actualizados; check 0 errores, 1440/390/320 sin scroll horizontal"
+    "18/11 (Q-66, cambio directo pedido por el usuario): vuelve el hero con foto y gradiente; el hero B2 pasa a AppInstall (#instalar); Problems + HowItWorks unificados en #como-funciona (HowItWorks.astro borrado); launchDate 2027-01-20; docs actualizados; check 0 errores, 1440/390/320 sin scroll horizontal",
+    "18/11: commits 116e4f5 (WAITLIST_TO, QT-37) y 831c50b (B2 + Q-66) en la rama feature/landing-b2, subida a origin; PR sin abrir (no hay gh): el usuario lo abre desde GitHub"
   ]
 }
