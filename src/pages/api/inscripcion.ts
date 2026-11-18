@@ -1,12 +1,12 @@
 import type { APIRoute } from 'astro';
-import { RESEND_API_KEY } from 'astro:env/server';
+import { RESEND_API_KEY, WAITLIST_TO } from 'astro:env/server';
 import { site } from '../../config/site';
 import { type SubmitStatus, validateWaitlist } from '../../lib/waitlist';
 import { sendWaitlistMail } from '../../lib/waitlist-mail';
 
 export const prerender = false;
 
-// Resend's testing sender only delivers to the mailbox that owns the account, which is the site's address.
+// Resend's testing sender only delivers to the mailbox that owns the account (WAITLIST_TO, or the site's address).
 // Sending from or to anything else needs a verified domain.
 const MAIL_FROM = 'Tambo360 <onboarding@resend.dev>';
 
@@ -35,7 +35,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return respond('error', 503);
   }
 
-  const sent = await sendWaitlistMail(result.entry, { apiKey: RESEND_API_KEY, from: MAIL_FROM, to: site.email });
+  const sent = await sendWaitlistMail(result.entry, { apiKey: RESEND_API_KEY, from: MAIL_FROM, to: WAITLIST_TO || site.email });
   return sent === 'sent' ? respond('ok', 200) : respond('error', 503);
 };
 
